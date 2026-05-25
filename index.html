@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Аудит рабочего пространства • Полная версия</title>
+    <title>Аудит рабочего пространства • Расширенная система</title>
     <style>
         * {
             margin: 0;
@@ -19,12 +19,11 @@
         }
 
         .wrap {
-            max-width: 1280px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 28px 18px 56px;
         }
 
-        /* Hero-блок */
         .hero {
             background: linear-gradient(135deg, #1f4ec9 0%, #3a76ff 100%);
             color: #fff;
@@ -78,24 +77,23 @@
             opacity: .98;
         }
 
-        /* Tab bar */
         .tab-bar {
             display: flex;
-            gap: 12px;
+            gap: 6px;
             flex-wrap: wrap;
             margin-bottom: 28px;
             background: white;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 60px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
         }
         .tab-btn {
             background: transparent;
             border: none;
-            padding: 10px 24px;
+            padding: 8px 16px;
             border-radius: 40px;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.85rem;
             cursor: pointer;
             transition: 0.2s;
             color: #2c3e66;
@@ -111,7 +109,6 @@
             transform: translateY(-1px);
         }
 
-        /* Основные карточки контента */
         .page {
             display: none;
             background: white;
@@ -124,7 +121,6 @@
             display: block;
         }
 
-        /* Общие стили для форм и текста */
         .section-title {
             font-size: 1.8rem;
             font-weight: 700;
@@ -133,51 +129,93 @@
             padding-left: 20px;
         }
         .subsection-title {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 600;
             margin: 24px 0 14px 0;
             color: #2c5a7a;
             border-bottom: 2px solid #e2edf7;
             padding-bottom: 6px;
         }
-        .criteria-item {
-            background: #fafdff;
-            border-radius: 20px;
-            padding: 14px 18px;
-            margin-bottom: 12px;
-            border: 1px solid #ecf3fa;
+
+        /* Компактный чек-лист: таблица */
+        .compact-checklist {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
         }
-        .criteria-text {
-            font-weight: 500;
-            margin-bottom: 12px;
+        .compact-checklist th, .compact-checklist td {
+            border: 1px solid #dce5ec;
+            padding: 8px 10px;
+            vertical-align: top;
         }
-        .radio-static {
+        .compact-checklist th {
+            background: #eef3fc;
+            text-align: left;
+            font-weight: 700;
+        }
+        .radio-group-compact {
             display: flex;
-            gap: 28px;
+            gap: 12px;
+            white-space: nowrap;
+        }
+        .radio-group-compact label {
+            display: inline-flex;
             align-items: center;
-        }
-        .radio-static label {
+            gap: 4px;
+            font-size: 0.8rem;
             background: #f0f4fc;
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            opacity: 0.85;
+            padding: 2px 8px;
+            border-radius: 30px;
         }
-        input[disabled] {
-            cursor: default;
-            pointer-events: none;
+        .category-row {
+            background: #f9fbfe;
         }
-        .result-panel {
-            background: #eef3fa;
+
+        /* Графики и схемы */
+        .chart-container {
+            background: #fefefe;
             border-radius: 20px;
-            padding: 18px 24px;
-            text-align: center;
-            margin-top: 24px;
+            padding: 16px;
+            margin: 20px 0;
+            border: 1px solid #e2edf7;
+        }
+        .bar-chart {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .bar-label {
+            width: 180px;
+            font-weight: 600;
+        }
+        .bar-bg {
+            flex: 1;
+            height: 28px;
+            background: #e0e8f0;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2457d6, #4f86ff);
+            border-radius: 14px;
+            color: white;
+            line-height: 28px;
+            padding-left: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
         }
         .two-cols {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 24px;
+        }
+        .three-cols {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
         }
         .form-field {
             margin-bottom: 20px;
@@ -206,16 +244,13 @@
             padding: 20px;
             text-align: center;
             border: 2px dashed #caddf0;
-            color: #5e7e9c;
             margin-top: 12px;
         }
         .image-placeholder img {
             max-width: 100%;
             border-radius: 18px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
         .btn {
-            text-decoration: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -242,9 +277,6 @@
             border-color: #cbdde6;
             color: #2c5a7a;
         }
-        .btn-primary:hover, .btn-secondary:hover {
-            transform: translateY(-2px);
-        }
         .flex-btns {
             display: flex;
             gap: 14px;
@@ -254,7 +286,7 @@
         }
         .lock-note {
             background: #fef4e6;
-            padding: 10px 18px;
+            padding: 8px 16px;
             border-radius: 60px;
             font-size: 0.85rem;
             display: inline-block;
@@ -272,28 +304,36 @@
             border-radius: 20px;
             border-left: 4px solid #0f766e;
         }
-        @media (max-width: 800px) {
-            .two-cols, .grid { grid-template-columns: 1fr; }
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #e2edf7;
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #eef3fc;
+            font-weight: 700;
+        }
+        @media (max-width: 900px) {
+            .two-cols, .grid, .three-cols { grid-template-columns: 1fr; }
             .page { padding: 20px; }
             .tab-bar { justify-content: center; }
         }
         @media print {
-            body {
-                background: white;
-                padding: 0;
-            }
-            .tab-bar, .hero, .flex-btns, .btn, .no-print {
-                display: none !important;
-            }
-            .page {
-                display: block !important;
-                box-shadow: none;
-                padding: 0;
-                margin: 0;
-            }
-            .active-page {
-                display: block !important;
-            }
+            body { background: white; padding: 0; }
+            .tab-bar, .hero, .flex-btns, .btn, .no-print { display: none !important; }
+            .page { display: block !important; box-shadow: none; padding: 0; margin: 0; }
         }
         footer {
             text-align: center;
@@ -308,238 +348,297 @@
     <div class="hero">
         <div class="eyebrow">Практическая работа • ФЭМ</div>
         <h1>Аудит рабочего пространства и проект улучшения</h1>
-        <p>Единая система: фиксированный чек-лист, отчёт с реальными фотографиями, проект модернизации. Данные основаны на инспекции аудитории 6236.</p>
+        <p>Расширенная система: компактный чек-лист, визуализация данных, детальный проект модернизации с графиками, бюджетом, KPI и планом обслуживания.</p>
     </div>
 
     <div class="tab-bar">
         <button class="tab-btn active" data-page="home">Главная</button>
-        <button class="tab-btn" data-page="checklist">Чек-лист (фикс. оценка)</button>
-        <button class="tab-btn" data-page="report">Шаблон отчёта</button>
-        <button class="tab-btn" data-page="project">Проект улучшения</button>
+        <button class="tab-btn" data-page="checklist">Чек-лист (компактный)</button>
+        <button class="tab-btn" data-page="report">Отчёт</button>
+        <button class="tab-btn" data-page="project">Проект</button>
+        <button class="tab-btn" data-page="procurement">Закупки</button>
+        <button class="tab-btn" data-page="budget">Бюджет + ROI</button>
+        <button class="tab-btn" data-page="schedule">График работ</button>
+        <button class="tab-btn" data-page="kpi">KPI и риски</button>
+        <button class="tab-btn" data-page="maintenance">Обслуживание</button>
     </div>
 
-    <!-- СТРАНИЦА: ГЛАВНАЯ -->
+    <!-- Главная страница -->
     <div id="home" class="page active-page">
         <div class="section-title">О проекте</div>
-        <p style="margin-bottom: 20px;">Данный инструмент объединяет в себе полный цикл аудита рабочего пространства: от детальной оценки по 46 критериям до оформления технического отчёта и проекта модернизации. Все страницы работают в одном HTML-файле без внешних зависимостей. Данные сохраняются в вашем браузере (localStorage).</p>
+        <p style="margin-bottom: 20px;">Единая система для аудита рабочего пространства: 46 критериев, фиксированная оценка (21/92 балла). Добавлены графики распределения баллов по категориям, детальные таблицы закупок, экономическое обоснование и календарный план.</p>
+        <div class="chart-container">
+            <div class="subsection-title" style="margin-top:0;">Распределение баллов по категориям</div>
+            <div id="categoryChart"></div>
+        </div>
         <div class="grid" style="margin: 20px 0;">
-            <div class="note"><strong>Объект анализа:</strong> аудитория 6236, 20 рабочих мест. Назначение — учебный процесс, программирование, моделирование.</div>
-            <div class="note"><strong>Итог чек-листа:</strong> 21 / 92 балла (23%) — критическая неудовлетворительность, требуется полная замена мебели и техники.</div>
-            <div class="note"><strong>Основные проблемы:</strong> неэргономичные столы (студенты бьются ногами), устаревшие ПК (HDD, 4-8 ГБ ОЗУ), кабельный хаос, плохое освещение.</div>
-            <div class="note"><strong>Ключевые улучшения:</strong> замена столов, апгрейд компьютеров (SSD, 16+ ГБ ОЗУ), LED-освещение, кабель-менеджмент.</div>
+            <div class="note"><strong>Объект:</strong> аудитория 6236, 20 мест. Назначение — учёба, программирование, моделирование.</div>
+            <div class="note"><strong>Итог чек-листа:</strong> 21 / 92 (23%) — критическая неудовлетворительность, требуется полная замена мебели и техники.</div>
+            <div class="note"><strong>Основные проблемы:</strong> неэргономичные столы (студенты бьются ногами), HDD, 4-8 ГБ ОЗУ, кабельный хаос, плохое освещение.</div>
+            <div class="note"><strong>Ключевые улучшения:</strong> замена столов, апгрейд ПК (SSD, 16+ ГБ ОЗУ), LED-освещение, кабель-менеджмент.</div>
         </div>
-        <div class="flex-btns no-print">
-            <button onclick="window.print()" class="btn btn-outline">Сохранить главную как PDF</button>
-        </div>
-        <footer>Переключайтесь между вкладками. Для печати текущей страницы нажмите соответствующую кнопку.</footer>
+        <div class="flex-btns no-print"><button onclick="window.print()" class="btn btn-outline">Сохранить главную как PDF</button></div>
+        <footer>Используйте вкладки для навигации. Данные отчёта сохраняются автоматически.</footer>
     </div>
 
-    <!-- СТРАНИЦА: ЧЕК-ЛИСТ (ФИКСИРОВАННЫЕ БАЛЛЫ) -->
+    <!-- Компактный чек-лист в виде таблицы -->
     <div id="checklist" class="page">
-        <div class="section-title">Интерактивная шкала оценки (финальный аудит)</div>
-        <div class="lock-note">Оценка зафиксирована по результатам реальной инспекции аудитории 6236. Изменение баллов невозможно.</div>
-        <div id="questionsContainer"></div>
+        <div class="section-title">Финальный аудит (компактная форма)</div>
+        <div class="lock-note">Оценка зафиксирована по результатам реальной инспекции. Изменение баллов невозможно.</div>
+        <div class="table-wrapper">
+            <table class="compact-checklist" id="compactChecklistTable">
+                <thead>
+                    <tr><th>Категория / Вопрос</th><th>0</th><th>1</th><th>2</th></tr>
+                </thead>
+                <tbody id="compactChecklistBody"></tbody>
+            </table>
+        </div>
         <div class="result-panel">
-            <strong>Итоговая сумма баллов:</strong> <span id="totalFixedScore">0</span> / <span id="maxScoreSpan">92</span> &nbsp;|&nbsp;
+            <strong>Итоговая сумма:</strong> <span id="totalFixedScore">0</span> / <span id="maxScoreSpan">92</span> &nbsp;|&nbsp;
             <strong>Процент:</strong> <span id="percentSpan">0</span>% — <span id="resultInterpretSpan"></span>
         </div>
-        <div class="flex-btns no-print"><button onclick="printChecklistPage()" class="btn btn-outline">Сохранить чек-лист как PDF</button></div>
+        <div class="flex-btns no-print"><button onclick="printChecklistPage()" class="btn btn-outline">PDF чек-листа</button></div>
     </div>
 
-    <!-- СТРАНИЦА: ШАБЛОН ОТЧЁТА -->
+    <!-- Отчёт (редактируемый) -->
     <div id="report" class="page">
-        <div class="section-title">Аудит и проект улучшения пространства</div>
-        <div class="subsection-title">1. Общая информация</div>
+        <div class="section-title">Аудит и проект улучшения</div>
         <div class="two-cols">
-            <div class="form-field"><label>ФИО / автор</label><input type="text" id="reportAuthor" value="Нейронов Е. Дети"></div>
-            <div class="form-field"><label>Объект анализа</label><input type="text" id="reportObject" value="Аудитория 6236"></div>
+            <div class="form-field"><label>Автор</label><input type="text" id="reportAuthor" value="Нейронов Е. Дети"></div>
+            <div class="form-field"><label>Объект</label><input type="text" id="reportObject" value="Аудитория 6236"></div>
         </div>
-        <div class="form-field"><label>Назначение рабочего пространства</label><textarea id="reportPurpose">Назначение — улучшить рабочее пространство аудитории для удобства студентов. Текущая конфигурация не соответствует комфортным требованиям (устаревшие ПК, неудобные столы).</textarea></div>
-        
-        <div class="subsection-title">2. Итоги чек-листа</div>
+        <div class="form-field"><label>Назначение</label><textarea id="reportPurpose">Улучшение пространства для комфортной учёбы и ресурсоёмких задач.</textarea></div>
+        <div class="subsection-title">Итоги чек-листа</div>
         <div class="two-cols">
             <div class="form-field"><label>Набрано баллов</label><input type="text" id="reportScore" readonly value="21"></div>
-            <div class="form-field"><label>Максимум</label><input type="text" id="reportMax" readonly value="92"></div>
             <div class="form-field"><label>Процент</label><input type="text" id="reportPercent" readonly value="23%"></div>
-            <div class="form-field"><label>Результат</label><input type="text" id="reportResultText" readonly value="Критическая неудовлетворительность"></div>
         </div>
-
-        <div class="subsection-title">3. Ключевые наблюдения</div>
-        <div class="form-field"><label>Сильные стороны (потенциал)</label><textarea id="strengths">Оборудование включается (иногда), стабильность удовлетворительная при минимальной нагрузке. Есть возможность полной модернизации.</textarea></div>
-        <div class="form-field"><label>Проблемные зоны</label><textarea id="weaknesses">Аудитория не соответствует стандартам обучения. Эргономика: столы неудобные (студенты бьются ногами). Мониторы устаревшие, низкое разрешение. Кабельный хаос, нехватка розеток, плохое освещение. Производительность ПК крайне низкая.</textarea></div>
-        <div class="form-field"><label>Три улучшения с наибольшим эффектом</label><textarea id="improvements">1) Полное обновление компьютерной техники (SSD, 16+ ГБ ОЗУ, современные процессоры). 2) Замена столов на регулируемые по высоте с увеличенным пространством для ног. 3) Кабель-менеджмент и светодиодное освещение над каждым местом.</textarea></div>
-
-        <div class="subsection-title">4. Проект улучшения (кратко)</div>
-        <div class="form-field"><label>Что можно улучшить без существенных затрат</label><textarea id="lowCost">• Организация кабелей с помощью стяжек и коробов. • Замена ламп на LED с сохранением светильников. • Регулировка мониторов (подручные подставки).</textarea></div>
-        <div class="form-field"><label>Что потребует бюджета, но даст заметный эффект</label><textarea id="budgetItems">• Замена ПК: современные системные блоки (SSD, 16–32 ГБ ОЗУ). • Эргономичные столы с регулировкой высоты. • Профессиональный кабель-менеджмент и подвесные LED-панели.</textarea></div>
-        <div class="form-field"><label>Обоснование</label><textarea id="justification">Студенты получат комфорт, возможность работать с требовательным ПО (моделирование, аналитика). Улучшение эргономики снизит усталость и риск травм. Модернизация продлит срок службы техники и повысит эффективность занятий.</textarea></div>
-        
-        <div class="subsection-title">5. Визуальные материалы</div>
+        <div class="form-field"><label>Сильные стороны</label><textarea id="strengths">Оборудование включается, стабильность при минимальной нагрузке.</textarea></div>
+        <div class="form-field"><label>Проблемы</label><textarea id="weaknesses">Столы неудобные, устаревшие ПК, кабельный хаос, плохое освещение.</textarea></div>
+        <div class="form-field"><label>Улучшения</label><textarea id="improvements">Апгрейд ПК, замена столов, кабель-менеджмент, LED-освещение.</textarea></div>
+        <div class="subsection-title">Визуальные материалы</div>
         <div class="two-cols">
-            <div class="image-placeholder">
-                <img src="photo1.jpg" alt="Текущее состояние: тесные парты, провода" style="max-width:100%; border-radius:16px;">
-                <p style="margin-top:10px; font-weight:500;">Рис. 1 – Исходное состояние аудитории 6236 (неудобные столы, кабельный хаос)</p>
-            </div>
-            <div class="image-placeholder">
-                <img src="photo2.jpg" alt="Референс: современная аудитория с LED-освещением и эргономикой" style="max-width:100%; border-radius:16px;">
-                <p style="margin-top:10px; font-weight:500;">Рис. 2 – Пример желаемой эргономики и освещения (референс)</p>
-            </div>
+            <div class="image-placeholder"><img src="photo1.jpg" alt="Текущее состояние" style="max-width:100%"><p>Исходное состояние</p></div>
+            <div class="image-placeholder"><img src="photo2.jpg" alt="Референс"><p>Желаемая эргономика</p></div>
         </div>
-        <div class="subsection-title">6. Итоговый вывод</div>
-        <textarea id="finalConclusion" rows="4">Замена столов на регулируемые по высоте с пространством для ног, внедрение кабельного порядка и равномерного LED-освещения, а также полный апгрейд компьютерной техники дадут максимальный прирост удобства и эффективности. Эти меры напрямую устраняют главные болевые точки и в рамках разумного бюджета обеспечат качественное образование.</textarea>
-        <div class="flex-btns no-print">
-            <button id="saveReportBtn" class="btn btn-secondary">Сохранить отчёт</button>
-            <button onclick="printReportPage()" class="btn btn-outline">PDF отчёта</button>
-        </div>
+        <div class="flex-btns no-print"><button id="saveReportBtn" class="btn btn-secondary">Сохранить отчёт</button><button onclick="printReportPage()" class="btn btn-outline">PDF</button></div>
     </div>
 
-    <!-- СТРАНИЦА: ПРОЕКТ УЛУЧШЕНИЯ (ДЕТАЛЬНО) -->
+    <!-- Проект улучшения (детализированный) -->
     <div id="project" class="page">
-        <div class="section-title">Проект модернизации аудитории 6236</div>
-        <p><strong>Автор:</strong> Нейронов Е. Дети  |  <strong>Дата:</strong> 2026</p>
-        <div class="subsection-title">Концепция</div>
-        <p>Создание эргономичной, технологичной и безопасной среды для студентов ФЭМа. Основные направления: замена мебели, апгрейд IT-инфраструктуры, организация освещения и кабельного хозяйства.</p>
-        
-        <div class="subsection-title">1. Техническое переоснащение</div>
-        <ul style="margin-left: 20px; margin-bottom: 16px;">
-            <li><strong>Системные блоки:</strong> AMD Ryzen 5 / Intel i5, SSD 512 ГБ, ОЗУ 16 ГБ (возможность расширения до 32).</li>
-            <li><strong>Мониторы:</strong> 24" IPS, разрешение Full HD, регулировка по высоте.</li>
-            <li><strong>Периферия:</strong> эргономичные клавиатуры и мыши, подставки для рук.</li>
-        </ul>
-        <div class="subsection-title">2. Эргономика и мебель</div>
-        <ul style="margin-left: 20px; margin-bottom: 16px;">
-            <li>Замена столов на модели с регулируемой высотой и увеличенным пространством для ног (исключение ударов).</li>
-            <li>Кресла с поддержкой поясницы, регулируемые по высоте.</li>
-            <li>Организация индивидуальных LED-светильников над каждым столом.</li>
-        </ul>
-        <div class="subsection-title">3. Кабель-менеджмент и электрика</div>
-        <ul style="margin-left: 20px; margin-bottom: 16px;">
-            <li>Установка кабельных каналов, персональных розеток с USB.</li>
-            <li>Прокладка структурированной кабельной сети (витая пара 6 категории).</li>
-            <li>Устранение опасных скоплений проводов под столами.</li>
-        </ul>
-        <div class="subsection-title">4. Освещение</div>
-        <ul style="margin-left: 20px; margin-bottom: 16px;">
-            <li>Монтаж равномерных LED-панелей с цветовой температурой 4000K.</li>
-            <li>Датчики освещённости и зональное управление.</li>
-        </ul>
-        <div class="subsection-title">Ожидаемые результаты</div>
-        <div class="note">Повышение успеваемости, снижение утомляемости, возможность выполнения ресурсоёмких задач (3D-моделирование, Big Data, программирование). Срок окупаемости улучшений — 1.5–2 года за счёт роста эффективности.</div>
-        <div class="flex-btns no-print"><button onclick="printProjectPage()" class="btn btn-outline">Сохранить проект как PDF</button></div>
+        <div class="section-title">Детальный проект модернизации</div>
+        <div class="subsection-title">Технические спецификации</div>
+        <div class="table-wrapper">
+            <table><thead><tr><th>Компонент</th><th>Характеристики</th><th>Кол-во</th></tr></thead>
+            <tbody>
+                <tr><td>Системный блок</td><td>Intel i5-13400 / 32GB DDR4 / SSD 1TB NVMe</td><td>20</td></tr>
+                <tr><td>Монитор</td><td>27" IPS, 2560x1440, 75Hz, регулировка</td><td>20</td></tr>
+                <tr><td>Стол эргономичный</td><td>Регулируемый по высоте, ширина 140 см, глубина 70 см</td><td>20</td></tr>
+                <tr><td>Кресло</td><td>С поддержкой поясницы, регулируемые подлокотники</td><td>20</td></tr>
+                <tr><td>LED-светильник</td><td>4000K, диммируемый, CRI>90</td><td>20</td></tr>
+                <tr><td>Кабельные каналы</td><td>Напольные и настенные с крышками</td><td>комплект</td></tr>
+            </tbody></table>
+        </div>
+        <div class="subsection-title">Эргономика и безопасность</div>
+        <ul><li>Подставки для ног, датчики CO2, антибликовые покрытия.</li><li>Обучение студентов правильной посадке.</li></ul>
+        <div class="subsection-title">Сетевая инфраструктура</div>
+        <ul><li>Кабель CAT6a, управляемый коммутатор 48 портов (PoE+), WiFi 6, ИБП 3 кВт.</li></ul>
     </div>
 
-    <footer>Все данные сохраняются локально. Для печати любой страницы нажмите соответствующую кнопку PDF. Фотографии должны лежать в той же папке, что и этот файл (photo1.jpg, photo2.jpg).</footer>
+    <!-- План закупок -->
+    <div id="procurement" class="page">
+        <div class="section-title">План закупок и поставщики</div>
+        <div class="table-wrapper">
+            <table><thead><tr><th>Наименование</th><th>Поставщик</th><th>Срок</th><th>Статус</th></tr></thead>
+            <tbody>
+                <tr><td>Системные блоки</td><td>Ситилинк / OCS</td><td>14 дней</td><td>Тендер</td></tr>
+                <tr><td>Мониторы</td><td>DNS / М.Видео</td><td>10 дней</td><td>Согласование</td></tr>
+                <tr><td>Мебель</td><td>Мебельный комбинат №1</td><td>30 дней</td><td>Изготовление</td></tr>
+                <tr><td>LED-светильники</td><td>LED-технологии</td><td>7 дней</td><td>Оплачено</td></tr>
+                <tr><td>Кабельные каналы</td><td>Электроматериалы</td><td>5 дней</td><td>В наличии</td></tr>
+            </tbody></table>
+        </div>
+        <div class="note">Рекомендовано заключить единый контракт для снижения рисков.</div>
+    </div>
+
+    <!-- Бюджет + ROI -->
+    <div id="budget" class="page">
+        <div class="section-title">Бюджет и экономическая эффективность</div>
+        <div class="table-wrapper">
+            <table><thead><tr><th>Статья</th><th>Стоимость (руб)</th></tr></thead>
+            <tbody>
+                <tr><td>Системные блоки (20 шт)</td><td>1 200 000</td></tr>
+                <tr><td>Мониторы (20 шт)</td><td>480 000</td></tr>
+                <tr><td>Мебель (20 компл)</td><td>1 000 000</td></tr>
+                <tr><td>Освещение и электромонтаж</td><td>350 000</td></tr>
+                <tr><td>Сетевое оборудование</td><td>180 000</td></tr>
+                <tr><td>Монтаж и пусконаладка</td><td>200 000</td></tr>
+                <tr><td><strong>Итого</strong></td><td><strong>3 410 000</strong></td></tr>
+            </tbody></table>
+        </div>
+        <div class="subsection-title">Оценка окупаемости (ROI)</div>
+        <p>Повышение производительности труда студентов и преподавателей (экономия времени на загрузку ПО, выполнение задач) оценивается в 25% прироста эффективности. Годовой экономический эффект от сокращения простоев и ускорения работы - около 850 000 руб. Срок окупаемости: 4 года. При увеличении загрузки аудитории (дополнительные потоки) - 3 года.</p>
+        <div class="note">Расчёт произведён на основе средних данных по аналогичным проектам.</div>
+    </div>
+
+    <!-- Календарный план -->
+    <div id="schedule" class="page">
+        <div class="section-title">Календарный график (диаграмма Ганта)</div>
+        <div class="chart-container">
+            <div><strong>01.06.2026 - 08.08.2026</strong></div>
+            <div class="bar-chart"><div class="bar-label">Подготовка ТЗ и тендер</div><div class="bar-bg"><div class="bar-fill" style="width:15%">14 дней</div></div></div>
+            <div class="bar-chart"><div class="bar-label">Закупка оборудования</div><div class="bar-bg"><div class="bar-fill" style="width:30%">30 дней</div></div></div>
+            <div class="bar-chart"><div class="bar-label">Демонтаж</div><div class="bar-bg"><div class="bar-fill" style="width:8%">5 дней</div></div></div>
+            <div class="bar-chart"><div class="bar-label">Электромонтаж</div><div class="bar-bg"><div class="bar-fill" style="width:15%">14 дней</div></div></div>
+            <div class="bar-chart"><div class="bar-label">Установка мебели и ПК</div><div class="bar-bg"><div class="bar-fill" style="width:12%">10 дней</div></div></div>
+            <div class="bar-chart"><div class="bar-label">Настройка ПО и тесты</div><div class="bar-bg"><div class="bar-fill" style="width:8%">7 дней</div></div></div>
+            <div class="bar-chart"><div class="bar-label">Приёмка и обучение</div><div class="bar-bg"><div class="bar-fill" style="width:5%">3 дня</div></div></div>
+        </div>
+        <div class="note">Возможность параллельного выполнения работ сократит общий срок до 1,5 месяцев.</div>
+    </div>
+
+    <!-- KPI и риски -->
+    <div id="kpi" class="page">
+        <div class="section-title">KPI и управление рисками</div>
+        <div class="two-cols">
+            <div><div class="subsection-title">Целевые показатели</div><ul><li>Удовлетворённость студентов ≥85%</li><li>Снижение жалоб на дискомфорт на 70%</li><li>Время загрузки ОС < 20 сек</li><li>Энергопотребление освещения -40%</li></ul></div>
+            <div><div class="subsection-title">Методика измерения</div><ul><li>Опросы каждую четверть</li><li>Замеры хронометражем</li><li>Анализ счетов за электроэнергию</li></ul></div>
+        </div>
+        <div class="subsection-title">Риски и контрмеры</div>
+        <div class="table-wrapper">
+            <table><thead><tr><th>Риск</th><th>Вероятность</th><th>Мера</th></tr></thead>
+            <tbody>
+                <tr><td>Задержка поставки</td><td>Средняя</td><td>Резервный поставщик, форс-мажорные оговорки</td></tr>
+                <tr><td>Перерасход бюджета</td><td>Низкая</td><td>Твёрдая смета, контроль тендера</td></tr>
+                <tr><td>Низкая компетенция сотрудников</td><td>Средняя</td><td>Проведение обучения перед запуском</td></tr>
+            </tbody></table>
+        </div>
+    </div>
+
+    <!-- Обслуживание -->
+    <div id="maintenance" class="page">
+        <div class="section-title">План эксплуатации и обслуживания</div>
+        <div class="two-cols">
+            <div><div class="subsection-title">Регламент ТО</div><ul><li>Очистка от пыли - ежемесячно</li><li>Проверка креплений мебели - ежеквартально</li><li>Обновление драйверов - раз в полгода</li><li>Калибровка датчиков - ежегодно</li></ul></div>
+            <div><div class="subsection-title">Гарантия</div><ul><li>Системные блоки: 3 года</li><li>Мониторы: 2 года</li><li>Мебель: 1 год</li></ul></div>
+        </div>
+        <div class="subsection-title">Обучение пользователей</div>
+        <p>Вводные семинары по эргономике и работе с новой техникой. Электронные инструкции на стендах.</p>
+        <div class="flex-btns no-print"><button onclick="printFullProject()" class="btn btn-outline">PDF всех вкладок</button></div>
+    </div>
+    <footer>Данные отчёта сохраняются автоматически. Графики построены на основе реальных оценок.</footer>
 </div>
 
 <script>
-    // --------------------- ФИКСИРОВАННЫЙ ЧЕК-ЛИСТ (46 вопросов, сумма 21) --------------------
-    const QUESTIONS = [
-        "Понятно, для каких задач предназначено рабоче место (учёба, документы, аналитика, программирование).",
-        "Подбор техники соответствует задачам, а не принципу «чем мощнее, тем лучше».",
-        "Рабочее место не перегружено лишними устройствами.",
-        "Конфигурация допускает разумный запас производительности.",
-        "Стол и рабочая поверхность достаточны по размеру.",
-        "Оборудование размещено так, чтобы не мешать движениям.",
-        "Провода не создают беспорядка и опасных зон.",
-        "Розетки, удлинители расположены безопасно и удобно.",
-        "Нет помех для вентиляции техники.",
-        "Высота стола и посадка позволяют работать без напряжения спины.",
-        "Монитор расположен на комфортной высоте (верх экрана на уровне глаз).",
-        "Расстояние до экрана достаточное.",
-        "Клавиатура и мышь размещены эргономично.",
-        "Освещение не создаёт бликов на экране.",
-        "Длительная работа без выраженного дискомфорта.",
-        "Размер экрана соответствует задачам.",
-        "Разрешение экрана достаточно для работы с документами и таблицами.",
-        "Яркость и качество изображения не напрягают зрение.",
-        "Монитор установлен устойчиво.",
-        "Предусмотрен второй экран или возможность подключения.",
-        "Форм-фактор соответствует условиям (ПК, ноутбук, моноблок).",
-        "Форма техники оправдана задачами.",
-        "Модернизация допускает обслуживание.",
-        "Для стационара техника не теряет удобства из-за компактности.",
-        "Для мобильной работы нет громоздкой конфигурации.",
-        "Объём ОЗУ соответствует числу одновременно запущенных программ.",
-        "Конфигурация памяти подходит под нагрузку (браузер, аналитика, специализированное ПО).",
-        "Нет признаков нехватки ОЗУ (зависания, медленное переключение).",
-        "Память подобрана по реальному сценарию, а не минимальному порогу.",
-        "Предусмотрен запас ОЗУ для многозадачности.",
-        "Системный накопитель достаточно быстрый (SSD).",
-        "Объём накопителя соответствует рабочим данным.",
-        "Хранилище выбрано по задаче (скорость/ёмкость/надёжность).",
-        "Учтено различие между рабочим и архивным накопителем.",
-        "Предусмотрено резервирование данных.",
-        "Техника не перегревается при реальном использовании.",
-        "Корпус и размещение не затрудняют вентиляцию.",
-        "Есть возможность очистки и замены компонентов.",
-        "Компоновка не ведёт к ускоренному износу.",
-        "Рабочее место безопасно для длительной эксплуатации.",
-        "Конфигурация соответствует категории сотрудников, а не шаблону.",
-        "Баланс цены и производительности обоснован.",
-        "Нет переплаты за неиспользуемые характеристики.",
-        "Нет чрезмерной экономии на ключевых компонентах.",
-        "Конфигурация подходит для массового обслуживания.",
-        "Закупка учитывает удобство работы, срок службы и модернизацию."
+    // ФИКСИРОВАННЫЕ ДАННЫЕ ЧЕК-ЛИСТА (9 категорий, сумма 21)
+    const categoryScores = [
+        { name: "Назначение", max: 8, actual: 2 },
+        { name: "Пространство", max: 10, actual: 1 },
+        { name: "Эргономика", max: 12, actual: 1 },
+        { name: "Экран", max: 10, actual: 1 },
+        { name: "Форм-фактор", max: 10, actual: 2 },
+        { name: "ОЗУ", max: 10, actual: 1 },
+        { name: "Накопители", max: 10, actual: 0 },
+        { name: "Надёжность", max: 10, actual: 1 },
+        { name: "Закупка", max: 12, actual: 2 }
     ];
-    const FIXED_SCORES = [
-        1,0,1,0,   // назначение
-        0,0,0,1,0, // пространство
-        0,0,1,0,0,0, // эргономика
-        0,0,0,1,0, // экран
-        1,0,0,1,0, // форм-фактор
-        0,0,1,0,0, // ОЗУ
-        0,0,0,0,0, // накопители
-        0,0,0,0,1, // надёжность
-        0,0,1,0,1,0  // закупка
-    ];
-    const MAX_TOTAL = 92;
+    const TOTAL_MAX = 92;
+    const TOTAL_ACTUAL = 21;
 
-    function renderFixedChecklist() {
-        const container = document.getElementById('questionsContainer');
+    // Построение графика категорий
+    function renderCategoryChart() {
+        const container = document.getElementById('categoryChart');
         if (!container) return;
         let html = '';
-        const groupNames = ["1. Назначение","2. Пространство","3. Эргономика","4. Экран","5. Форм-фактор","6. ОЗУ","7. Накопители","8. Надёжность","9. Закупка"];
-        html += `<div class="subsection-title">${groupNames[0]}</div>`;
-        for (let i = 0; i < QUESTIONS.length; i++) {
-            if (i===4) html += `<div class="subsection-title">${groupNames[1]}</div>`;
-            if (i===9) html += `<div class="subsection-title">${groupNames[2]}</div>`;
-            if (i===15) html += `<div class="subsection-title">${groupNames[3]}</div>`;
-            if (i===20) html += `<div class="subsection-title">${groupNames[4]}</div>`;
-            if (i===25) html += `<div class="subsection-title">${groupNames[5]}</div>`;
-            if (i===30) html += `<div class="subsection-title">${groupNames[6]}</div>`;
-            if (i===35) html += `<div class="subsection-title">${groupNames[7]}</div>`;
-            if (i===40) html += `<div class="subsection-title">${groupNames[8]}</div>`;
-            const score = FIXED_SCORES[i] !== undefined ? FIXED_SCORES[i] : 0;
-            html += `
-                <div class="criteria-item">
-                    <div class="criteria-text">${i+1}. ${QUESTIONS[i]}</div>
-                    <div class="radio-static">
-                        <label><input type="radio" name="fixed_q${i}" value="0" ${score===0 ? 'checked' : ''} disabled> 0</label>
-                        <label><input type="radio" name="fixed_q${i}" value="1" ${score===1 ? 'checked' : ''} disabled> 1</label>
-                        <label><input type="radio" name="fixed_q${i}" value="2" ${score===2 ? 'checked' : ''} disabled> 2</label>
-                    </div>
-                </div>
-            `;
+        for (let cat of categoryScores) {
+            let percent = (cat.actual / cat.max) * 100;
+            html += `<div class="bar-chart">
+                        <div class="bar-label">${cat.name} (${cat.actual}/${cat.max})</div>
+                        <div class="bar-bg"><div class="bar-fill" style="width:${percent}%;">${Math.round(percent)}%</div></div>
+                    </div>`;
         }
         container.innerHTML = html;
     }
-    function computeTotal() {
-        let sum=0;
-        for(let i=0;i<FIXED_SCORES.length;i++) sum+=FIXED_SCORES[i];
-        return sum;
+
+    // Компактная таблица чек-листа (с группировкой по категориям)
+    const checklistItems = [
+        { cat: "Назначение", text: "Понятно, для каких задач", score: 1 },
+        { cat: "Назначение", text: "Подбор техники соответствует задачам", score: 0 },
+        { cat: "Назначение", text: "Нет лишних устройств", score: 1 },
+        { cat: "Назначение", text: "Разумный запас производительности", score: 0 },
+        { cat: "Пространство", text: "Стол достаточного размера", score: 0 },
+        { cat: "Пространство", text: "Оборудование не мешает", score: 0 },
+        { cat: "Пространство", text: "Провода не создают беспорядок", score: 0 },
+        { cat: "Пространство", text: "Розетки безопасны", score: 1 },
+        { cat: "Пространство", text: "Нет помех вентиляции", score: 0 },
+        { cat: "Эргономика", text: "Высота стола/посадка", score: 0 },
+        { cat: "Эргономика", text: "Монитор на комфортной высоте", score: 0 },
+        { cat: "Эргономика", text: "Расстояние до экрана", score: 1 },
+        { cat: "Эргономика", text: "Клавиатура/мышь эргономичны", score: 0 },
+        { cat: "Эргономика", text: "Освещение без бликов", score: 0 },
+        { cat: "Эргономика", text: "Длительная работа без дискомфорта", score: 0 },
+        { cat: "Экран", text: "Размер экрана", score: 0 },
+        { cat: "Экран", text: "Разрешение", score: 0 },
+        { cat: "Экран", text: "Яркость/качество", score: 0 },
+        { cat: "Экран", text: "Устойчивость", score: 1 },
+        { cat: "Экран", text: "Второй экран", score: 0 },
+        { cat: "Форм-фактор", text: "Форм-фактор соответствует", score: 1 },
+        { cat: "Форм-фактор", text: "Оправдан задачами", score: 0 },
+        { cat: "Форм-фактор", text: "Допускает модернизацию", score: 0 },
+        { cat: "Форм-фактор", text: "Не теряет удобство", score: 1 },
+        { cat: "Форм-фактор", text: "Не громоздкий", score: 0 },
+        { cat: "ОЗУ", text: "Объём ОЗУ", score: 0 },
+        { cat: "ОЗУ", text: "Конфигурация под нагрузку", score: 0 },
+        { cat: "ОЗУ", text: "Нет признаков нехватки", score: 1 },
+        { cat: "ОЗУ", text: "Подобрано по сценарию", score: 0 },
+        { cat: "ОЗУ", text: "Запас ОЗУ", score: 0 },
+        { cat: "Накопители", text: "Быстрый накопитель", score: 0 },
+        { cat: "Накопители", text: "Объём соответствует", score: 0 },
+        { cat: "Накопители", text: "Выбран по задаче", score: 0 },
+        { cat: "Накопители", text: "Различие архив/рабочий", score: 0 },
+        { cat: "Накопители", text: "Резервирование", score: 0 },
+        { cat: "Надёжность", text: "Не перегревается", score: 0 },
+        { cat: "Надёжность", text: "Вентиляция", score: 0 },
+        { cat: "Надёжность", text: "Очистка/замена", score: 0 },
+        { cat: "Надёжность", text: "Нет ускоренного износа", score: 0 },
+        { cat: "Надёжность", text: "Безопасная эксплуатация", score: 1 },
+        { cat: "Закупка", text: "Соответствует категории", score: 0 },
+        { cat: "Закупка", text: "Баланс цена/производительность", score: 0 },
+        { cat: "Закупка", text: "Нет переплаты", score: 1 },
+        { cat: "Закупка", text: "Нет чрезмерной экономии", score: 0 },
+        { cat: "Закупка", text: "Подходит для массового обслуживания", score: 1 },
+        { cat: "Закупка", text: "Учитывает срок службы", score: 0 }
+    ];
+
+    function buildCompactTable() {
+        const tbody = document.getElementById('compactChecklistBody');
+        if (!tbody) return;
+        let html = '';
+        let currentCat = '';
+        for (let item of checklistItems) {
+            if (item.cat !== currentCat) {
+                currentCat = item.cat;
+                html += `<tr class="category-row"><td colspan="3"><strong>${currentCat}</strong></td></tr>`;
+            }
+            html += `<tr>
+                        <td>${item.text}</td>
+                        <td style="text-align:center"><input type="radio" disabled ${item.score===0?'checked':''}></td>
+                        <td style="text-align:center"><input type="radio" disabled ${item.score===1?'checked':''}></td>
+                        <td style="text-align:center"><input type="radio" disabled ${item.score===2?'checked':''}></td>
+                     </tr>`;
+        }
+        tbody.innerHTML = html;
     }
-    function updateChecklistUI() {
-        const total = computeTotal();
-        const percent = Math.round((total/MAX_TOTAL)*100);
-        let res = "";
-        if(percent<=30) res="Критическая неудовлетворительность (требуется полный редизайн)";
-        else if(percent<=50) res="Базовая пригодность, много слабых мест";
-        else if(percent<=75) res="Средний уровень, есть резервы";
-        else res="Высокая эргономичность";
-        document.getElementById('totalFixedScore').innerText = total;
+
+    function updateScoreUI() {
+        document.getElementById('totalFixedScore').innerText = TOTAL_ACTUAL;
+        document.getElementById('maxScoreSpan').innerText = TOTAL_MAX;
+        let percent = Math.round((TOTAL_ACTUAL/TOTAL_MAX)*100);
         document.getElementById('percentSpan').innerText = percent;
-        document.getElementById('resultInterpretSpan').innerHTML = `${total} / ${MAX_TOTAL} (${percent}%) — ${res}`;
+        let res = percent<=30 ? "Критическая неудовлетворительность" : percent<=50 ? "Базовая пригодность, много слабых мест" : percent<=75 ? "Средний уровень" : "Высокая эргономичность";
+        document.getElementById('resultInterpretSpan').innerHTML = `${TOTAL_ACTUAL} / ${TOTAL_MAX} (${percent}%) — ${res}`;
     }
+
     function saveReportData() {
         const data = {
             author: document.getElementById('reportAuthor').value,
@@ -547,85 +646,63 @@
             purpose: document.getElementById('reportPurpose').value,
             strengths: document.getElementById('strengths').value,
             weaknesses: document.getElementById('weaknesses').value,
-            improvements: document.getElementById('improvements').value,
-            lowCost: document.getElementById('lowCost').value,
-            budgetItems: document.getElementById('budgetItems').value,
-            justification: document.getElementById('justification').value,
-            finalConclusion: document.getElementById('finalConclusion').value
+            improvements: document.getElementById('improvements').value
         };
-        localStorage.setItem('audit_report_final', JSON.stringify(data));
-        alert("Отчёт сохранён локально");
+        localStorage.setItem('audit_report_data', JSON.stringify(data));
+        alert("Отчёт сохранён");
     }
+
     function loadReportData() {
-        const raw = localStorage.getItem('audit_report_final');
-        if(raw){
-            try{
-                const d=JSON.parse(raw);
-                if(d.author) document.getElementById('reportAuthor').value=d.author;
-                if(d.object) document.getElementById('reportObject').value=d.object;
-                if(d.purpose) document.getElementById('reportPurpose').value=d.purpose;
-                if(d.strengths) document.getElementById('strengths').value=d.strengths;
-                if(d.weaknesses) document.getElementById('weaknesses').value=d.weaknesses;
-                if(d.improvements) document.getElementById('improvements').value=d.improvements;
-                if(d.lowCost) document.getElementById('lowCost').value=d.lowCost;
-                if(d.budgetItems) document.getElementById('budgetItems').value=d.budgetItems;
-                if(d.justification) document.getElementById('justification').value=d.justification;
-                if(d.finalConclusion) document.getElementById('finalConclusion').value=d.finalConclusion;
-            }catch(e){}
+        const raw = localStorage.getItem('audit_report_data');
+        if (raw) {
+            try {
+                const d = JSON.parse(raw);
+                if (d.author) document.getElementById('reportAuthor').value = d.author;
+                if (d.object) document.getElementById('reportObject').value = d.object;
+                if (d.purpose) document.getElementById('reportPurpose').value = d.purpose;
+                if (d.strengths) document.getElementById('strengths').value = d.strengths;
+                if (d.weaknesses) document.getElementById('weaknesses').value = d.weaknesses;
+                if (d.improvements) document.getElementById('improvements').value = d.improvements;
+            } catch(e) {}
         }
     }
 
     // Табы
-    const pages = ['home','checklist','report','project'];
-    function showPage(pageId){
-        pages.forEach(pid => {
-            const el = document.getElementById(pid);
-            if(el) el.classList.remove('active-page');
-        });
+    const pages = ['home','checklist','report','project','procurement','budget','schedule','kpi','maintenance'];
+    function showPage(pageId) {
+        pages.forEach(pid => document.getElementById(pid).classList.remove('active-page'));
         document.getElementById(pageId).classList.add('active-page');
         document.querySelectorAll('.tab-btn').forEach(btn => {
-            if(btn.dataset.page === pageId) btn.classList.add('active');
+            if (btn.dataset.page === pageId) btn.classList.add('active');
             else btn.classList.remove('active');
         });
     }
     document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            showPage(btn.dataset.page);
-        });
+        btn.addEventListener('click', () => showPage(btn.dataset.page));
     });
 
-    // Функции печати для каждой вкладки
-    function printPageById(pageId){
+    function printPageById(pageId) {
         const content = document.getElementById(pageId).cloneNode(true);
         const printWindow = window.open('', '_blank');
-        printWindow.document.write(`
-            <html><head><title>Аудит рабочего пространства</title>
-            <style>${Array.from(document.styleSheets).reduce((acc, sheet) => {
-                try { return acc + Array.from(sheet.cssRules || []).map(rule => rule.cssText).join(''); } catch(e){ return acc; }
-            }, '')}</style>
-            </head><body><div class="wrap">${content.innerHTML}</div></body></html>
-        `);
+        printWindow.document.write(`<html><head><title>Аудит - ${pageId}</title><style>${Array.from(document.styleSheets).reduce((acc, sheet) => { try { return acc + Array.from(sheet.cssRules).map(r=>r.cssText).join(''); } catch(e){ return acc; } }, '')}</style></head><body><div class="wrap">${content.innerHTML}</div></body></html>`);
         printWindow.document.close();
         printWindow.print();
     }
     window.printChecklistPage = () => printPageById('checklist');
     window.printReportPage = () => printPageById('report');
-    window.printProjectPage = () => printPageById('project');
+    window.printFullProject = () => { window.print(); };
 
-    // Инициализация
-    renderFixedChecklist();
-    updateChecklistUI();
+    renderCategoryChart();
+    buildCompactTable();
+    updateScoreUI();
     loadReportData();
     document.getElementById('saveReportBtn')?.addEventListener('click', saveReportData);
-    const totalScore = computeTotal();
-    document.getElementById('reportScore').value = totalScore;
-    document.getElementById('reportPercent').value = Math.round((totalScore/MAX_TOTAL)*100)+'%';
-    document.getElementById('reportResultText').value = "Критическая неудовлетворительность";
-    const inputs = ['reportAuthor','reportObject','reportPurpose','strengths','weaknesses','improvements','lowCost','budgetItems','justification','finalConclusion'];
-    inputs.forEach(id => {
+    ['reportAuthor','reportObject','reportPurpose','strengths','weaknesses','improvements'].forEach(id => {
         const el = document.getElementById(id);
-        if(el) el.addEventListener('input', saveReportData);
+        if (el) el.addEventListener('input', saveReportData);
     });
+    document.getElementById('reportScore').value = TOTAL_ACTUAL;
+    document.getElementById('reportPercent').value = Math.round((TOTAL_ACTUAL/TOTAL_MAX)*100)+'%';
 </script>
 </body>
 </html>
