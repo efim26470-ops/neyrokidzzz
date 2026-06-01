@@ -159,7 +159,14 @@
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
         .card { background: #f9f9fb; border-radius: 24px; padding: 20px; border: 0.5px solid #e9e9ef; }
         .note { background: #f9f9fb; padding: 20px 24px; border-radius: 24px; border: 0.5px solid #e9e9ef; margin: 20px 0; }
-        .media-placeholder { background: #f9f9fb; border-radius: 24px; padding: 20px; text-align: center; border: 1px dashed #c6c6c8; transition: all 0.3s ease; }
+        .media-placeholder {
+            background: #f9f9fb;
+            border-radius: 24px;
+            padding: 20px;
+            text-align: center;
+            border: 1px dashed #c6c6c8;
+            transition: all 0.3s ease;
+        }
         .media-placeholder:hover { border-color: #007aff; transform: scale(1.01); }
         .media-placeholder img { max-width: 100%; border-radius: 18px; margin-top: 10px; }
         input, textarea { width: 100%; padding: 12px 16px; border-radius: 14px; border: 1px solid #d2d2d6; font-family: inherit; font-size: 0.95rem; transition: all 0.2s ease; }
@@ -226,7 +233,7 @@
         <div class="flex-btns"><button onclick="printChecklistPage()" class="btn btn-outline">PDF чек-листа</button></div>
     </div>
 
-    <!-- ОТЧЁТ (полный) -->
+    <!-- ОТЧЁТ (полный, фото photo1.jpg и photo2.jpg из корня) -->
     <div id="report" class="page">
         <div class="section-title">Аудит и проект улучшения пространства</div>
         <div class="grid-2">
@@ -255,8 +262,14 @@
 
         <div class="subsection-title">Визуальные материалы</div>
         <div class="grid-2">
-            <div class="media-placeholder"><img id="photo1" src="" style="max-width:100%; display:none;"><div id="photo1-placeholder">📸 Фото 1 (текущее состояние)</div><input type="text" id="photo1Path" placeholder="images/audit1.jpg" style="margin-top:10px;"><p>Рис. 1 – Исходное состояние аудитории 6236 (тесные парты, провода)</p></div>
-            <div class="media-placeholder"><img id="photo2" src="" style="max-width:100%; display:none;"><div id="photo2-placeholder">📸 Фото 2 (референс)</div><input type="text" id="photo2Path" placeholder="images/ref_best.jpg" style="margin-top:10px;"><p>Рис. 2 – Пример желаемой эргономики и освещения (референс)</p></div>
+            <div class="media-placeholder">
+                <img src="photo1.jpg" alt="Фото 1 - текущее состояние" style="max-width:100%; border-radius:18px;" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=photo1.jpg'; this.alt='Фото не загружено';">
+                <p>Рис. 1 – Исходное состояние аудитории 6236 (тесные парты, провода)</p>
+            </div>
+            <div class="media-placeholder">
+                <img src="photo2.jpg" alt="Фото 2 - референс улучшения" style="max-width:100%; border-radius:18px;" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=photo2.jpg'; this.alt='Фото не загружено';">
+                <p>Рис. 2 – Пример желаемой эргономики и освещения (референс)</p>
+            </div>
         </div>
 
         <div class="subsection-title">Итоговый вывод</div>
@@ -265,7 +278,7 @@
         <div class="flex-btns"><button id="saveReportBtn" class="btn btn-secondary">Сохранить отчёт</button><button onclick="printReportPage()" class="btn btn-outline">PDF отчёта</button></div>
     </div>
 
-    <!-- ПРОЕКТ (краткие спецификации) -->
+    <!-- ПРОЕКТ -->
     <div id="project" class="page">
         <div class="section-title">Проект модернизации</div>
         <div class="grid-2">
@@ -277,19 +290,30 @@
         <div class="note">Все столы — с регулировкой высоты, сиденья — с поддержкой поясницы. Светильники — диммируемые, управление через датчики движения и приложение.</div>
     </div>
 
-    <!-- РЕФЕРЕНСЫ (photo3-photo6) -->
+    <!-- РЕФЕРЕНСЫ (photo3, photo4, photo5, photo6 из корня) -->
     <div id="references" class="page">
         <div class="section-title">Референсы современных аудиторий</div>
         <div class="grid-2">
-            <div class="media-placeholder"><img id="photo3" src="" style="max-width:100%; display:none;"><div id="photo3-placeholder">Референс 1</div><input type="text" id="photo3Path" placeholder="images/ref1.jpg"></div>
-            <div class="media-placeholder"><img id="photo4" src="" style="max-width:100%; display:none;"><div id="photo4-placeholder">Референс 2</div><input type="text" id="photo4Path" placeholder="images/ref2.jpg"></div>
-            <div class="media-placeholder"><img id="photo5" src="" style="max-width:100%; display:none;"><div id="photo5-placeholder">Референс 3</div><input type="text" id="photo5Path" placeholder="images/ref3.jpg"></div>
-            <div class="media-placeholder"><img id="photo6" src="" style="max-width:100%; display:none;"><div id="photo6-placeholder">Референс 4</div><input type="text" id="photo6Path" placeholder="images/ref4.jpg"></div>
+            <div class="media-placeholder">
+                <img src="photo3.jpg" alt="Референс 1" style="max-width:100%; border-radius:18px;" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=photo3.jpg'; this.alt='Референс 1 не загружен';">
+                <p><strong>Референс 1</strong> — пример эргономичной планировки</p>
+            </div>
+            <div class="media-placeholder">
+                <img src="photo4.jpg" alt="Референс 2" style="max-width:100%; border-radius:18px;" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=photo4.jpg'; this.alt='Референс 2 не загружен';">
+                <p><strong>Референс 2</strong> — современный IT-кластер</p>
+            </div>
+            <div class="media-placeholder">
+                <img src="photo5.jpg" alt="Референс 3" style="max-width:100%; border-radius:18px;" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=photo5.jpg'; this.alt='Референс 3 не загружен';">
+                <p><strong>Референс 3</strong> — лаунж-зона и освещение</p>
+            </div>
+            <div class="media-placeholder">
+                <img src="photo6.jpg" alt="Референс 4" style="max-width:100%; border-radius:18px;" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=photo6.jpg'; this.alt='Референс 4 не загружен';">
+                <p><strong>Референс 4</strong> — кабель-менеджмент и система бронирования</p>
+            </div>
         </div>
-        <div class="flex-btns"><button id="updateRefsBtn" class="btn btn-secondary">Обновить референсы</button></div>
     </div>
 
-    <!-- КОМАНДА (с соцсетями Ефима) -->
+    <!-- КОМАНДА (с соцсетями) -->
     <div id="team" class="page">
         <div class="section-title">Команда проекта</div>
         <div class="team-grid">
@@ -311,150 +335,100 @@
         </div>
     </div>
 
-    <!-- ЗАКУПКИ (расширенный план) -->
+    <!-- ЗАКУПКИ -->
     <div id="procurement" class="page">
         <div class="section-title">План закупок оборудования и услуг</div>
-        <div class="table-wrapper">
-            <table>
-                <thead><tr><th>Наименование</th><th>Поставщик</th><th>Срок поставки</th><th>Статус</th><th>Ответственный</th></tr></thead>
-                <tbody>
-                    <tr><td>Системные блоки (8 шт, Ardor Gaming)</td><td>DNS / Ситилинк</td><td>14 рабочих дней</td><td>Тендер объявлен</td><td>Ефим</td></tr>
-                    <tr><td>Ноутбуки Xiaomi Redmi Book (15 шт)</td><td>Яндекс Маркет</td><td>10 дней</td><td>Согласование бюджета</td><td>Ефим</td></tr>
-                    <tr><td>Эргономичные столы-трансформеры (12 шт)</td><td>Ergostol</td><td>30 дней</td><td>Изготовление под заказ</td><td>Илья</td></tr>
-                    <tr><td>Кресла Defo Direct New (24 шт)</td><td>Defo.ru</td><td>14 дней</td><td>Оплачено</td><td>Ефим</td></tr>
-                    <tr><td>LED-панели Sirius A (20 шт) + кабель-каналы</td><td>ВсеИнструменты / ЭТМ</td><td>7 дней</td><td>В наличии</td><td>Денис</td></tr>
-                    <tr><td>Коммутатор TP-Link + точки доступа WiFi 6</td><td>Regard / Яндекс Маркет</td><td>10 дней</td><td>Заказано</td><td>Илья</td></tr>
-                    <tr><td>ИБП + серверная стойка + кулеры</td><td>Citilink</td><td>12 дней</td><td>Частично оплачено</td><td>Ефим</td></tr>
-                    <tr><td>Система бронирования (RPi 4 + экраны, 3 компл.)</td><td>Sinardcom / Яндекс</td><td>20 дней</td><td>Тендер</td><td>Денис</td></tr>
-                    <tr><td>Розеточные блоки с USB/RJ45 (20 шт)</td><td>Ozon</td><td>5 дней</td><td>В наличии</td><td>Илья</td></tr>
-                    <tr><td>Ремонтные работы (обои, потолок, электромонтаж)</td><td>Подрядчик "РемСтрой"</td><td>21 день</td><td>Договор подписан</td><td>Ефим</td></tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="note">Рекомендуется заключить контракты с единым подрядчиком для снижения рисков задержек. Контроль закупок — еженедельно.</div>
+        <div class="table-wrapper"><table><thead><tr><th>Наименование</th><th>Поставщик</th><th>Срок поставки</th><th>Статус</th><th>Ответственный</th></tr></thead>
+        <tbody>
+            <tr><td>Системные блоки (8 шт, Ardor Gaming)</td><td>DNS / Ситилинк</div><td>14 дней</div><td>Тендер</div><td>Ефим</div></tr>
+            <tr><td>Ноутбуки Xiaomi Redmi Book (15 шт)</div><td>Яндекс Маркет</div><td>10 дней</div><td>Согласование</div><td>Ефим</div></tr>
+            <tr><td>Эргономичные столы-трансформеры (12 шт)</div><td>Ergostol</div><td>30 дней</div><td>Изготовление</div><td>Илья</div></tr>
+            <tr><td>Кресла Defo Direct New (24 шт)</div><td>Defo.ru</div><td>14 дней</div><td>Оплачено</div><td>Ефим</div></tr>
+            <tr><td>LED-панели Sirius A + кабель-каналы</div><td>ВсеИнструменты</div><td>7 дней</div><td>В наличии</div><td>Денис</div></tr>
+            <tr><td>Коммутатор TP-Link + WiFi 6</div><td>Regard</div><td>10 дней</div><td>Заказано</div><td>Илья</div></tr>
+            <tr><td>ИБП + стойка + кулеры</div><td>Citilink</div><td>12 дней</div><td>Частично</div><td>Ефим</div></tr>
+        </tbody></table></div>
+        <div class="note">Рекомендуется заключить контракты с единым подрядчиком для снижения рисков задержек.</div>
     </div>
 
-    <!-- БЮДЖЕТ + ROI (полностью восстановлен из исходного файла с реальными ссылками) -->
+    <!-- БЮДЖЕТ + ROI (полная смета) -->
     <div id="budget" class="page">
         <div class="section-title">Смета и план закупок (с учётом ремонта и актуальных цен)</div>
         <div class="table-wrapper">
             <table>
-                <thead>
-                    <tr><th>Оборудование / работы</th><th>Кол-во</th><th>Цена за ед. (руб)</th><th>Сумма (руб)</th><th>Ссылка</th></tr>
-                </thead>
+                <thead><tr><th>Оборудование / работы</th><th>Кол-во</th><th>Цена за ед. (руб)</th><th>Сумма (руб)</th><th>Ссылка</th></tr></thead>
                 <tbody>
-                    <tr><td>Стол-трансформер Ergostol DeskUp</td><td>12</td><td>18 090</td><td>217 080</td><td><a href="https://ergostol.ru/goods/stol_ergostol_deskup/?offer_id=1183046" target="_blank" rel="noopener">Купить</a></td></tr>
-                    <tr><td>Кресло эргономическое Defo Direct New</td><td>24</td><td>8 900</td><td>213 600</td><td><a href="https://spb.defo.ru/catalog/direct-new-ekokozha/185114/" target="_blank" rel="noopener">Купить</a></td></tr>
-                    <tr><td>Системный блок Ardor Gaming Neo M286 (базовый)</td><td>8</td><td>63 000</td><td>504 000</td><td><a href="https://www.dns-shop.ru/product/83c1702321a0d9cb/pk-ardor-gaming-neo-m286/" target="_blank" rel="noopener">M286</a> (альтернатива M274 за 80 000)</td></tr>
-                    <tr><td>Ноутбук Xiaomi Redmi Book 2024 (i5, 16GB, 1TB)</td><td>15</td><td>53 000</td><td>795 000</td><td><a href="https://market.yandex.ru/card/16-noutbuk-xiaomi-redmi-book--2024--i5-12450h8-yader-lpddr5-16-gb1-tb-windows-11pro-rus-russkaya-klaviatura/5219552276" target="_blank" rel="noopener">Купить</a></td></tr>
-                    <tr><td>Коммутатор TP-Link Easy Smart TL-SG1428PE (24 PoE+ порта)</td><td>1</td><td>27 000</td><td>27 000</td><td><a href="https://market.yandex.ru/card/kommutator-tp-link-easy-smart-tl-sg1428pe/102217635047" target="_blank" rel="noopener">Купить</a></td></tr>
-                    <tr><td>Точка доступа Wi‑Fi 6 Netcraze Orbiter 6 NAP-630</td><td>3</td><td>10 990</td><td>32 970</td><td><a href="https://www.regard.ru/product/758537/wi-fi-tocka-dostupa-netcraze-orbiter-6-nap-630" target="_blank" rel="noopener">Купить</a></td></tr>
-                    <tr><td>ИБП Exegate SpecialPro Smart LLB 2000 (2000VA)</td><td>1</td><td>10 000</td><td>10 000</td><td><a href="https://market.yandex.ru/card/ibp-exegate-ex292632rus-specialpro-smart-llb-2000-lcd-avr2sh-r-black/103200908926" target="_blank" rel="noopener">Купить</a></td></tr>
-                    <tr><td>Серверная стойка 12U (CMO SHRN-E-12-500-9005)</td><td>1</td><td>12 500</td><td>12 500</td><td><a href="https://www.citilink.ru/product/shkaf-kommutacionnyi-cmo-shrn-e-12-500-9005-nastennyi-steklyannaya-per-321480/" target="_blank" rel="noopener">Купить</a></td></tr>
-                    <tr><td>Кулер 80×80 для стойки (Exegate EX283375RUS)</td><td>2</td><td>990</td><td>1 980</td><td><a href="https://www.citilink.ru/product/ventilyator-exegate-ex283375rus-ex283375rus-1867146/" target="_blank" rel="noopener">Купить</a></td></tr>
-                    <tr><td>LED-панель 600×600, 4000K (Sirius A 36W)</td><td>20</td><td>940</td><td>18 800</td><td><a href="https://www.vseinstrumenti.ru/product/ultratonkaya-svetodiodnaya-panel-sirius-a-36w-4000k-600h600h9mm-ip40-spl-600x600-36w-4k-1546710/" target="_blank" rel="noopener">Купить</a></td></tr>
-                    <tr><td>Кабель-канал 80×40 мм (2 м)</td><td>20</td><td>410</td><td>8 200</td><td><a href="https://www.etm.ru/cat/nn/9669550" target="_blank" rel="noopener">Купить</a></td></tr>
-                    <tr><td>Корзина для проводов под стол (металл, без сверления)</td><td>20</td><td>1 290</td><td>25 800</td><td><a href="https://www.ozon.ru/product/organayzer-dlya-provodov-pod-stolom-metallicheskaya-setchataya-korzina-bez-sverleniya-2825813496/" target="_blank" rel="noopener">Купить</a></td></tr>
-                    <tr><td>Система бронирования: Raspberry Pi 4 (8GB) + 7″ сенсорный экран</td><td>3</td><td>18 900</td><td>56 700</td><td><a href="https://sinardcom.ru/product/7-dyuymovyy-ekran-dlya-mikrokompyutera-orange-pi-2" target="_blank" rel="noopener">Экран</a> + <a href="https://market.yandex.ru/card/mikrokompyuter-raspberry-pi-4-model-b-ra608-retail-8gb-ram/102479797884" target="_blank" rel="noopener">RPi4</a></td></tr>
-                    <tr><td>Розеточные блоки с USB + RJ45 (настольные)</td><td>20</td><td>2 200</td><td>44 000</td><td>—</td></tr>
-                    <tr style="background:#fff0db;"><td><strong>Ремонтные работы</strong> (смена обоев, покраска потолка, мелкий электромонтаж)</td><td>1</td><td>120 000</td><td>120 000</td><td>—</td></tr>
-                    <tr style="background:#eef3fc;"><th colspan="3">ИТОГО</th><th>2 087 630 ₽</th><th></th></tr>
+                    <tr><td>Стол-трансформер Ergostol DeskUp</div><td>12</div><td>18 090</div><td>217 080</div><td><a href="https://ergostol.ru/goods/stol_ergostol_deskup/?offer_id=1183046" target="_blank">Купить</a></div></tr>
+                    <tr><td>Кресло эргономическое Defo Direct New</div><td>24</div><td>8 900</div><td>213 600</div><td><a href="https://spb.defo.ru/catalog/direct-new-ekokozha/185114/" target="_blank">Купить</a></div></tr>
+                    <tr><td>Системный блок Ardor Gaming Neo M286</div><td>8</div><td>63 000</div><td>504 000</div><td><a href="https://www.dns-shop.ru/product/83c1702321a0d9cb/pk-ardor-gaming-neo-m286/" target="_blank">M286</a></div></tr>
+                    <tr><td>Ноутбук Xiaomi Redmi Book 2024 (i5, 16GB)</div><td>15</div><td>53 000</div><td>795 000</div><td><a href="https://market.yandex.ru/card/16-noutbuk-xiaomi-redmi-book--2024--i5-12450h8-yader-lpddr5-16-gb1-tb-windows-11pro-rus-russkaya-klaviatura/5219552276" target="_blank">Купить</a></div></tr>
+                    <tr><td>Коммутатор TP-Link TL-SG1428PE</div><td>1</div><td>27 000</div><td>27 000</div><td><a href="https://market.yandex.ru/card/kommutator-tp-link-easy-smart-tl-sg1428pe/102217635047" target="_blank">Купить</a></div></tr>
+                    <tr><td>Точка доступа Wi‑Fi 6 Netcraze Orbiter 6</div><td>3</div><td>10 990</div><td>32 970</div><td><a href="https://www.regard.ru/product/758537/wi-fi-tocka-dostupa-netcraze-orbiter-6-nap-630" target="_blank">Купить</a></div></tr>
+                    <tr><td>ИБП Exegate SpecialPro Smart LLB 2000</div><td>1</div><td>10 000</div><td>10 000</div><td><a href="https://market.yandex.ru/card/ibp-exegate-ex292632rus-specialpro-smart-llb-2000-lcd-avr2sh-r-black/103200908926" target="_blank">Купить</a></div></tr>
+                    <tr><td>Серверная стойка 12U + кулеры</div><td>1</div><td>13 490</div><td>13 490</div><td><a href="https://www.citilink.ru/product/shkaf-kommutacionnyi-cmo-shrn-e-12-500-9005-nastennyi-steklyannaya-per-321480/" target="_blank">Купить</a></div></tr>
+                    <tr><td>LED-панель 600×600 (Sirius A)</div><td>20</div><td>940</div><td>18 800</div><td><a href="https://www.vseinstrumenti.ru/product/ultratonkaya-svetodiodnaya-panel-sirius-a-36w-4000k-600h600h9mm-ip40-spl-600x600-36w-4k-1546710/" target="_blank">Купить</a></div></tr>
+                    <tr><td>Кабель-канал + корзины для проводов</div><td>20</div><td>1 700</div><td>34 000</div><td><a href="https://www.etm.ru/cat/nn/9669550" target="_blank">Купить</a></div></tr>
+                    <tr><td>Система бронирования (RPi 4 + 7″ экран)</div><td>3</div><td>18 900</div><td>56 700</div><td><a href="https://sinardcom.ru/product/7-dyuymovyy-ekran-dlya-mikrokompyutera-orange-pi-2" target="_blank">Экран</a> + <a href="https://market.yandex.ru/card/mikrokompyuter-raspberry-pi-4-model-b-ra608-retail-8gb-ram/102479797884" target="_blank">RPi4</a></div></tr>
+                    <tr><td>Розеточные блоки с USB+RJ45</div><td>20</div><td>2 200</div><td>44 000</div><td>—</div></tr>
+                    <tr style="background:#fff0db;"><td><strong>Ремонтные работы</strong> (обои, потолок, электромонтаж)</div><td>1</div><td>120 000</div><td>120 000</div><td>—</div></tr>
+                    <tr style="background:#eef3fc;"><th colspan="3">ИТОГО</th><th>2 086 640 ₽</th><th></th></tr>
                 </tbody>
             </table>
         </div>
         <div class="grid-2">
-            <div class="card"><strong>Решения без бюджета</strong><br>Кабельные стяжки, перестановка мебели, график проветривания, использование бесплатного ПО.</div>
-            <div class="card"><strong>Решения с бюджетом</strong><br>Замена столов, ПК, освещения, полный кабель-менеджмент, система бронирования, ремонт.</div>
+            <div class="card"><strong>Решения без бюджета</strong><br>Кабельные стяжки, перестановка мебели, график проветривания, бесплатное ПО.</div>
+            <div class="card"><strong>Решения с бюджетом</strong><br>Замена столов, ПК, освещения, кабель-менеджмент, система бронирования, ремонт.</div>
         </div>
-        <div class="note"><strong>Стоимость владения (TCO):</strong> Ежегодное обслуживание — 180 000 руб. (чистка, замена фильтров, обновление ПО). Срок службы мебели 8 лет, ПК — 5 лет. Окупаемость за счёт грантов и повышения качества обучения — 3,5-4 года.</div>
+        <div class="note"><strong>Стоимость владения (TCO):</strong> Ежегодное обслуживание — 180 000 руб. Срок службы мебели 8 лет, ПК — 5 лет. Окупаемость — 3,5-4 года.</div>
         <div class="subsection-title">Оценка окупаемости (ROI)</div>
-        <p>Повышение производительности студентов и преподавателей (экономия времени на загрузку ПО, выполнение задач) оценивается в 25% прироста эффективности. Годовой экономический эффект от сокращения простоев и ускорения работы — около 850 000 руб. Срок окупаемости: 3,5–4 года. При увеличении загрузки аудитории (дополнительные потоки) — 3 года.</p>
-        <div class="note">При массовой закупке возможна скидка до 15% при прямых контрактах с производителями.</div>
+        <p>Повышение производительности на 25%, годовой эффект ~850 000 руб. Окупаемость 3,5–4 года.</p>
     </div>
 
-    <!-- ГРАФИК РАБОТ (расширенный) -->
+    <!-- ГРАФИК РАБОТ -->
     <div id="schedule" class="page">
-        <div class="section-title">Календарный график реализации (Диаграмма Ганта)</div>
-        <div class="bar-chart"><div class="bar-label">Подготовка ТЗ и тендер</div><div class="bar-bg"><div class="bar-fill" data-width="15%">14 дней (01.06–14.06)</div></div></div>
-        <div class="bar-chart"><div class="bar-label">Закупка оборудования</div><div class="bar-bg"><div class="bar-fill" data-width="30%">30 дней (15.06–15.07)</div></div></div>
-        <div class="bar-chart"><div class="bar-label">Демонтаж старой мебели</div><div class="bar-bg"><div class="bar-fill" data-width="8%">5 дней (20.06–24.06)</div></div></div>
-        <div class="bar-chart"><div class="bar-label">Электромонтаж и кабель-менеджмент</div><div class="bar-bg"><div class="bar-fill" data-width="15%">14 дней (25.06–08.07)</div></div></div>
-        <div class="bar-chart"><div class="bar-label">Установка мебели и ПК</div><div class="bar-bg"><div class="bar-fill" data-width="12%">10 дней (09.07–18.07)</div></div></div>
-        <div class="bar-chart"><div class="bar-label">Настройка ПО и тестирование</div><div class="bar-bg"><div class="bar-fill" data-width="8%">7 дней (19.07–25.07)</div></div></div>
-        <div class="bar-chart"><div class="bar-label">Приёмка и обучение персонала</div><div class="bar-bg"><div class="bar-fill" data-width="5%">3 дня (26.07–28.07)</div></div></div>
-        <div class="result-panel">Плановое открытие — 1 сентября 2026 года. Возможно параллельное выполнение работ для сокращения сроков.</div>
+        <div class="section-title">Календарный график реализации</div>
+        <div class="bar-chart"><div class="bar-label">Подготовка ТЗ и тендер</div><div class="bar-bg"><div class="bar-fill" data-width="15%">14 дней</div></div></div>
+        <div class="bar-chart"><div class="bar-label">Закупка оборудования</div><div class="bar-bg"><div class="bar-fill" data-width="30%">30 дней</div></div></div>
+        <div class="bar-chart"><div class="bar-label">Демонтаж</div><div class="bar-bg"><div class="bar-fill" data-width="8%">5 дней</div></div></div>
+        <div class="bar-chart"><div class="bar-label">Электромонтаж и кабели</div><div class="bar-bg"><div class="bar-fill" data-width="15%">14 дней</div></div></div>
+        <div class="bar-chart"><div class="bar-label">Установка мебели и ПК</div><div class="bar-bg"><div class="bar-fill" data-width="12%">10 дней</div></div></div>
+        <div class="bar-chart"><div class="bar-label">Настройка ПО и тестирование</div><div class="bar-bg"><div class="bar-fill" data-width="8%">7 дней</div></div></div>
+        <div class="bar-chart"><div class="bar-label">Приёмка и обучение</div><div class="bar-bg"><div class="bar-fill" data-width="5%">3 дня</div></div></div>
+        <div class="result-panel">Плановое открытие — 1 сентября 2026 года.</div>
     </div>
 
-    <!-- KPI и РИСКИ (расширенные) -->
+    <!-- KPI и РИСКИ -->
     <div id="kpi" class="page">
         <div class="section-title">KPI и управление рисками</div>
         <div class="grid-2">
-            <div class="card">
-                <h3>Ключевые показатели эффективности (KPI)</h3>
-                <ul>
-                    <li>Удовлетворённость студентов (опрос) — не менее 85% положительных оценок.</li>
-                    <li>Снижение жалоб на дискомфорт и усталость на 70%.</li>
-                    <li>Время запуска ПК — менее 20 секунд (сейчас более 2 минут).</li>
-                    <li>Энергопотребление освещения — снижение на 40%.</li>
-                    <li>Производительность при многозадачности (тест) — рост в 4 раза.</li>
-                    <li>Загрузка рабочих мест в часы пик > 75%.</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Риски и меры смягчения</h3>
-                <ul>
-                    <li><strong>Задержка поставки оборудования</strong> — средняя вероятность, высокое влияние → заключение договоров с форс-мажорными оговорками, резервные поставщики.</li>
-                    <li><strong>Превышение бюджета</strong> — низкая вероятность, среднее влияние → твёрдая смета, контроль на этапе тендера.</li>
-                    <li><strong>Некорректная установка мебели</strong> — низкая вероятность, среднее влияние → приёмка по акту с участием инженера.</li>
-                    <li><strong>Недостаточная компетенция сотрудников</strong> — средняя вероятность, низкое влияние → проведение обучения и предоставление инструкций.</li>
-                    <li><strong>Несанкционированный доступ к сети</strong> — низкая вероятность, высокое влияние → VLAN-сегментация, регулярный аудит безопасности.</li>
-                </ul>
-            </div>
+            <div class="card"><h3>KPI после модернизации</h3><ul><li>Удовлетворённость ≥85%</li><li>Снижение жалоб на 70%</li><li>Время запуска ПК < 20 сек</li><li>Энергопотребление -40%</li><li>Производительность ×4</li><li>Загрузка мест >75%</li></ul></div>
+            <div class="card"><h3>Риски и меры</h3><ul><li>Задержка поставки → резервные поставщики</li><li>Превышение бюджета → твёрдая смета</li><li>Некорректный монтаж → приёмка с актом</li><li>Недостаточная компетенция → обучение</li></ul></div>
         </div>
-        <div class="note">Мониторинг KPI будет проводиться ежемесячно, ответственный — Ефим Железкин. Отчётность перед руководством — раз в квартал.</div>
     </div>
 
-    <!-- ОБСЛУЖИВАНИЕ (расширенное с графиками) -->
+    <!-- ОБСЛУЖИВАНИЕ -->
     <div id="maintenance" class="page">
         <div class="section-title">План обслуживания и эксплуатации</div>
         <div class="subsection-title">Регламент технического обслуживания</div>
-        <ul>
-            <li>Ежемесячная очистка системных блоков от пыли (сжатым воздухом).</li>
-            <li>Ежеквартальная проверка креплений столов и кресел (подтяжка болтов).</li>
-            <li>Полугодовое обновление драйверов и BIOS на всех ПК.</li>
-            <li>Ежегодная калибровка датчиков освещения и CO2.</li>
-            <li>Создание резервной копии образов системы на сервере (ежемесячно).</li>
-            <li>Проверка кабельной инфраструктуры и розеток (раз в полгода).</li>
-        </ul>
-
-        <div class="subsection-title">График загрузки обслуживающего персонала (чел./час в месяц)</div>
+        <ul><li>Ежемесячная очистка системных блоков от пыли (сжатым воздухом).</li><li>Ежеквартальная проверка креплений столов и кресел.</li><li>Полугодовое обновление драйверов и BIOS на всех ПК.</li><li>Ежегодная калибровка датчиков освещения и CO2.</li><li>Создание резервной копии образов системы на сервере.</li></ul>
+        <div class="subsection-title">График загрузки персонала (чел./час в месяц)</div>
         <div class="bar-chart"><div class="bar-label">Очистка ПК</div><div class="bar-bg"><div class="bar-fill" data-width="25%">8 ч</div></div></div>
         <div class="bar-chart"><div class="bar-label">Проверка мебели</div><div class="bar-bg"><div class="bar-fill" data-width="15%">4 ч</div></div></div>
-        <div class="bar-chart"><div class="bar-label">Обновление ПО и драйверов</div><div class="bar-bg"><div class="bar-fill" data-width="20%">6 ч</div></div></div>
+        <div class="bar-chart"><div class="bar-label">Обновление ПО</div><div class="bar-bg"><div class="bar-fill" data-width="20%">6 ч</div></div></div>
         <div class="bar-chart"><div class="bar-label">Калибровка датчиков</div><div class="bar-bg"><div class="bar-fill" data-width="10%">2 ч</div></div></div>
         <div class="bar-chart"><div class="bar-label">Резервное копирование</div><div class="bar-bg"><div class="bar-fill" data-width="15%">5 ч</div></div></div>
-
-        <div class="subsection-title">Динамика инцидентов (снижение после модернизации)</div>
-        <div class="bar-chart"><div class="bar-label">2025 (до модернизации)</div><div class="bar-bg"><div class="bar-fill" data-width="90%">45 инцидентов</div></div></div>
+        <div class="subsection-title">Динамика инцидентов</div>
+        <div class="bar-chart"><div class="bar-label">2025 (до)</div><div class="bar-bg"><div class="bar-fill" data-width="90%">45 инцидентов</div></div></div>
         <div class="bar-chart"><div class="bar-label">2026 (план)</div><div class="bar-bg"><div class="bar-fill" data-width="30%">12 инцидентов</div></div></div>
-        <div class="bar-chart"><div class="bar-label">2027 (цель)</div><div class="bar-bg"><div class="bar-fill" data-width="10%">4 инцидента</div></div></div>
-
-        <div class="subsection-title">Бюджет на ежегодное обслуживание</div>
+        <div class="subsection-title">Бюджет на обслуживание</div>
         <div class="bar-chart"><div class="bar-label">Зарплата техперсонала</div><div class="bar-bg"><div class="bar-fill" data-width="60%">180 000 руб</div></div></div>
-        <div class="bar-chart"><div class="bar-label">Запчасти и расходники</div><div class="bar-bg"><div class="bar-fill" data-width="25%">75 000 руб</div></div></div>
+        <div class="bar-chart"><div class="bar-label">Запчасти</div><div class="bar-bg"><div class="bar-fill" data-width="25%">75 000 руб</div></div></div>
         <div class="bar-chart"><div class="bar-label">ПО и лицензии</div><div class="bar-bg"><div class="bar-fill" data-width="15%">45 000 руб</div></div></div>
-        <div class="bar-chart"><div class="bar-label"><strong>Итого</strong></div><div class="bar-bg"><div class="bar-fill" data-width="100%">300 000 руб</div></div></div>
-
-        <div class="subsection-title">Гарантийные обязательства</div>
-        <div class="note">На оборудование предоставляется гарантия: системные блоки — 3 года, мониторы — 2 года, мебель — 1 год. Расширенная гарантия на ИТ-оборудование возможна за дополнительную плату (5% от стоимости).</div>
-        
-        <div class="subsection-title">Обучение пользователей</div>
-        <p>Для студентов и преподавателей будут проведены вводные семинары по эргономике, правильной настройке рабочих мест и базовым действиям в обновлённой среде. Материалы будут доступны в электронном виде.</p>
-        
+        <div class="note">Гарантия: системные блоки — 3 года, мониторы — 2 года, мебель — 1 год.</div>
         <div class="flex-btns no-print"><button onclick="window.print()" class="btn btn-outline">PDF всех вкладок</button></div>
     </div>
 
-    <footer>Все пути к изображениям сохраняются в localStorage. Для публикации на GitHub поместите файлы в папку images и укажите пути выше. Данные отчёта также сохраняются.</footer>
+    <footer>Фотографии загружены из корня репозитория (photo1.jpg … photo6.jpg). Если изображения не отображаются — проверьте, что файлы загружены в ту же папку, что и index.html.</footer>
 </div>
 
 <script>
@@ -518,7 +492,7 @@
                 currentCat = item.cat;
                 html += `<tr class="category-row"><td colspan="3"><strong>${currentCat}</strong></td></tr>`;
             }
-            html += `<tr><td>${item.text}</td>
+            html += `<tr><td>${item.text}</div>
                      <td style="text-align:center"><input type="radio" disabled ${item.score===0?'checked':''}></td>
                      <td style="text-align:center"><input type="radio" disabled ${item.score===1?'checked':''}></td>
                      <td style="text-align:center"><input type="radio" disabled ${item.score===2?'checked':''}></td>
@@ -535,7 +509,7 @@
     }
     buildCompactTable(); updateScoreUI();
 
-    // ========== ОТЧЁТ (сохранение) ==========
+    // Сохранение отчёта
     function saveReportData() {
         const data = {
             author: document.getElementById('reportAuthor').value,
@@ -580,46 +554,7 @@
     document.getElementById('reportPercent').value = Math.round((TOTAL_ACTUAL/TOTAL_MAX)*100)+'%';
     document.getElementById('reportResultText').value = "Критическая неудовлетворительность";
 
-    // ========== УПРАВЛЕНИЕ ИЗОБРАЖЕНИЯМИ ==========
-    function updateImage(imgId, pathInputId, placeholderId) {
-        const path = document.getElementById(pathInputId)?.value.trim();
-        const img = document.getElementById(imgId);
-        const placeholder = document.getElementById(placeholderId);
-        if (path && img && placeholder) {
-            img.src = path;
-            img.style.display = 'block';
-            placeholder.style.display = 'none';
-        } else if (img && placeholder) {
-            img.style.display = 'none';
-            placeholder.style.display = 'block';
-        }
-    }
-    function updateAllImages() {
-        for (let i=1; i<=2; i++) updateImage(`photo${i}`, `photo${i}Path`, `photo${i}-placeholder`);
-        for (let i=3; i<=6; i++) updateImage(`photo${i}`, `photo${i}Path`, `photo${i}-placeholder`);
-    }
-    function saveAllPaths() {
-        const paths = {};
-        for (let i=1; i<=2; i++) paths[`photo${i}Path`] = document.getElementById(`photo${i}Path`)?.value || '';
-        for (let i=3; i<=6; i++) paths[`photo${i}Path`] = document.getElementById(`photo${i}Path`)?.value || '';
-        localStorage.setItem('coworking_img_paths', JSON.stringify(paths));
-    }
-    function loadAllPaths() {
-        const saved = localStorage.getItem('coworking_img_paths');
-        if (saved) {
-            try {
-                const paths = JSON.parse(saved);
-                for (let i=1; i<=2; i++) { const inp = document.getElementById(`photo${i}Path`); if(inp && paths[`photo${i}Path`]) inp.value = paths[`photo${i}Path`]; }
-                for (let i=3; i<=6; i++) { const inp = document.getElementById(`photo${i}Path`); if(inp && paths[`photo${i}Path`]) inp.value = paths[`photo${i}Path`]; }
-            } catch(e) {}
-        }
-        updateAllImages();
-    }
-    loadAllPaths();
-    document.getElementById('updateRefsBtn')?.addEventListener('click', () => { updateAllImages(); saveAllPaths(); alert('Референсы обновлены'); });
-    for (let i=1; i<=6; i++) document.getElementById(`photo${i}Path`)?.addEventListener('input', () => { updateAllImages(); saveAllPaths(); });
-
-    // ========== НАВИГАЦИЯ ==========
+    // Навигация
     const pages = ['home','checklist','report','project','references','team','procurement','budget','schedule','kpi','maintenance'];
     function showPage(pageId) {
         pages.forEach(pid => document.getElementById(pid).classList.remove('active-page'));
@@ -628,7 +563,7 @@
             if (btn.dataset.page === pageId) btn.classList.add('active');
             else btn.classList.remove('active');
         });
-        if (pageId === 'schedule' || pageId === 'maintenance' || pageId === 'kpi') {
+        if (pageId === 'schedule' || pageId === 'maintenance') {
             setTimeout(() => { document.querySelectorAll('.bar-fill').forEach(b => { let w = b.getAttribute('data-width'); if(w) b.style.width = w; }); }, 80);
         }
     }
