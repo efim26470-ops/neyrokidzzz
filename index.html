@@ -267,8 +267,8 @@
                 <p>Рис. 1 – Исходное состояние аудитории 6236 (тесные парты, провода)</p>
             </div>
             <div class="media-placeholder">
-                <img src="photo2.jpg" alt="Фото 2 - референс улучшения" style="max-width:100%; border-radius:18px;" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=photo2.jpg'; this.alt='Фото не загружено';">
-                <p>Рис. 2 – Пример желаемой эргономики и освещения (референс)</p>
+                <img src="photo2.jpg" alt="Фото 2 - референс" style="max-width:100%; border-radius:18px;" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=photo2.jpg'; this.alt='Фото не загружено';">
+                <p>Рис. 2</p>
             </div>
         </div>
 
@@ -296,19 +296,19 @@
         <div class="grid-2">
             <div class="media-placeholder">
                 <img src="photo3.jpg" alt="Референс 1" style="max-width:100%; border-radius:18px;" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=photo3.jpg'; this.alt='Референс 1 не загружен';">
-                <p><strong>Референс 1</strong> — пример эргономичной планировки</p>
+                <p><strong>Референс 1</strong></p>
             </div>
             <div class="media-placeholder">
                 <img src="photo4.jpg" alt="Референс 2" style="max-width:100%; border-radius:18px;" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=photo4.jpg'; this.alt='Референс 2 не загружен';">
-                <p><strong>Референс 2</strong> — современный IT-кластер</p>
+                <p><strong>Референс 2</strong></p>
             </div>
             <div class="media-placeholder">
                 <img src="photo5.jpg" alt="Референс 3" style="max-width:100%; border-radius:18px;" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=photo5.jpg'; this.alt='Референс 3 не загружен';">
-                <p><strong>Референс 3</strong> — лаунж-зона и освещение</p>
+                <p><strong>Референс 3</strong></p>
             </div>
             <div class="media-placeholder">
                 <img src="photo6.jpg" alt="Референс 4" style="max-width:100%; border-radius:18px;" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=photo6.jpg'; this.alt='Референс 4 не загружен';">
-                <p><strong>Референс 4</strong> — кабель-менеджмент и система бронирования</p>
+                <p><strong>Референс 4</strong></p>
             </div>
         </div>
     </div>
@@ -340,7 +340,7 @@
         <div class="section-title">План закупок оборудования и услуг</div>
         <div class="table-wrapper"><table><thead><tr><th>Наименование</th><th>Поставщик</th><th>Срок поставки</th><th>Статус</th><th>Ответственный</th></tr></thead>
         <tbody>
-            <tr><td>Системные блоки (8 шт, Ardor Gaming)</td><td>DNS / Ситилинк</div><td>14 дней</div><td>Тендер</div><td>Ефим</div></tr>
+            <tr><td>Системные блоки (8 шт, Ardor Gaming)</div><td>DNS / Ситилинк</div><td>14 дней</div><td>Тендер</div><td>Ефим</div></tr>
             <tr><td>Ноутбуки Xiaomi Redmi Book (15 шт)</div><td>Яндекс Маркет</div><td>10 дней</div><td>Согласование</div><td>Ефим</div></tr>
             <tr><td>Эргономичные столы-трансформеры (12 шт)</div><td>Ergostol</div><td>30 дней</div><td>Изготовление</div><td>Илья</div></tr>
             <tr><td>Кресла Defo Direct New (24 шт)</div><td>Defo.ru</div><td>14 дней</div><td>Оплачено</div><td>Ефим</div></tr>
@@ -428,7 +428,7 @@
         <div class="flex-btns no-print"><button onclick="window.print()" class="btn btn-outline">PDF всех вкладок</button></div>
     </div>
 
-    <footer>Фотографии загружены из корня репозитория (photo1.jpg … photo6.jpg). Если изображения не отображаются — проверьте, что файлы загружены в ту же папку, что и index.html.</footer>
+    <footer>Проект коворкинга в аудитории 6236 • Группа 6481</footer>
 </div>
 
 <script>
@@ -490,13 +490,14 @@
         for (let item of checklistItems) {
             if (item.cat !== currentCat) {
                 currentCat = item.cat;
-                html += `<tr class="category-row"><td colspan="3"><strong>${currentCat}</strong></td></tr>`;
+                html += `<tr class="category-row"><td colspan="3"><strong>${currentCat}</strong><tr></tr>`;
             }
-            html += `<tr><td>${item.text}</div>
-                     <td style="text-align:center"><input type="radio" disabled ${item.score===0?'checked':''}></td>
-                     <td style="text-align:center"><input type="radio" disabled ${item.score===1?'checked':''}></td>
-                     <td style="text-align:center"><input type="radio" disabled ${item.score===2?'checked':''}></td>
-                    </tr>`;
+            html += `<tr>
+                         <td>${item.text}</td>
+                         <td style="text-align:center"><input type="radio" disabled ${item.score===0?'checked':''}></td>
+                         <td style="text-align:center"><input type="radio" disabled ${item.score===1?'checked':''}></td>
+                         <td style="text-align:center"><input type="radio" disabled ${item.score===2?'checked':''}></td>
+                       </tr>`;
         }
         tbody.innerHTML = html;
     }
