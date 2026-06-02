@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Коворкинг в аудитории 6236 • Apple стиль</title>
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
+<title>Коворкинг в аудитории 6236 • Apple стиль</title>
+<style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background-color: #f5f5f7;
@@ -67,192 +68,568 @@
         tr.category-row td { background: #f5f5f7; font-weight: 700; color: #1d1d1f; }
         tr.total-row td { background: #fff0db; font-weight: 800; }
         .source-pill { display: inline-block; background: #e8f2ff; color: #0063ce; border-radius: 999px; padding: 6px 12px; font-size: 0.82rem; font-weight: 600; margin-top: 12px; }
+        .estimate-overview { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 22px 0 30px; }
+        .estimate-card { background: #f9f9fb; border-radius: 24px; padding: 20px; border: 0.5px solid #e9e9ef; transition: all 0.3s cubic-bezier(0.2,0.9,0.4,1.1); }
+        .estimate-card:hover { transform: translateY(-4px); background: #fff; box-shadow: 0 16px 28px rgba(0,0,0,0.06); }
+        .estimate-card.recommended { background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%); border-color: rgba(0,122,255,0.26); box-shadow: 0 14px 28px rgba(0,122,255,0.08); }
+        .estimate-label { font-size: 0.82rem; color: #6e6e73; font-weight: 600; margin-bottom: 6px; }
+        .estimate-value { font-size: 1.65rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px; }
+        .estimate-desc { color: #6e6e73; font-size: 0.9rem; }
+        .variant-block { margin: 28px 0; padding: 24px; border-radius: 28px; background: #fff; border: 0.5px solid #e5e5ea; box-shadow: 0 8px 24px rgba(0,0,0,0.035); }
+        .variant-block.recommended { border-color: rgba(0,122,255,0.35); background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%); }
+        .variant-head { display: flex; gap: 16px; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; margin-bottom: 18px; }
+        .variant-title { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.01em; }
+        .variant-total { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; background: #f5f5f7; padding: 8px 14px; font-weight: 700; white-space: nowrap; }
+        .variant-block.recommended .variant-total { background: #007aff; color: #fff; }
+        .recommend-pill { display: inline-block; background: #007aff; color: #fff; border-radius: 999px; padding: 6px 12px; font-size: 0.82rem; font-weight: 700; margin-top: 8px; }
+        .budget-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin: 18px 0; }
+        .budget-chip { background: #f9f9fb; border: 0.5px solid #e9e9ef; border-radius: 18px; padding: 12px 14px; }
+        .budget-chip strong { display: block; font-size: 0.92rem; margin-bottom: 4px; }
+        .budget-chip span { color: #6e6e73; font-size: 0.9rem; }
+        .performance-note { color: #6e6e73; font-size: 0.9rem; margin: -6px 0 18px; }
+        .chart-card { background: #f9f9fb; border: 0.5px solid #e9e9ef; border-radius: 24px; padding: 20px; margin: 18px 0; }
+        .chart-title { font-size: 1.05rem; font-weight: 750; margin-bottom: 14px; }
+        .performance-chart .bar-chart { margin-bottom: 12px; }
+        .performance-chart .bar-label { width: 280px; }
+        .performance-chart .bar-bg { min-width: 220px; background: #e8e8ed; }
+        .small-muted { color: #6e6e73; font-size: 0.88rem; }
+
+        .efim-budget-section { margin-top: 28px; }
+        .link-muted a { color: #007aff; text-decoration: none; font-weight: 600; }
+        .link-muted a:hover { text-decoration: underline; }
+        .table-wrapper a { color: #007aff; font-weight: 600; text-decoration: none; }
+        .table-wrapper a:hover { text-decoration: underline; }
+
+
+        .enhanced-block { margin: 30px 0; }
+        .analysis-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin: 18px 0 24px; }
+        .analysis-card { background: linear-gradient(180deg, #ffffff 0%, #f9f9fb 100%); border: 0.5px solid #e9e9ef; border-radius: 24px; padding: 18px 20px; transition: all 0.28s cubic-bezier(0.2,0.9,0.4,1.1); animation: fadeInUp 0.5s ease forwards; }
+        .analysis-card:hover { transform: translateY(-4px); box-shadow: 0 16px 30px rgba(0,0,0,0.06); }
+        .analysis-number { font-size: 1.72rem; font-weight: 820; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 5px; }
+        .analysis-label { color: #6e6e73; font-size: 0.9rem; }
+        .analysis-small { color: #8e8e93; font-size: 0.84rem; margin-top: 8px; }
+        .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 4px; }
+        .tag-pill { display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; background: #f5f5f7; border: 0.5px solid #e5e5ea; padding: 7px 12px; font-size: 0.84rem; font-weight: 650; color: #3a3a3c; }
+        .tag-pill.blue { background: #e8f2ff; color: #0063ce; border-color: rgba(0,122,255,0.18); }
+        .tag-pill.green { background: #edf7ee; color: #1b7f37; border-color: rgba(27,127,55,0.16); }
+        .tag-pill.orange { background: #fff7e6; color: #9a6700; border-color: rgba(154,103,0,0.16); }
+        .team-analytics { background: #fff; border: 0.5px solid #e5e5ea; border-radius: 28px; padding: 24px; margin: 28px 0; box-shadow: 0 10px 26px rgba(0,0,0,0.035); }
+        .team-analytics h3 { font-size: 1.24rem; margin-bottom: 10px; letter-spacing: -0.01em; }
+        .table-compact th, .table-compact td { padding: 10px 12px; font-size: 0.92rem; }
+        .rank-badge { display: inline-flex; align-items: center; border-radius: 999px; background: #1d1d1f; color: #fff; padding: 6px 12px; font-size: 0.8rem; font-weight: 750; margin-left: 8px; }
+        .rank-badge.blue { background: #007aff; }
+        .rank-badge.green { background: #1b7f37; }
+        .rank-badge.orange { background: #b45f06; }
+        .timeline-mini { display: grid; gap: 12px; margin: 18px 0; }
+        .timeline-row { display: grid; grid-template-columns: 150px 1fr; gap: 14px; align-items: center; }
+        .timeline-name { color: #3a3a3c; font-weight: 650; font-size: 0.92rem; }
+        .timeline-track { height: 30px; background: #e8e8ed; border-radius: 999px; overflow: hidden; }
+        .timeline-fill { height: 100%; background: #007aff; color: white; font-size: 0.78rem; font-weight: 700; line-height: 30px; padding-left: 12px; border-radius: 999px; min-width: 40px; width: 0%; transition: width 0.9s cubic-bezier(0.2,0.9,0.4,1.2); }
+        .recommend-box { background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%); border: 0.5px solid rgba(0,122,255,0.26); border-radius: 28px; padding: 22px 24px; margin: 22px 0; box-shadow: 0 14px 28px rgba(0,122,255,0.07); }
+        .recommend-box strong { color: #0063ce; }
+        .mini-total { font-weight: 800; color: #1d1d1f; }
+        .status-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: #8e8e93; margin-right: 7px; }
+        .status-dot.ok { background: #1b7f37; } .status-dot.warn { background: #ff9f0a; } .status-dot.bad { background: #ff3b30; }
+        @media (max-width: 800px) { .timeline-row { grid-template-columns: 1fr; gap: 6px; } .performance-chart .bar-label { width: 100%; } }
+
         @media (max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } .page { padding: 24px 20px; } }
         @media print { body { background: white; } .tab-bar, .hero, .flex-btns, .btn { display: none !important; } .page { display: block !important; box-shadow: none; padding: 0; } }
     </style>
 </head>
 <body>
 <div class="wrap">
-    <div class="hero">
-        <div class="eyebrow" style="display:inline-block; background:#e8e8ed; border-radius:40px; padding:6px 14px; margin-bottom:18px;">Группа 6481 • Финальный проект</div>
-        <h1>Коворкинг-зона в аудитории 6236</h1>
-        <p>Трансформация устаревшего учебного пространства в современный многофункциональный коворкинг с IT-кластером, лаунж-зоной и высокоскоростной инфраструктурой.</p>
-    </div>
+<div class="hero">
+<div class="eyebrow" style="display:inline-block; background:#e8e8ed; border-radius:40px; padding:6px 14px; margin-bottom:18px;">Группа 6481 • Финальный проект</div>
+<h1>Коворкинг-зона в аудитории 6236</h1>
+<p>Трансформация устаревшего учебного пространства в современный многофункциональный коворкинг с IT-кластером, лаунж-зоной и высокоскоростной инфраструктурой.</p>
+</div>
+<div class="tab-bar">
+<button class="tab-btn active" data-page="home">Главная</button>
+<button class="tab-btn" data-page="checklist">Чек-лист</button>
+<button class="tab-btn" data-page="report">Отчёт</button>
+<button class="tab-btn" data-page="project">Проект</button>
+<button class="tab-btn" data-page="references">Референсы</button>
+<button class="tab-btn" data-page="model3d">3D модель</button>
+<button class="tab-btn" data-page="model3d_2">3D модель 2</button>
+<button class="tab-btn" data-page="model3d_3">3D модель 3</button>
+<button class="tab-btn" data-page="model3d_4">3D модель 4</button>
+<button class="tab-btn" data-page="team">Команда</button>
+<button class="tab-btn" data-page="procurement">Закупки</button>
+<button class="tab-btn" data-page="budget">Бюджет + ROI</button>
+<button class="tab-btn" data-page="plan5y">План внедрения (5 лет)</button>
+<button class="tab-btn" data-page="schedule">График работ (1 год)</button>
+<button class="tab-btn" data-page="kpi">KPI и риски</button>
+<button class="tab-btn" data-page="maintenance">Обслуживание</button>
+</div>
+<!-- ГЛАВНАЯ -->
+<div class="page active-page" id="home">
+<div class="section-title">О проекте</div>
+<p style="margin-bottom:24px">Аудитория 6236 долгие годы использовалась как обычная лекционная. Студенты жалуются на неудобные столы (некуда деть ноги), морально устаревшие ПК, отсутствие кабель-менеджмента и плохое освещение. Проект предлагает полную реконфигурацию в коворкинг на 25 мест.</p>
+<div class="grid-2">
+<div class="card"><strong>Объект</strong><br/>Аудитория 6236, корпус Б, площадь 75 м²</div>
+<div class="card"><strong>Целевая аудитория</strong><br/>Студенты ФЭМ (программирование, аналитика, проектная работа), IT-клубы</div>
+<div class="card"><strong>Текущий балл чек-листа</strong><br/>21 из 92 (23%) — критическая неудовлетворительность</div>
+<div class="card"><strong>Планируемый результат</strong><br/>Удовлетворённость ≥85%, посещаемость до 40 чел/день, окупаемость 3-4 года</div>
+</div>
+<div class="note">Проект уникален для вуза: впервые создаётся коворкинг с зонированием (тихая зона, IT-кластер, лаунж) и системой бронирования рабочих мест. Все улучшения основаны на реальном аудите и опросе студентов.</div>
+<div class="flex-btns no-print"><button class="btn btn-outline" onclick="window.print()">PDF главной</button></div>
 
-    <div class="tab-bar">
-        <button class="tab-btn active" data-page="home">Главная</button>
-        <button class="tab-btn" data-page="checklist">Чек-лист</button>
-        <button class="tab-btn" data-page="report">Отчёт</button>
-        <button class="tab-btn" data-page="project">Проект</button>
-        <button class="tab-btn" data-page="references">Референсы</button>
-        <button class="tab-btn" data-page="model3d">3D Модель</button>
-        <button class="tab-btn" data-page="model3d_2">3D модель 2</button>
-        <button class="tab-btn" data-page="model3d_3">3D модель 3</button>
-        <button class="tab-btn" data-page="model3d_4">3D модель 4</button>
-        <button class="tab-btn" data-page="team">Команда</button>
-        <button class="tab-btn" data-page="procurement">Закупки</button>
-        <button class="tab-btn" data-page="budget">Бюджет + ROI</button>
-        <button class="tab-btn" data-page="plan5y">План внедрения (5 лет)</button>
-        <button class="tab-btn" data-page="schedule">График работ (1 год)</button>
-        <button class="tab-btn" data-page="kpi">KPI и риски</button>
-        <button class="tab-btn" data-page="maintenance">Обслуживание</button>
-    </div>
-
-    <!-- ГЛАВНАЯ -->
-    <div id="home" class="page active-page">
-        <div class="section-title">О проекте</div>
-        <p style="margin-bottom:24px">Аудитория 6236 долгие годы использовалась как обычная лекционная. Студенты жалуются на неудобные столы (некуда деть ноги), морально устаревшие ПК, отсутствие кабель-менеджмента и плохое освещение. Проект предлагает полную реконфигурацию в коворкинг на 25 мест.</p>
-        <div class="grid-2">
-            <div class="card"><strong>Объект</strong><br>Аудитория 6236, корпус Б, площадь 75 м²</div>
-            <div class="card"><strong>Целевая аудитория</strong><br>Студенты ФЭМ (программирование, аналитика, проектная работа), IT-клубы</div>
-            <div class="card"><strong>Текущий балл чек-листа</strong><br>21 из 92 (23%) — критическая неудовлетворительность</div>
-            <div class="card"><strong>Планируемый результат</strong><br>Удовлетворённость ≥85%, посещаемость до 40 чел/день, окупаемость 3-4 года</div>
-        </div>
-        <div class="note">Проект уникален для вуза: впервые создаётся коворкинг с зонированием (тихая зона, IT-кластер, лаунж) и системой бронирования рабочих мест. Все улучшения основаны на реальном аудите и опросе студентов.</div>
-        <div class="flex-btns no-print"><button onclick="window.print()" class="btn btn-outline">PDF главной</button></div>
-    </div>
-
-    <!-- ЧЕК-ЛИСТ -->
-    <div id="checklist" class="page">
-        <div class="section-title">Финальный аудит (компактная форма)</div>
-        <div class="lock-note">Оценка зафиксирована по результатам инспекции</div>
-        <div class="table-wrapper">
-            <table class="compact-checklist" id="compactChecklistTable">
-                <thead><tr><th>Категория / Вопрос</th><th style="width:70px">0</th><th style="width:70px">1</th><th style="width:70px">2</th></tr></thead>
-                <tbody id="compactChecklistBody"></tbody>
-            </table>
-        </div>
-        <div class="result-panel">
-            <strong>Итоговая сумма баллов:</strong> <span id="totalFixedScore">0</span> / <span id="maxScoreSpan">92</span> &nbsp;|&nbsp;
+<div class="enhanced-block global-enhancement">
+<div class="subsection-title">Сводная панель проекта</div>
+<div class="analysis-grid">
+<div class="analysis-card"><div class="analysis-number">4</div><div class="analysis-label">варианта 3D-концепции: Ефим, Денис, Илья и Шамиль</div></div>
+<div class="analysis-card"><div class="analysis-number">75 м²</div><div class="analysis-label">площадь аудитории, которую нужно превратить в современный коворкинг</div></div>
+<div class="analysis-card"><div class="analysis-number">21/92</div><div class="analysis-label">исходный аудит: аудитория требует комплексной модернизации</div></div>
+<div class="analysis-card"><div class="analysis-number">≤ 2 млн ₽</div><div class="analysis-label">целевой финансовый лимит для реалистичной защиты проекта</div></div>
+</div>
+<div class="chart-card performance-chart">
+<div class="chart-title">Сравнение смет участников с лимитом 2 млн ₽</div>
+<div class="bar-chart"><div class="bar-label">Илья — 1 078 280 ₽</div><div class="bar-bg"><div class="bar-fill" data-width="53.9%">53.9%</div></div></div>
+<div class="bar-chart"><div class="bar-label">Шамиль — 1 872 000 ₽</div><div class="bar-bg"><div class="bar-fill" data-width="93.6%">93.6%</div></div></div>
+<div class="bar-chart"><div class="bar-label">Ефим — 1 941 196 ₽</div><div class="bar-bg"><div class="bar-fill" data-width="97.1%">97.1%</div></div></div>
+<div class="bar-chart"><div class="bar-label">Денис — 2 044 660 ₽</div><div class="bar-bg"><div class="bar-fill" data-width="102.2%">102.2%</div></div></div>
+<div class="analysis-small">График показывает не «лучше/хуже», а финансовую нагрузку: Илья — самый экономный, Ефим — сбалансированный премиальный вариант, Шамиль — эстетичный в лимите, Денис — функциональный, но требует сокращения части декора/мебели.</div>
+</div>
+</div>
+</div>
+<!-- ЧЕК-ЛИСТ -->
+<div class="page" id="checklist">
+<div class="section-title">Финальный аудит (компактная форма)</div>
+<div class="lock-note">Оценка зафиксирована по результатам инспекции</div>
+<div class="table-wrapper">
+<table class="compact-checklist" id="compactChecklistTable">
+<thead><tr><th>Категория / Вопрос</th><th style="width:70px">0</th><th style="width:70px">1</th><th style="width:70px">2</th></tr></thead>
+<tbody id="compactChecklistBody"></tbody>
+</table>
+</div>
+<div class="result-panel">
+<strong>Итоговая сумма баллов:</strong> <span id="totalFixedScore">0</span> / <span id="maxScoreSpan">92</span>  | 
             <strong>Процент:</strong> <span id="percentSpan">0</span>% — <span id="resultInterpretSpan"></span>
-        </div>
-        <div class="flex-btns"><button onclick="printChecklistPage()" class="btn btn-outline">PDF чек-листа</button></div>
-    </div>
+</div>
+<div class="flex-btns"><button class="btn btn-outline" onclick="printChecklistPage()">PDF чек-листа</button></div>
 
-    <!-- ОТЧЁТ -->
-    <div id="report" class="page">
-        <div class="section-title">Аудит и проект улучшения пространства</div>
-        <div class="grid-2">
-            <div class="form-field"><label>ФИО / автор</label><input type="text" id="reportAuthor" value="Нейронов Е. Дети"></div>
-            <div class="form-field"><label>Объект анализа</label><input type="text" id="reportObject" value="Аудитория 6236"></div>
-        </div>
-        <div class="form-field"><label>Назначение рабочего пространства</label><textarea id="reportPurpose" rows="3">Назначение заключается в том чтобы улучшить рабочее пространство аудитории, для удобства работы студентов. Так как аудитория не соответствует комфортным требованиям работы (устаревшие ПК, неудобные столы, недостаточное освещение, отсутствие кабель-менеджмента).</textarea></div>
-        <div class="subsection-title">Итоги чек-листа</div>
-        <div class="grid-2">
-            <div class="form-field"><label>Набрано баллов</label><input type="text" id="reportScore" readonly value="21"></div>
-            <div class="form-field"><label>Максимум</label><input type="text" id="reportMax" readonly value="92"></div>
-            <div class="form-field"><label>Процент</label><input type="text" id="reportPercent" readonly value="23%"></div>
-            <div class="form-field"><label>Результат</label><input type="text" id="reportResultText" readonly value="Критическая неудовлетворительность"></div>
-        </div>
-        <div class="subsection-title">Ключевые наблюдения</div>
-        <div class="form-field"><label>Сильные стороны</label><textarea id="strengths" class="expanded-textarea" rows="5">Ну оно есть хотя бы, включается (иногда), зависает не вылетает (иногда). Потенциал для улучшения значительный: возможность полной модернизации.</textarea></div>
-        <div class="form-field"><label>Проблемные зоны</label><textarea id="weaknesses" class="expanded-textarea" rows="6">Аудитория не соответствует общепринятым стандартам обучения. Эргономика рабочего места оставляет желать лучшего, столы неудобные (причиняют дискомфорт во время продолжительной работы, студенты бьются ногами об парты). Мониторы устаревшие, с низким разрешением. Кабельный хаос, отсутствие кабель-менеджмента, нехватка розеток, плохое освещение. Производительность ПК крайне низкая (HDD, 4-8 ГБ ОЗУ).</textarea></div>
-        <div class="form-field"><label>Три улучшения с наибольшим эффектом</label><textarea id="improvements" class="expanded-textarea" rows="5">1) Полностью обновить конфигурацию рабочей системы (замена всех комплектующих — заметный рост производительности и мощности компьютеров). 2) Поменять столы на регулируемые по высоте или с увеличенным пространством для ног, чтобы люди не бились ногами об парты. 3) Улучшить кабель-менеджмент и поработать с освещением (кабельные каналы, стяжки, равномерное светодиодное освещение над каждым рабочим местом).</textarea></div>
-        <div class="subsection-title">Проект улучшения (кратко)</div>
-        <div class="form-field"><label>Что можно улучшить без существенных затрат</label><textarea id="lowCost" class="expanded-textarea" rows="4">• Организация кабелей с помощью стяжек и коробов. • Замена ламп на более яркие и энергоэффективные светодиодные. • Отрегулировать положение мониторов (подставки).</textarea></div>
-        <div class="form-field"><label>Что потребует бюджета, но даст заметный эффект</label><textarea id="budgetItems" class="expanded-textarea" rows="4">• Полная замена компьютерной техники: современные системные блоки с SSD, 16–32 ГБ ОЗУ. • Эргономичные столы с регулировкой высоты и увеличенным пространством для ног. • Профессиональный кабель-менеджмент и подвесные LED-панели.</textarea></div>
-        <div class="form-field"><label>Обоснование</label><textarea id="justification" class="expanded-textarea" rows="6">Данные улучшения пойдут на пользу, так как с помощью них студентам: 1) будет удобнее сидеть за рабочим местом, появится пространство для ног (при текущих столах места почти нет). 2) при полном апгрейде компьютеров их производительность значительно увеличится, и студенты ФЭМа смогут выполнять более требовательные задачи, например высоконагруженное программирование, моделирование и анализ данных, становясь более компетентными.
+<div class="enhanced-block global-enhancement">
+<div class="subsection-title">Диагностика проблем по аудиту</div>
+<div class="chart-card performance-chart">
+<div class="chart-title">Текущее состояние относительно целевого уровня</div>
+<div class="bar-chart"><div class="bar-label">Текущий результат</div><div class="bar-bg"><div class="bar-fill" data-width="23%">23%</div></div></div>
+<div class="bar-chart"><div class="bar-label">Минимально комфортный уровень</div><div class="bar-bg"><div class="bar-fill" data-width="70%">70%</div></div></div>
+<div class="bar-chart"><div class="bar-label">Цель проекта</div><div class="bar-bg"><div class="bar-fill" data-width="85%">85%</div></div></div>
+</div>
+<div class="analysis-grid">
+<div class="analysis-card"><div class="analysis-number">1</div><div class="analysis-label">приоритет: замена рабочих мест и эргономики</div></div>
+<div class="analysis-card"><div class="analysis-number">2</div><div class="analysis-label">приоритет: техника, SSD, ОЗУ, мониторы и скорость запуска</div></div>
+<div class="analysis-card"><div class="analysis-number">3</div><div class="analysis-label">приоритет: электрика, розетки, сеть и кабель-менеджмент</div></div>
+</div>
+</div>
+</div>
+<!-- ОТЧЁТ -->
+<div class="page" id="report">
+<div class="section-title">Аудит и проект улучшения пространства</div>
+<div class="grid-2">
+<div class="form-field"><label>ФИО / автор</label><input id="reportAuthor" type="text" value="Нейронов Е. Дети"/></div>
+<div class="form-field"><label>Объект анализа</label><input id="reportObject" type="text" value="Аудитория 6236"/></div>
+</div>
+<div class="form-field"><label>Назначение рабочего пространства</label><textarea id="reportPurpose" rows="3">Назначение заключается в том чтобы улучшить рабочее пространство аудитории, для удобства работы студентов. Так как аудитория не соответствует комфортным требованиям работы (устаревшие ПК, неудобные столы, недостаточное освещение, отсутствие кабель-менеджмента).</textarea></div>
+<div class="subsection-title">Итоги чек-листа</div>
+<div class="grid-2">
+<div class="form-field"><label>Набрано баллов</label><input id="reportScore" readonly="" type="text" value="21"/></div>
+<div class="form-field"><label>Максимум</label><input id="reportMax" readonly="" type="text" value="92"/></div>
+<div class="form-field"><label>Процент</label><input id="reportPercent" readonly="" type="text" value="23%"/></div>
+<div class="form-field"><label>Результат</label><input id="reportResultText" readonly="" type="text" value="Критическая неудовлетворительность"/></div>
+</div>
+<div class="subsection-title">Ключевые наблюдения</div>
+<div class="form-field"><label>Сильные стороны</label><textarea class="expanded-textarea" id="strengths" rows="5">Ну оно есть хотя бы, включается (иногда), зависает не вылетает (иногда). Потенциал для улучшения значительный: возможность полной модернизации.</textarea></div>
+<div class="form-field"><label>Проблемные зоны</label><textarea class="expanded-textarea" id="weaknesses" rows="6">Аудитория не соответствует общепринятым стандартам обучения. Эргономика рабочего места оставляет желать лучшего, столы неудобные (причиняют дискомфорт во время продолжительной работы, студенты бьются ногами об парты). Мониторы устаревшие, с низким разрешением. Кабельный хаос, отсутствие кабель-менеджмента, нехватка розеток, плохое освещение. Производительность ПК крайне низкая (HDD, 4-8 ГБ ОЗУ).</textarea></div>
+<div class="form-field"><label>Три улучшения с наибольшим эффектом</label><textarea class="expanded-textarea" id="improvements" rows="5">1) Полностью обновить конфигурацию рабочей системы (замена всех комплектующих — заметный рост производительности и мощности компьютеров). 2) Поменять столы на регулируемые по высоте или с увеличенным пространством для ног, чтобы люди не бились ногами об парты. 3) Улучшить кабель-менеджмент и поработать с освещением (кабельные каналы, стяжки, равномерное светодиодное освещение над каждым рабочим местом).</textarea></div>
+<div class="subsection-title">Проект улучшения (кратко)</div>
+<div class="form-field"><label>Что можно улучшить без существенных затрат</label><textarea class="expanded-textarea" id="lowCost" rows="4">• Организация кабелей с помощью стяжек и коробов. • Замена ламп на более яркие и энергоэффективные светодиодные. • Отрегулировать положение мониторов (подставки).</textarea></div>
+<div class="form-field"><label>Что потребует бюджета, но даст заметный эффект</label><textarea class="expanded-textarea" id="budgetItems" rows="4">• Полная замена компьютерной техники: современные системные блоки с SSD, 16–32 ГБ ОЗУ. • Эргономичные столы с регулировкой высоты и увеличенным пространством для ног. • Профессиональный кабель-менеджмент и подвесные LED-панели.</textarea></div>
+<div class="form-field"><label>Обоснование</label><textarea class="expanded-textarea" id="justification" rows="6">Данные улучшения пойдут на пользу, так как с помощью них студентам: 1) будет удобнее сидеть за рабочим местом, появится пространство для ног (при текущих столах места почти нет). 2) при полном апгрейде компьютеров их производительность значительно увеличится, и студенты ФЭМа смогут выполнять более требовательные задачи, например высоконагруженное программирование, моделирование и анализ данных, становясь более компетентными.
 
 Текущее рабочее пространство практически не соответствует задачам комфортной и продуктивной работы. Устаревшая конфигурация, неэргономичные столы (риск травмирования ног), отсутствие кабель-менеджмента и плохое освещение делают занятия физически дискомфортными. Наиболее рациональные улучшения: замена техники на современную с приоритетом «достаточной производительности», замена столов с увеличенным пространством для ног, наведение порядка в кабелях и светодиодное освещение. Эти меры в рамках бюджета дадут максимальный прирост удобства и эффективности.</textarea></div>
-        <div class="subsection-title">Визуальные материалы</div>
-        <div class="grid-2">
-            <div class="media-placeholder"><img src="photo1.jpg" alt="Фото 1" onerror="this.src='https://placehold.co/600x400?text=photo1.jpg'"><p>Рис. 1 – Исходное состояние</p></div>
-            <div class="media-placeholder"><img src="photo2.jpg" alt="Фото 2" onerror="this.src='https://placehold.co/600x400?text=photo2.jpg'"><p>Рис. 2</p></div>
-        </div>
-        <div class="subsection-title">Итоговый вывод</div>
-        <textarea id="finalConclusion" rows="6">Замена столов на регулируемые по высоте или с увеличенным пространством для ног (чтобы исключить удары о парты). Наведение кабельного порядка (коробы, стяжки) и организация равномерного светодиодного освещения над каждым рабочим местом. Эти меры напрямую устраняют главные болевые точки и в рамках разумного бюджета дадут максимальный прирост удобства и эффективности занятий. Комплексная модернизация техники обеспечит студентов инструментом для современной инженерной и аналитической работы. Замена всех комплектующих — заметный рост производительности и мощности компьютеров.</textarea>
-        <div class="flex-btns"><button id="saveReportBtn" class="btn btn-secondary">Сохранить отчёт</button><button onclick="printReportPage()" class="btn btn-outline">PDF отчёта</button></div>
-    </div>
-
-    <!-- ПРОЕКТ (без эмодзи) -->
-    <div id="project" class="page">
-        <div class="section-title">Проект модернизации</div>
-        <div class="note"><strong>Философия дизайна:</strong> Пространство, вдохновлённое гибкостью современных IT-офисов. Объединены принципы activity-based working, биофилия и технологичность.</div>
-        <div class="subsection-title">Детальное зонирование</div>
-        <div class="grid-2">
-            <div class="card"><h3>IT-кластер (8 мест)</h3><p><strong>Площадь:</strong> 22 м²<br><strong>Оборудование:</strong> 8 ПК Ardor Gaming Neo M286 (i5-12400F / 32 ГБ / RTX 4060), мониторы 27" 2K.<br><strong>Мебель:</strong> Столы-трансформеры Ergostol DeskUp, кресла Defo Direct New.<br><strong>Инфраструктура:</strong> Розеточные блоки с USB-C PD 65W, кабель-каналы.<br><strong>Освещение:</strong> LED-панели 4000K, CRI>90, 500 лк на рабочей поверхности.</p></div>
-            <div class="card"><h3>Тихая зона (15 мест)</h3><p><strong>Площадь:</strong> 28 м²<br><strong>Концепция:</strong> Индивидуальные кабины с высокими перегородками (звукопоглощение NRC 0.85).<br><strong>Оснащение:</strong> 15 ноутбуков Xiaomi Redmi Book 2024 (i5-12450H / 16 ГБ).<br><strong>Мебель:</strong> Столы 70×140 см с матовым покрытием, раздельные подставки для ног.<br><strong>Акустика:</strong> Потолочные панели Ecophon, ковровое покрытие.</p></div>
-            <div class="card"><h3>Лаунж-зона (12 мест)</h3><p><strong>Площадь:</strong> 15 м²<br><strong>Концепция:</strong> Неформальное общение и отдых. Мягкая мебель, кофе-пойнт, настольные игры.<br><strong>Технологии:</strong> Интерактивная панель 75" 4K, беспроводная зарядка в столиках.<br><strong>Растения:</strong> Фитопанели с автоматическим поливом.</p></div>
-            <div class="card"><h3>Переговорная (4 места)</h3><p><strong>Площадь:</strong> 10 м²<br><strong>Оснащение:</strong> Стеклянные перегородки с электрохромной тонировкой, конференц-система Logitech Rally Bar.<br><strong>Управление:</strong> Планшет для бронирования, интеграция с календарями.</p></div>
-        </div>
-        <div class="note">Все системы объединены в экосистему «Умный коворкинг»: бронирование через веб-портал, управление освещением и климатом по расписанию, мониторинг загрузки.</div>
-    </div>
-
-    <!-- РЕФЕРЕНСЫ -->
-    <div id="references" class="page">
-        <div class="section-title">Референсы современных аудиторий</div>
-        <p style="margin-bottom:20px;color:#6e6e73;font-size:0.9rem">Все изображения сгенерированы <strong>Железкиным Е.С.</strong> с помощью ИИ-инструментов <strong>Google Gemini</strong> и <strong>Nanobanana</strong> на основе наших пожеланий.</p>
-        <div class="grid-2">
-            <div class="media-placeholder"><img src="photo3.jpg" onerror="this.src='https://placehold.co/600x400?text=photo3.jpg'"><p><strong>Референс 1</strong></p></div>
-            <div class="media-placeholder"><img src="photo4.jpg" onerror="this.src='https://placehold.co/600x400?text=photo4.jpg'"><p><strong>Референс 2</strong></p></div>
-            <div class="media-placeholder"><img src="photo5.jpg" onerror="this.src='https://placehold.co/600x400?text=photo5.jpg'"><p><strong>Референс 3</strong></p></div>
-            <div class="media-placeholder"><img src="photo6.jpg" onerror="this.src='https://placehold.co/600x400?text=photo6.jpg'"><p><strong>Референс 4</strong></p></div>
-        </div>
-    </div>
-
-    <!-- 3D МОДЕЛЬ ЖЕЛЕЗКИНА -->
-    <div id="model3d" class="page">
-        <div class="section-title">3D модель коворкинга • Железкин Е.С.</div>
-        <div class="note">
-            <strong>Разработчик:</strong> Железкин Ефим Сергеевич (Team Lead)<br>
-            <strong>Инструмент:</strong> Live Home 3D Pro<br>
-            <strong>Описание модели:</strong> Детальная трёхмерная реконструкция обновлённой аудитории. В основе лежит точный план помещения 75 м² с разбивкой на функциональные зоны. Модель последовательно демонстрирует: общий вид сверху (ракурс 1), организацию IT-кластера с мощными ПК и регулируемыми столами (ракурс 2), тихую зону с ноутбуками и акустическими перегородками (ракурс 3), лаунж-пространство с мягкой мебелью и фитопанелями (ракурс 4), переговорную комнату со стеклянными стенами (ракурс 5), систему умного освещения и кабель-каналы (ракурс 6), вид сверху для оценки эргономики проходов (ракурс 7) и крупный план элементов интерьера (ракурс 8). Все размеры соответствуют реальной мебели из сметы, текстуры и цвета подобраны в соответствии с концепцией Apple-стиля.
-        </div>
-        <div class="subsection-title">Галерея: 8 ракурсов</div>
-        <div class="grid-2">
-            <div class="media-placeholder"><img src="model3d_1.jpg" onerror="this.src='https://placehold.co/600x400?text=model3d_1'"><p><strong>Вид 1 – Общий план</strong></p></div>
-            <div class="media-placeholder"><img src="model3d_2.jpg" onerror="this.src='https://placehold.co/600x400?text=model3d_2'"><p><strong>Вид 2 – IT‑кластер</strong></p></div>
-            <div class="media-placeholder"><img src="model3d_3.jpg" onerror="this.src='https://placehold.co/600x400?text=model3d_3'"><p><strong>Вид 3 – Тихая зона</strong></p></div>
-            <div class="media-placeholder"><img src="model3d_4.jpg" onerror="this.src='https://placehold.co/600x400?text=model3d_4'"><p><strong>Вид 4 – Лаунж</strong></p></div>
-            <div class="media-placeholder"><img src="model3d_5.jpg" onerror="this.src='https://placehold.co/600x400?text=model3d_5'"><p><strong>Вид 5 – Переговорная</strong></p></div>
-            <div class="media-placeholder"><img src="model3d_6.jpg" onerror="this.src='https://placehold.co/600x400?text=model3d_6'"><p><strong>Вид 6 – Освещение</strong></p></div>
-            <div class="media-placeholder"><img src="model3d_7.jpg" onerror="this.src='https://placehold.co/600x400?text=model3d_7'"><p><strong>Вид 7 – Сверху</strong></p></div>
-            <div class="media-placeholder"><img src="model3d_8.jpg" onerror="this.src='https://placehold.co/600x400?text=model3d_8'"><p><strong>Вид 8 – Детали</strong></p></div>
-        </div>
-    </div>
-
-    <!-- 3D МОДЕЛЬ ДЕНИСА -->
-    <div id="model3d_2" class="page">
-        <div class="section-title">3D модель 2 • Чижиков Д.К.</div>
-        <div class="note">
-            <strong>Разработчик:</strong> Чижиков Денис Кириллович<br>
-            <strong>Инструмент:</strong> Live Home 3D Pro<br>
-            <strong>Описание модели:</strong> Пространство разделено на функциональные зоны: рабочий блок с компьютерными местами, зона отдыха с мягкой мебелью, презентационная часть и инфраструктурный контур. Концепция делает аудиторию более гибкой: её можно использовать для самостоятельной работы, мини-лекций, групповых встреч и проектных сессий. Визуальная логика строится на спокойных светлых оттенках, аккуратном кабель-менеджменте, мягких местах отдыха и понятной навигации внутри помещения.
-            <br><span class="source-pill">Интегрировано из файла: денис.xlsx</span>
-        </div>
-        <div class="metric-grid">
-
-            <div class="metric-card">
-                <div class="metric-label">Итог сметы</div>
-                <div class="metric-value">2 044 660 руб.</div>
-                <div class="metric-desc">Полная стоимость по XLSX-файлу Дениса</div>
-            </div>
-
-            <div class="metric-card">
-                <div class="metric-label">Рабочие места</div>
-                <div class="metric-value">8 ПК + 15 ноутбуков</div>
-                <div class="metric-desc">Стационарный и мобильный сценарии работы</div>
-            </div>
-
-            <div class="metric-card">
-                <div class="metric-label">Инфраструктура</div>
-                <div class="metric-value">Wi‑Fi 6 + бронирование</div>
-                <div class="metric-desc">Сеть, экраны и розеточные блоки</div>
-            </div>
-
-            <div class="metric-card">
-                <div class="metric-label">Ремонт</div>
-                <div class="metric-value">120 000 руб.</div>
-                <div class="metric-desc">Обои, потолок и электромонтаж</div>
-            </div>
+<div class="subsection-title">Визуальные материалы</div>
+<div class="grid-2">
+<div class="media-placeholder"><img alt="Фото 1" onerror="this.src='https://placehold.co/600x400?text=photo1.jpg'" src="photo1.jpg"/><p>Рис. 1 – Исходное состояние</p></div>
+<div class="media-placeholder"><img alt="Фото 2" onerror="this.src='https://placehold.co/600x400?text=photo2.jpg'" src="photo2.jpg"/><p>Рис. 2</p></div>
 </div>
-        <div class="subsection-title">Смета проекта Дениса</div>
+<div class="subsection-title">Итоговый вывод</div>
+<textarea id="finalConclusion" rows="6">Замена столов на регулируемые по высоте или с увеличенным пространством для ног (чтобы исключить удары о парты). Наведение кабельного порядка (коробы, стяжки) и организация равномерного светодиодного освещения над каждым рабочим местом. Эти меры напрямую устраняют главные болевые точки и в рамках разумного бюджета дадут максимальный прирост удобства и эффективности занятий. Комплексная модернизация техники обеспечит студентов инструментом для современной инженерной и аналитической работы. Замена всех комплектующих — заметный рост производительности и мощности компьютеров.</textarea>
+<div class="flex-btns"><button class="btn btn-secondary" id="saveReportBtn">Сохранить отчёт</button><button class="btn btn-outline" onclick="printReportPage()">PDF отчёта</button></div>
+
+<div class="enhanced-block global-enhancement">
+<div class="subsection-title">Карта эффекта от модернизации</div>
+<div class="chart-card performance-chart">
+<div class="chart-title">Ожидаемый прирост по ключевым направлениям</div>
+<div class="bar-chart"><div class="bar-label">Производительность техники</div><div class="bar-bg"><div class="bar-fill" data-width="85%">+85</div></div></div>
+<div class="bar-chart"><div class="bar-label">Эргономика посадки</div><div class="bar-bg"><div class="bar-fill" data-width="78%">+78</div></div></div>
+<div class="bar-chart"><div class="bar-label">Порядок кабелей и электрика</div><div class="bar-bg"><div class="bar-fill" data-width="82%">+82</div></div></div>
+<div class="bar-chart"><div class="bar-label">Визуальный комфорт</div><div class="bar-bg"><div class="bar-fill" data-width="74%">+74</div></div></div>
+</div>
+<div class="recommend-box"><strong>Главный вывод отчёта:</strong> максимальный эффект дают не отдельные покупки, а связка из мебели, техники, света и кабель-менеджмента. Поэтому сметы участников важно оценивать не только по цене, но и по тому, насколько они закрывают реальные боли аудитории.</div>
+</div>
+</div>
+<!-- ПРОЕКТ (без эмодзи) -->
+<div class="page" id="project">
+<div class="section-title">Проект модернизации</div>
+<div class="note"><strong>Философия дизайна:</strong> Пространство, вдохновлённое гибкостью современных IT-офисов. Объединены принципы activity-based working, биофилия и технологичность.</div>
+<div class="subsection-title">Детальное зонирование</div>
+<div class="grid-2">
+<div class="card"><h3>IT-кластер (8 мест)</h3><p><strong>Площадь:</strong> 22 м²<br/><strong>Оборудование:</strong> 8 ПК Ardor Gaming Neo M286 (i5-12400F / 32 ГБ / RTX 4060), мониторы 27" 2K.<br/><strong>Мебель:</strong> Столы-трансформеры Ergostol DeskUp, кресла Defo Direct New.<br/><strong>Инфраструктура:</strong> Розеточные блоки с USB-C PD 65W, кабель-каналы.<br/><strong>Освещение:</strong> LED-панели 4000K, CRI&gt;90, 500 лк на рабочей поверхности.</p></div>
+<div class="card"><h3>Тихая зона (15 мест)</h3><p><strong>Площадь:</strong> 28 м²<br/><strong>Концепция:</strong> Индивидуальные кабины с высокими перегородками (звукопоглощение NRC 0.85).<br/><strong>Оснащение:</strong> 15 ноутбуков Xiaomi Redmi Book 2024 (i5-12450H / 16 ГБ).<br/><strong>Мебель:</strong> Столы 70×140 см с матовым покрытием, раздельные подставки для ног.<br/><strong>Акустика:</strong> Потолочные панели Ecophon, ковровое покрытие.</p></div>
+<div class="card"><h3>Лаунж-зона (12 мест)</h3><p><strong>Площадь:</strong> 15 м²<br/><strong>Концепция:</strong> Неформальное общение и отдых. Мягкая мебель, кофе-пойнт, настольные игры.<br/><strong>Технологии:</strong> Интерактивная панель 75" 4K, беспроводная зарядка в столиках.<br/><strong>Растения:</strong> Фитопанели с автоматическим поливом.</p></div>
+<div class="card"><h3>Переговорная (4 места)</h3><p><strong>Площадь:</strong> 10 м²<br/><strong>Оснащение:</strong> Стеклянные перегородки с электрохромной тонировкой, конференц-система Logitech Rally Bar.<br/><strong>Управление:</strong> Планшет для бронирования, интеграция с календарями.</p></div>
+</div>
+<div class="note">Все системы объединены в экосистему «Умный коворкинг»: бронирование через веб-портал, управление освещением и климатом по расписанию, мониторинг загрузки.</div>
+
+<div class="enhanced-block global-enhancement">
+<div class="subsection-title">Архитектура решения в цифрах</div>
+<div class="chart-card performance-chart">
+<div class="chart-title">Распределение пространства по сценариям использования</div>
+<div class="bar-chart"><div class="bar-label">Тихая работа и ноутбуки</div><div class="bar-bg"><div class="bar-fill" data-width="37%">28 м²</div></div></div>
+<div class="bar-chart"><div class="bar-label">IT-кластер</div><div class="bar-bg"><div class="bar-fill" data-width="29%">22 м²</div></div></div>
+<div class="bar-chart"><div class="bar-label">Лаунж-зона</div><div class="bar-bg"><div class="bar-fill" data-width="20%">15 м²</div></div></div>
+<div class="bar-chart"><div class="bar-label">Переговорная</div><div class="bar-bg"><div class="bar-fill" data-width="14%">10 м²</div></div></div>
+</div>
+<div class="analysis-grid">
+<div class="analysis-card"><div class="analysis-number">ABW</div><div class="analysis-label">activity-based working: студент выбирает место под задачу</div></div>
+<div class="analysis-card"><div class="analysis-number">Wi‑Fi 6</div><div class="analysis-label">единая инфраструктура для ноутбуков, портала и презентаций</div></div>
+<div class="analysis-card"><div class="analysis-number">500 лк</div><div class="analysis-label">целевой уровень освещения на рабочих поверхностях</div></div>
+</div>
+</div>
+</div>
+<!-- РЕФЕРЕНСЫ -->
+<div class="page" id="references">
+<div class="section-title">Референсы современных аудиторий</div>
+<p style="margin-bottom:20px;color:#6e6e73;font-size:0.9rem">Все изображения сгенерированы <strong>Железкиным Е.С.</strong> с помощью ИИ-инструментов <strong>Google Gemini</strong> и <strong>Nanobanana</strong> на основе наших пожеланий.</p>
+<div class="grid-2">
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=photo3.jpg'" src="photo3.jpg"/><p><strong>Референс 1</strong></p></div>
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=photo4.jpg'" src="photo4.jpg"/><p><strong>Референс 2</strong></p></div>
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=photo5.jpg'" src="photo5.jpg"/><p><strong>Референс 3</strong></p></div>
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=photo6.jpg'" src="photo6.jpg"/><p><strong>Референс 4</strong></p></div>
+</div>
+
+<div class="enhanced-block global-enhancement">
+<div class="subsection-title">Что берём из референсов</div>
+<div class="analysis-grid">
+<div class="analysis-card"><div class="analysis-number">Свет</div><div class="analysis-label">белая база, мягкие тени, визуально чистые поверхности без перегруза</div></div>
+<div class="analysis-card"><div class="analysis-number">Зоны</div><div class="analysis-label">понятное разделение: работа, отдых, презентации, фокус</div></div>
+<div class="analysis-card"><div class="analysis-number">Техника</div><div class="analysis-label">мониторы, ТВ‑панель, ноутбуки и скрытая инфраструктура как часть дизайна</div></div>
+<div class="analysis-card"><div class="analysis-number">Акценты</div><div class="analysis-label">дерево, растения, графит и минималистичный декор вместо визуального шума</div></div>
+</div>
+</div>
+</div>
+<!-- 3D МОДЕЛЬ ЖЕЛЕЗКИНА -->
+<div class="page" id="model3d">
+<div class="section-title">3D модель коворкинга • Железкин Е.С.</div>
+<div class="note">
+<strong>Разработчик:</strong> Железкин Ефим Сергеевич (Team Lead)<br/>
+<strong>Инструмент:</strong> Live Home 3D Pro<br/>
+<strong>Описание модели:</strong> Детальная трёхмерная реконструкция обновлённой аудитории. В основе лежит точный план помещения 75 м² с разбивкой на функциональные зоны. Модель демонстрирует общий план, IT-кластер с ПК, тихую зону с ноутбуками, лаунж-пространство, переговорную, умное освещение, кабель-менеджмент и удобные проходы. Цвета, мебель и материалы подобраны в едином Apple-стиле: светлая база, чистая геометрия, минимум визуального шума и акцент на технологичность.
+        </div>
+<div class="subsection-title">Логика 3D-концепции</div>
+<div class="insight-grid">
+<div class="insight-card"><div class="insight-number">75 м²</div><div class="insight-label">площадь аудитории, распределённая между IT-кластером, тихой зоной, лаунжем и переговорной</div></div>
+<div class="insight-card"><div class="insight-number">до 25</div><div class="insight-label">пользовательских мест с разными сценариями: кодинг, проектная работа, защита, отдых</div></div>
+<div class="insight-card"><div class="insight-number">4 зоны</div><div class="insight-label">чёткое разделение функций без визуальной перегрузки пространства</div></div>
+<div class="insight-card"><div class="insight-number">≤ 2 млн ₽</div><div class="insight-label">контрольный лимит проекта, под который рассчитаны все варианты сметы</div></div>
+</div>
+<div class="metric-grid">
+<div class="metric-card"><h3>IT-кластер</h3><p>Основной рабочий блок для программирования, аналитики, командной разработки и учебных проектов. В 3D-модели он привязан к рабочим столам, мониторам и скрытому кабель-менеджменту.</p></div>
+<div class="metric-card"><h3>Тихая зона</h3><p>Места для самостоятельной работы и подготовки. Ноутбуки и спокойная посадка позволяют не привязывать студентов только к стационарным ПК.</p></div>
+<div class="metric-card"><h3>Лаунж и переговорная</h3><p>Неформальное общение, защита мини-проектов, работа в малых группах. ТВ-панель используется для презентаций, разборов и демонстрации макетов.</p></div>
+<div class="metric-card"><h3>Инфраструктура</h3><p>Wi‑Fi 6, коммутатор, розеточные блоки, ИБП и кабель-каналы превращают визуальный дизайн в реально применимое учебное пространство.</p></div>
+</div>
+<div class="efim-budget-section" id="efim-budget-options">
+<div class="subsection-title">Финансовая модель для 3D-концепции Ефима</div>
+<div class="estimate-overview">
+<div class="estimate-card">
+<div class="estimate-label">Вариант 1</div>
+<div class="estimate-value">1 966 372 ₽</div>
+<div class="estimate-desc">Готовые собранные ПК, быстрый запуск, минимальные риски внедрения. Запас бюджета: 33 628 ₽.</div>
+</div>
+<div class="estimate-card recommended">
+<div class="estimate-label">Вариант 2 • рекомендуется</div>
+<div class="estimate-value">1 941 196 ₽</div>
+<div class="estimate-desc">Самостоятельная сборка ПК: лучший баланс цены, мощности и ремонтопригодности. Запас бюджета: 58 804 ₽.</div>
+</div>
+<div class="estimate-card">
+<div class="estimate-label">Вариант 3</div>
+<div class="estimate-value">1 074 582 ₽</div>
+<div class="estimate-desc">Самый бюджетный сценарий с сохранением базовой логики коворкинга. Запас бюджета: 925 418 ₽.</div>
+</div>
+</div>
+<div class="subsection-title">Сравнение вариантов по бюджету и эффективности</div>
+<div class="chart-card performance-chart">
+<div class="chart-title">Освоение бюджета 2 000 000 ₽</div>
+<div class="bar-chart"><div class="bar-label">Вариант 1 — 1 966 372 ₽</div><div class="bar-bg"><div class="bar-fill" data-width="98.3%">98.3%</div></div></div>
+<div class="bar-chart"><div class="bar-label">Вариант 2 — 1 941 196 ₽</div><div class="bar-bg"><div class="bar-fill" data-width="97.1%">97.1%</div></div></div>
+<div class="bar-chart"><div class="bar-label">Вариант 3 — 1 074 582 ₽</div><div class="bar-bg"><div class="bar-fill" data-width="53.7%">53.7%</div></div></div>
+<div class="mini-caption">Чем выше полоса, тем ближе вариант к предельному бюджету. Вариант 2 почти полностью использует бюджет, но оставляет больший резерв, чем вариант 1.</div>
+</div>
+<div class="chart-card performance-chart">
+<div class="chart-title">Запас бюджета после закупок</div>
+<div class="bar-chart"><div class="bar-label">Вариант 1 — 33 628 ₽</div><div class="bar-bg"><div class="bar-fill" data-width="4%">33 628 ₽</div></div></div>
+<div class="bar-chart"><div class="bar-label">Вариант 2 — 58 804 ₽</div><div class="bar-bg"><div class="bar-fill" data-width="6.4%">58 804 ₽</div></div></div>
+<div class="bar-chart"><div class="bar-label">Вариант 3 — 925 418 ₽</div><div class="bar-bg"><div class="bar-fill" data-width="100%">925 418 ₽</div></div></div>
+<div class="mini-caption">Вариант 3 оставляет максимальный резерв, но снижает премиальность и вычислительный запас. Вариант 2 — рабочий компромисс.</div>
+</div>
+<div class="chart-card performance-chart">
+<div class="chart-title">Итоговый взвешенный балл проекта</div>
+<div class="bar-chart"><div class="bar-label">Вариант 1 — быстрый запуск</div><div class="bar-bg"><div class="bar-fill" data-width="87%">87 / 100</div></div></div>
+<div class="bar-chart"><div class="bar-label">Вариант 2 — лучший баланс</div><div class="bar-bg"><div class="bar-fill" data-width="96%">96 / 100</div></div></div>
+<div class="bar-chart"><div class="bar-label">Вариант 3 — экономия</div><div class="bar-bg"><div class="bar-fill" data-width="74%">74 / 100</div></div></div>
+<div class="mini-caption">Оценка учитывает мощность, ремонтопригодность, визуальное соответствие 3D-модели, риск внедрения и запас бюджета.</div>
+</div>
+<div class="table-wrapper">
+<table class="comparison-table">
+<thead><tr><th>Критерий</th><th>Вариант 1</th><th>Вариант 2</th><th>Вариант 3</th></tr></thead>
+<tbody>
+<tr><td>Итоговая стоимость</td><td>1 966 372 ₽</td><td class="winner-cell">1 941 196 ₽</td><td>1 074 582 ₽</td></tr>
+<tr><td>Запас бюджета</td><td>33 628 ₽</td><td class="winner-cell">58 804 ₽</td><td>925 418 ₽</td></tr>
+<tr><td>Рабочие ПК</td><td>8 готовых i5-12400</td><td class="winner-cell">8 сборок i5-12400</td><td>8 сборок i3-12100</td></tr>
+<tr><td>Запас производительности</td><td>Высокий</td><td class="winner-cell">Высокий + легче апгрейд</td><td>Базовый</td></tr>
+<tr><td>Ремонтопригодность</td><td>Средняя</td><td class="winner-cell">Максимальная</td><td>Хорошая, но компоненты проще</td></tr>
+<tr><td>Скорость запуска</td><td class="winner-cell">Максимальная</td><td>Средняя</td><td>Средняя</td></tr>
+<tr><td>Риск выйти за бюджет</td><td><span class="risk-high">Высокий</span></td><td><span class="risk-mid">Средний</span></td><td><span class="risk-low">Низкий</span></td></tr>
+</tbody>
+</table>
+</div>
+<div class="decision-card">
+<strong>Итоговая позиция:</strong> для сайта и защиты лучше оставлять <strong>вариант 2</strong>. Он выглядит самым профессиональным: техника мощная, бюджет не превышен, компоненты можно обслуживать отдельно, а сама смета показывает инженерный подход, а не простую закупку готовых решений.
+                <br/><span class="score-pill">Рекомендуемый сценарий: вариант 2 — самостоятельная сборка ПК</span>
+</div>
+<div class="note">
+<strong>Рекомендация для защиты:</strong> выбрать <strong>вариант 2</strong>. Он остаётся в лимите 2 000 000 ₽, дешевле варианта с готовыми ПК и лучше раскрывает роль Team Lead: конфигурация прозрачная, ремонтопригодная, рациональная и готовая к дальнейшему апгрейду.
+                <br/><span class="recommend-pill">Выбор проекта: вариант 2 — самостоятельная сборка ПК</span>
+</div>
+<div class="subsection-title">Графики сравнения производительности сборок</div>
+<p class="performance-note">Индексы условные, по шкале 0–100, чтобы наглядно сравнить три сценария внутри проекта. За максимум принята сборка на Intel Core i5-12400.</p>
+<div class="chart-card performance-chart">
+<div class="chart-title">Производительность CPU рабочих ПК</div>
+<div class="bar-chart"><div class="bar-label">Вариант 1 — готовый i5-12400</div><div class="bar-bg"><div class="bar-fill" data-width="100%">100</div></div></div>
+<div class="bar-chart"><div class="bar-label">Вариант 2 — сборка i5-12400</div><div class="bar-bg"><div class="bar-fill" data-width="100%">100</div></div></div>
+<div class="bar-chart"><div class="bar-label">Вариант 3 — сборка i3-12100</div><div class="bar-bg"><div class="bar-fill" data-width="72%">72</div></div></div>
+</div>
+<div class="chart-card performance-chart">
+<div class="chart-title">Многозадачность и запас по ресурсу</div>
+<div class="bar-chart"><div class="bar-label">Вариант 1 — готовый ПК</div><div class="bar-bg"><div class="bar-fill" data-width="90%">90</div></div></div>
+<div class="bar-chart"><div class="bar-label">Вариант 2 — самостоятельная сборка</div><div class="bar-bg"><div class="bar-fill" data-width="95%">95</div></div></div>
+<div class="bar-chart"><div class="bar-label">Вариант 3 — бюджетная сборка</div><div class="bar-bg"><div class="bar-fill" data-width="70%">70</div></div></div>
+</div>
+<div class="chart-card performance-chart">
+<div class="chart-title">Ремонтопригодность и апгрейд</div>
+<div class="bar-chart"><div class="bar-label">Вариант 1 — готовый ПК</div><div class="bar-bg"><div class="bar-fill" data-width="72%">72</div></div></div>
+<div class="bar-chart"><div class="bar-label">Вариант 2 — самостоятельная сборка</div><div class="bar-bg"><div class="bar-fill" data-width="100%">100</div></div></div>
+<div class="bar-chart"><div class="bar-label">Вариант 3 — бюджетная сборка</div><div class="bar-bg"><div class="bar-fill" data-width="88%">88</div></div></div>
+</div>
+<div class="chart-card performance-chart">
+<div class="chart-title">Баланс цена / производительность</div>
+<div class="bar-chart"><div class="bar-label">Вариант 1 — готовые ПК</div><div class="bar-bg"><div class="bar-fill" data-width="86%">86</div></div></div>
+<div class="bar-chart"><div class="bar-label">Вариант 2 — рекомендуемый</div><div class="bar-bg"><div class="bar-fill" data-width="94%">94</div></div></div>
+<div class="bar-chart"><div class="bar-label">Вариант 3 — экономия бюджета</div><div class="bar-bg"><div class="bar-fill" data-width="78%">78</div></div></div>
+</div>
+<div class="chart-card performance-chart">
+<div class="chart-title">Производительность всей IT-зоны с учётом ноутбуков</div>
+<div class="bar-chart"><div class="bar-label">Вариант 1 — 8 ПК i5 + 10 ноутбуков i5</div><div class="bar-bg"><div class="bar-fill" data-width="96%">96</div></div></div>
+<div class="bar-chart"><div class="bar-label">Вариант 2 — 8 сборок i5 + 10 ноутбуков i5</div><div class="bar-bg"><div class="bar-fill" data-width="97%">97</div></div></div>
+<div class="bar-chart"><div class="bar-label">Вариант 3 — 8 ПК i3 + 6 бюджетных ноутбуков</div><div class="bar-bg"><div class="bar-fill" data-width="61%">61</div></div></div>
+</div>
+<div class="chart-card performance-chart">
+<div class="chart-title">Риск внедрения: чем выше, тем безопаснее сценарий</div>
+<div class="bar-chart"><div class="bar-label">Вариант 1 — готовое оборудование</div><div class="bar-bg"><div class="bar-fill" data-width="96%">96</div></div></div>
+<div class="bar-chart"><div class="bar-label">Вариант 2 — нужен контроль сборки</div><div class="bar-bg"><div class="bar-fill" data-width="84%">84</div></div></div>
+<div class="bar-chart"><div class="bar-label">Вариант 3 — ниже требования к внедрению</div><div class="bar-bg"><div class="bar-fill" data-width="88%">88</div></div></div>
+</div>
+<div class="chart-card performance-chart">
+<div class="chart-title">Визуальное соответствие премиальной 3D-модели</div>
+<div class="bar-chart"><div class="bar-label">Вариант 1 — премиальный уровень</div><div class="bar-bg"><div class="bar-fill" data-width="96%">96</div></div></div>
+<div class="bar-chart"><div class="bar-label">Вариант 2 — премиальный, но рациональный</div><div class="bar-bg"><div class="bar-fill" data-width="98%">98</div></div></div>
+<div class="bar-chart"><div class="bar-label">Вариант 3 — упрощённая визуальная реализация</div><div class="bar-bg"><div class="bar-fill" data-width="68%">68</div></div></div>
+</div>
+<div class="variant-block">
+<div class="variant-head">
+<div>
+<div class="variant-title">Вариант 1 — готовые собранные компьютеры</div>
+<div class="small-muted">Подходит, если важны скорость запуска, гарантия готового решения и минимум ручной сборки.</div>
+</div>
+<div class="variant-total">Итого: 1 966 372 ₽</div>
+</div>
+<div class="table-wrapper"><table>
+<thead><tr><th>Категория</th><th>Наименование</th><th>Кол-во</th><th>Где купить / ссылка</th><th>Цена</th></tr></thead>
+<tbody>
+<tr><td>Компьютеры</td><td>Готовый ПК iRU Planio 310H6SEV Mini: Intel Core i5-12400, 16 ГБ, SSD 512 ГБ</td><td>8</td><td class="link-muted"><a href="https://www.citilink.ru/catalog/kompyutery--kompyutery-s16-gb-ozu/" target="_blank">Citilink / аналог готового ПК</a></td><td>55 800 ₽ за 1 ед.</td></tr>
+<tr><td>Мониторы</td><td>Xiaomi Redmi Gaming Monitor 27" X27GQ, 2K, 165 Гц</td><td>8</td><td class="link-muted"><a href="https://mi.moscow/product/monitor-xiaomi-redmi-gaming-monitor-27-x27gq-2025g-versiya-165hz-p27qca-rx" target="_blank">Mi Moscow</a></td><td>12 990 ₽ за 1 ед.</td></tr>
+<tr><td>Ноутбуки</td><td>Rikor Pro 5 15, Intel Core i5-1235U, 16 ГБ, SSD 512 ГБ</td><td>10</td><td class="link-muted"><a href="https://tm-shop.ru/product/noutbuk-rikor-pro-5-15-oh-03156ipsintel-core-i5-1235u16gb512gb-ssdiris-xe-graphicswindows" target="_blank">TM-shop / Rikor</a></td><td>46 699 ₽ за 1 ед.</td></tr>
+<tr><td>Периферия</td><td>Logitech MK120, клавиатура + мышь</td><td>8</td><td class="link-muted"><a href="https://www.citilink.ru/product/komplekt-klaviatura-mysh-logitech-mk120-usb-provodnoi-chernyi-920-0025-1854950/" target="_blank">Citilink</a></td><td>2 325 ₽ за 1 компл.</td></tr>
+<tr><td>ТВ-панель</td><td>Xiaomi TV A Pro 75" 2026, 4K QLED</td><td>1</td><td class="link-muted"><a href="https://xiaomiexclusive.ru/item/televizor-xiaomi-tv-a-pro-75-2026/" target="_blank">Xiaomi Exclusive</a></td><td>69 990 ₽</td></tr>
+<tr><td>Столы</td><td>Ergostol DeskUp, регулируемый стол 120×60</td><td>12</td><td class="link-muted"><a href="https://market.yandex.ru/card/stol-s-podyemnym-mekhanizmom-s-regulirovkoy-vysoty-odnomotornyy-ergostol-deskup-4r-s-zakruglennymi-uglami-120kh60-sm-derevo-loftchernyy/4433871449" target="_blank">Яндекс Маркет / Ergostol</a></td><td>13 501 ₽ за 1 ед.</td></tr>
+<tr><td>Кресла</td><td>Defo Direct New, эргономичное офисное кресло</td><td>24</td><td class="link-muted"><a href="https://www.defo.ru/catalog/direct-new-ekokozha/" target="_blank">Defo</a></td><td>8 810 ₽ за 1 ед.</td></tr>
+<tr><td>Переговорная</td><td>Defo Direct CF, конференц-кресло</td><td>4</td><td class="link-muted"><a href="https://www.defo.ru/catalog/direct-cf/" target="_blank">Defo</a></td><td>7 120 ₽ за 1 ед.</td></tr>
+<tr><td>Лаунж</td><td>Бескаркасные пуфы</td><td>4</td><td class="link-muted"><a href="https://www.ozon.ru/category/kresla-meshki-i-pufy-14524/" target="_blank">Ozon / Яндекс Маркет</a></td><td>4 000 ₽ за 1 ед.</td></tr>
+<tr><td>Хранение</td><td>Стеллаж / тумба / кофе-пойнт</td><td>1 компл.</td><td class="link-muted"><a href="https://www.hoff.ru/catalog/gostinaya/stellazhi/" target="_blank">Hoff / Ozon</a></td><td>22 000 ₽</td></tr>
+<tr><td>Сеть</td><td>TP-Link TL-SG1428PE, 26 портов, PoE+</td><td>1</td><td class="link-muted"><a href="https://tp-link.ru/catalog/kommutatory/smart/tl-sg1428pe/" target="_blank">TP-Link</a></td><td>24 190 ₽</td></tr>
+<tr><td>Wi‑Fi</td><td>Netcraze Orbiter 6, Wi‑Fi 6 AX3000</td><td>3</td><td class="link-muted"><a href="https://shop.netcraze.ru/product/netcraze-orbiter-6" target="_blank">Netcraze</a></td><td>10 990 ₽ за 1 ед.</td></tr>
+<tr><td>Электрика</td><td>Розеточные блоки, кабель-каналы, кабель-менеджмент</td><td>20 компл.</td><td class="link-muted"><a href="https://www.etm.ru/catalog/1610_kabel_kanaly" target="_blank">ЭТМ / ВсеИнструменты</a></td><td>2 000 ₽ за 1 компл.</td></tr>
+<tr><td>Бронирование</td><td>Raspberry Pi 4 + 7" сенсорный экран для системы бронирования</td><td>3</td><td class="link-muted"><a href="https://amperkot.ru/products/7_sensornyiy_displey_raspberry_pi_touch_display_2_720x1280/41773156.html" target="_blank">Amperkot</a></td><td>18 340 ₽ за 1 компл.</td></tr>
+<tr><td>Защита питания</td><td>ИБП Exegate SpecialPro 2000VA</td><td>1</td><td class="link-muted"><a href="https://www.citilink.ru/product/ibp-exegate-specialpro-ex292606rus-2000va-1932562/" target="_blank">Citilink</a></td><td>8 000 ₽</td></tr>
+<tr><td>Освещение</td><td>LED-панели Сириус А 600×600</td><td>20</td><td class="link-muted"><a href="https://www.vseinstrumenti.ru/tag-page/led-paneli-potolochnye-2535590/" target="_blank">ВсеИнструменты</a></td><td>1 268 ₽ за 1 ед.</td></tr>
+<tr><td>Отделка</td><td>Акустические панели, ковровое покрытие, зонирование</td><td>1 компл.</td><td class="link-muted"><a href="https://petrovich.ru/catalog/" target="_blank">Лемана ПРО / Петрович</a></td><td>70 000 ₽</td></tr>
+<tr><td>Декор</td><td>Краска, растения, кашпо, настенный декор</td><td>1 компл.</td><td class="link-muted"><a href="https://www.ozon.ru/category/iskusstvennye-rasteniya-15073/" target="_blank">Ozon / Лемана ПРО</a></td><td>45 000 ₽</td></tr>
+<tr><td>Работы</td><td>Электромонтаж, сборка мебели, монтаж освещения и кабель-менеджмент</td><td>1 усл.</td><td class="link-muted"><a href="https://profi.ru/remont/electromontazh/" target="_blank">Профи.ру / подрядчик</a></td><td>120 000 ₽</td></tr>
+</tbody>
+</table></div>
+<div class="budget-summary">
+<div class="budget-chip"><strong>Компьютерная техника</strong><span>1 105 900 ₽</span></div>
+<div class="budget-chip"><strong>Мебель</strong><span>439 932 ₽</span></div>
+<div class="budget-chip"><strong>Сеть и умный коворкинг</strong><span>160 180 ₽</span></div>
+<div class="budget-chip"><strong>Отделка, свет, декор и работы</strong><span>260 360 ₽</span></div>
+</div>
+<div class="note"><strong>Обоснование:</strong> готовые системные блоки позволяют быстрее запустить аудиторию: компьютеры уже собраны, протестированы и готовы к установке. Конфигурация Intel Core i5, 16 ГБ ОЗУ и SSD 512 ГБ подходит для программирования, аналитики, офисной работы и базовой 3D-визуализации. Минус варианта — почти весь лимит бюджета выбран: остаётся только 33 628 ₽ резерва.</div>
+</div>
+<div class="variant-block recommended">
+<div class="variant-head">
+<div>
+<div class="variant-title">Вариант 2 — самостоятельная сборка компьютеров</div>
+<div class="small-muted">Рекомендуемый вариант: рациональная цена, прозрачные комплектующие и лучший потенциал обслуживания.</div>
+</div>
+<div class="variant-total">Итого: 1 941 196 ₽</div>
+</div>
+<div class="table-wrapper"><table>
+<thead><tr><th>Категория</th><th>Наименование</th><th>Кол-во</th><th>Где купить / ссылка</th><th>Цена</th></tr></thead>
+<tbody>
+<tr><td>Процессоры</td><td>Intel Core i5-12400 OEM</td><td>8</td><td class="link-muted"><a href="https://www.dns-shop.ru/product/d3c6a3f806feed20/processor-intel-core-i5-12400-oem/" target="_blank">DNS / Яндекс Маркет</a></td><td>20 799 ₽ за 1 ед.</td></tr>
+<tr><td>Материнские платы</td><td>GIGABYTE H610M K DDR4 / аналог H610</td><td>8</td><td class="link-muted"><a href="https://www.dns-shop.ru/product/characteristics/910dd8a19625ed20/materinskaa-plata-gigabyte-h610m-k-ddr4/" target="_blank">DNS</a></td><td>6 999 ₽ за 1 ед.</td></tr>
+<tr><td>ОЗУ</td><td>16 ГБ DDR4 3200 МГц</td><td>8</td><td class="link-muted"><a href="https://market.yandex.ru/category/operativnaya-pamyat-16-gb-ddr4" target="_blank">Яндекс Маркет</a></td><td>8 391 ₽ за 1 ед.</td></tr>
+<tr><td>SSD</td><td>NVMe SSD 512 ГБ</td><td>8</td><td class="link-muted"><a href="https://market.yandex.ru/category/ssd-diski-dns-nvme" target="_blank">Яндекс Маркет / DNS</a></td><td>7 119 ₽ за 1 ед.</td></tr>
+<tr><td>Корпуса</td><td>Корпус ATX / Micro-ATX</td><td>8</td><td class="link-muted"><a href="https://market.yandex.ru/category/kompyuternyye-korpusa" target="_blank">Яндекс Маркет</a></td><td>4 046 ₽ за 1 ед.</td></tr>
+<tr><td>Блоки питания</td><td>DEEPCOOL PF500 500W / аналог</td><td>8</td><td class="link-muted"><a href="https://www.dns-shop.ru/catalog/recipe/e9cf1dade0d0744e/500w/" target="_blank">DNS</a></td><td>2 799 ₽ за 1 ед.</td></tr>
+<tr><td>Охлаждение и сборка</td><td>Кулер LGA1700, термопаста, расходники, сборка</td><td>8</td><td class="link-muted"><a href="https://www.dns-shop.ru/catalog/recipe/db47a22258bb451a/lga-1700/" target="_blank">DNS / мастерская</a></td><td>2 500 ₽ за 1 компл.</td></tr>
+<tr><td>Мониторы</td><td>Xiaomi Redmi Gaming Monitor 27" X27GQ, 2K, 165 Гц</td><td>8</td><td class="link-muted"><a href="https://mi.moscow/product/monitor-xiaomi-redmi-gaming-monitor-27-x27gq-2025g-versiya-165hz-p27qca-rx" target="_blank">Mi Moscow</a></td><td>12 990 ₽ за 1 ед.</td></tr>
+<tr><td>Ноутбуки</td><td>Rikor Pro 5 15, Intel Core i5-1235U, 16 ГБ, SSD 512 ГБ</td><td>10</td><td class="link-muted"><a href="https://tm-shop.ru/product/noutbuk-rikor-pro-5-15-oh-03156ipsintel-core-i5-1235u16gb512gb-ssdiris-xe-graphicswindows" target="_blank">TM-shop / Rikor</a></td><td>46 699 ₽ за 1 ед.</td></tr>
+<tr><td>Периферия</td><td>Logitech MK120, клавиатура + мышь</td><td>8</td><td class="link-muted"><a href="https://www.citilink.ru/product/komplekt-klaviatura-mysh-logitech-mk120-usb-provodnoi-chernyi-920-0025-1854950/" target="_blank">Citilink</a></td><td>2 325 ₽ за 1 компл.</td></tr>
+<tr><td>ТВ-панель</td><td>Xiaomi TV A Pro 75" 2026, 4K QLED</td><td>1</td><td class="link-muted"><a href="https://xiaomiexclusive.ru/item/televizor-xiaomi-tv-a-pro-75-2026/" target="_blank">Xiaomi Exclusive</a></td><td>69 990 ₽</td></tr>
+<tr><td>Столы</td><td>Ergostol DeskUp, регулируемый стол 120×60</td><td>12</td><td class="link-muted"><a href="https://market.yandex.ru/card/stol-s-podyemnym-mekhanizmom-s-regulirovkoy-vysoty-odnomotornyy-ergostol-deskup-4r-s-zakruglennymi-uglami-120kh60-sm-derevo-loftchernyy/4433871449" target="_blank">Яндекс Маркет / Ergostol</a></td><td>13 501 ₽ за 1 ед.</td></tr>
+<tr><td>Кресла</td><td>Defo Direct New, эргономичное офисное кресло</td><td>24</td><td class="link-muted"><a href="https://www.defo.ru/catalog/direct-new-ekokozha/" target="_blank">Defo</a></td><td>8 810 ₽ за 1 ед.</td></tr>
+<tr><td>Переговорная</td><td>Defo Direct CF, конференц-кресло</td><td>4</td><td class="link-muted"><a href="https://www.defo.ru/catalog/direct-cf/" target="_blank">Defo</a></td><td>7 120 ₽ за 1 ед.</td></tr>
+<tr><td>Лаунж</td><td>Бескаркасные пуфы</td><td>4</td><td class="link-muted"><a href="https://www.ozon.ru/category/kresla-meshki-i-pufy-14524/" target="_blank">Ozon / Яндекс Маркет</a></td><td>4 000 ₽ за 1 ед.</td></tr>
+<tr><td>Хранение</td><td>Стеллаж / тумба / кофе-пойнт</td><td>1 компл.</td><td class="link-muted"><a href="https://www.hoff.ru/catalog/gostinaya/stellazhi/" target="_blank">Hoff / Ozon</a></td><td>22 000 ₽</td></tr>
+<tr><td>Сеть</td><td>TP-Link TL-SG1428PE, 26 портов, PoE+</td><td>1</td><td class="link-muted"><a href="https://tp-link.ru/catalog/kommutatory/smart/tl-sg1428pe/" target="_blank">TP-Link</a></td><td>24 190 ₽</td></tr>
+<tr><td>Wi‑Fi</td><td>Netcraze Orbiter 6, Wi‑Fi 6 AX3000</td><td>3</td><td class="link-muted"><a href="https://shop.netcraze.ru/product/netcraze-orbiter-6" target="_blank">Netcraze</a></td><td>10 990 ₽ за 1 ед.</td></tr>
+<tr><td>Электрика</td><td>Розеточные блоки, кабель-каналы, кабель-менеджмент</td><td>20 компл.</td><td class="link-muted"><a href="https://www.etm.ru/catalog/1610_kabel_kanaly" target="_blank">ЭТМ / ВсеИнструменты</a></td><td>2 000 ₽ за 1 компл.</td></tr>
+<tr><td>Бронирование</td><td>Raspberry Pi 4 + 7" сенсорный экран для системы бронирования</td><td>3</td><td class="link-muted"><a href="https://amperkot.ru/products/7_sensornyiy_displey_raspberry_pi_touch_display_2_720x1280/41773156.html" target="_blank">Amperkot</a></td><td>18 340 ₽ за 1 компл.</td></tr>
+<tr><td>Защита питания</td><td>ИБП Exegate SpecialPro 2000VA</td><td>1</td><td class="link-muted"><a href="https://www.citilink.ru/product/ibp-exegate-specialpro-ex292606rus-2000va-1932562/" target="_blank">Citilink</a></td><td>8 000 ₽</td></tr>
+<tr><td>Освещение</td><td>LED-панели Сириус А 600×600</td><td>20</td><td class="link-muted"><a href="https://www.vseinstrumenti.ru/tag-page/led-paneli-potolochnye-2535590/" target="_blank">ВсеИнструменты</a></td><td>1 268 ₽ за 1 ед.</td></tr>
+<tr><td>Отделка</td><td>Акустические панели, ковровое покрытие, зонирование</td><td>1 компл.</td><td class="link-muted"><a href="https://petrovich.ru/catalog/" target="_blank">Лемана ПРО / Петрович</a></td><td>70 000 ₽</td></tr>
+<tr><td>Декор</td><td>Краска, растения, кашпо, настенный декор</td><td>1 компл.</td><td class="link-muted"><a href="https://www.ozon.ru/category/iskusstvennye-rasteniya-15073/" target="_blank">Ozon / Лемана ПРО</a></td><td>45 000 ₽</td></tr>
+<tr><td>Работы</td><td>Электромонтаж, сборка мебели, монтаж освещения и кабель-менеджмент</td><td>1 усл.</td><td class="link-muted"><a href="https://profi.ru/remont/electromontazh/" target="_blank">Профи.ру / подрядчик</a></td><td>120 000 ₽</td></tr>
+</tbody>
+</table></div>
+<div class="budget-summary">
+<div class="budget-chip"><strong>Самостоятельная сборка ПК</strong><span>421 224 ₽</span></div>
+<div class="budget-chip"><strong>Остальная компьютерная техника</strong><span>659 500 ₽</span></div>
+<div class="budget-chip"><strong>Мебель</strong><span>439 932 ₽</span></div>
+<div class="budget-chip"><strong>Сеть и умный коворкинг</strong><span>160 180 ₽</span></div>
+<div class="budget-chip"><strong>Отделка, свет, декор и работы</strong><span>260 360 ₽</span></div>
+</div>
+<div class="note"><strong>Обоснование:</strong> самостоятельная сборка делает конфигурацию прозрачной: процессор, память, SSD, блок питания и корпус можно обслуживать отдельно. Для учебной аудитории это сильнее готового решения, потому что техника будет постоянно использоваться и должна быть ремонтопригодной. Intel Core i5-12400, 16 ГБ DDR4 и NVMe SSD 512 ГБ дают достаточный запас для программирования, офисных задач, таблиц, презентаций и проектной работы.</div>
+</div>
+<div class="variant-block">
+<div class="variant-head">
+<div>
+<div class="variant-title">Вариант 3 — самый бюджетный вариант</div>
+<div class="small-muted">Сохраняет базовую функцию коворкинга, но снижает класс техники, мебели и системы бронирования.</div>
+</div>
+<div class="variant-total">Итого: 1 074 582 ₽</div>
+</div>
+<div class="table-wrapper"><table>
+<thead><tr><th>Категория</th><th>Наименование</th><th>Кол-во</th><th>Где купить / ссылка</th><th>Цена</th></tr></thead>
+<tbody>
+<tr><td>Процессоры</td><td>Intel Core i3-12100 OEM, встроенная графика UHD 730</td><td>8</td><td class="link-muted"><a href="https://www.citilink.ru/product/processor-intel-core-i3-12100-lga-1700-oem-cm8071504651012-srl62-1779455/" target="_blank">Citilink / DNS</a></td><td>14 700 ₽ за 1 ед.</td></tr>
+<tr><td>Материнские платы</td><td>MSI / GIGABYTE H610M DDR4</td><td>8</td><td class="link-muted"><a href="https://www.dns-shop.ru/product/336596587cd2ed20/materinskaa-plata-msi-pro-h610m-b-ddr4/" target="_blank">DNS</a></td><td>6 499 ₽ за 1 ед.</td></tr>
+<tr><td>ОЗУ</td><td>16 ГБ DDR4 3200 МГц</td><td>8</td><td class="link-muted"><a href="https://market.yandex.ru/category/operativnaya-pamyat-16-gb-ddr4" target="_blank">Яндекс Маркет</a></td><td>8 391 ₽ за 1 ед.</td></tr>
+<tr><td>SSD</td><td>NVMe SSD 512 ГБ</td><td>8</td><td class="link-muted"><a href="https://market.yandex.ru/category/ssd-diski-dns-nvme" target="_blank">Яндекс Маркет / DNS</a></td><td>7 119 ₽ за 1 ед.</td></tr>
+<tr><td>Корпуса</td><td>Бюджетный корпус ATX / Micro-ATX</td><td>8</td><td class="link-muted"><a href="https://market.yandex.ru/category/kompyuternyye-korpusa" target="_blank">Яндекс Маркет</a></td><td>3 327 ₽ за 1 ед.</td></tr>
+<tr><td>Блоки питания</td><td>DEEPCOOL PF400 400W / аналог</td><td>8</td><td class="link-muted"><a href="https://www.dns-shop.ru/catalog/recipe/795cf36e8760ee6f/400w/" target="_blank">DNS</a></td><td>2 350 ₽ за 1 ед.</td></tr>
+<tr><td>Охлаждение и сборка</td><td>Кулер, термопаста, расходники, сборка</td><td>8</td><td class="link-muted"><a href="https://www.dns-shop.ru/catalog/17a9cc2d16404e77/kulery-dlya-processorov/" target="_blank">DNS / мастерская</a></td><td>1 500 ₽ за 1 компл.</td></tr>
+<tr><td>Мониторы</td><td>Acer SH242YP1bih 23.8", IPS, Full HD</td><td>8</td><td class="link-muted"><a href="https://wit.ru/parts/um.qs2cd.104-monitor-acer-sh242yp1bih-23.8-ips-16-9-250cd-178gr-178gr-1920x1080-144hz-1ms-hdmi-vga-port-black-1151805" target="_blank">WIT / Citilink</a></td><td>8 790 ₽ за 1 ед.</td></tr>
+<tr><td>Ноутбуки</td><td>Бюджетный ноутбук 15.6", Intel Core i3 / 8 ГБ / SSD 256 ГБ</td><td>6</td><td class="link-muted"><a href="https://market.yandex.ru/category/noutbuki-s-protsessorom-intel-core-i3" target="_blank">Яндекс Маркет</a></td><td>23 303 ₽ за 1 ед.</td></tr>
+<tr><td>Периферия</td><td>Logitech MK120, клавиатура + мышь</td><td>8</td><td class="link-muted"><a href="https://www.citilink.ru/product/komplekt-klaviatura-mysh-logitech-mk120-usb-provodnoi-chernyi-920-0025-1854950/" target="_blank">Citilink</a></td><td>2 325 ₽ за 1 компл.</td></tr>
+<tr><td>ТВ-панель</td><td>Xiaomi TV A Pro 65" 2026, 4K QLED</td><td>1</td><td class="link-muted"><a href="https://www.ozon.ru/category/xiaomi-tv-65-pro/" target="_blank">Ozon / DNS</a></td><td>49 490 ₽</td></tr>
+<tr><td>Столы</td><td>Письменный стол 120×70</td><td>12</td><td class="link-muted"><a href="https://www.ozon.ru/category/pismennyy-stol12070/" target="_blank">Ozon</a></td><td>4 814 ₽ за 1 ед.</td></tr>
+<tr><td>Кресла</td><td>Бюджетные офисные кресла с сетчатой спинкой</td><td>20</td><td class="link-muted"><a href="https://market.yandex.ru/search?text=%D0%BA%D1%80%D0%B5%D1%81%D0%BB%D0%BE%20%D0%B7%D0%B0%206000%20%D1%80%D1%83%D0%B1%D0%BB%D0%B5%D0%B9" target="_blank">Яндекс Маркет</a></td><td>5 917 ₽ за 1 ед.</td></tr>
+<tr><td>Переговорная</td><td>Простые стулья для переговорной зоны</td><td>4</td><td class="link-muted"><a href="https://www.ozon.ru/category/stulya-14554/" target="_blank">Ozon / Яндекс Маркет</a></td><td>4 000 ₽ за 1 ед.</td></tr>
+<tr><td>Лаунж</td><td>Бескаркасные пуфы</td><td>4</td><td class="link-muted"><a href="https://www.ozon.ru/category/kresla-meshki-i-pufy-14524/" target="_blank">Ozon / Яндекс Маркет</a></td><td>3 600 ₽ за 1 ед.</td></tr>
+<tr><td>Хранение</td><td>Стеллаж / тумба / кофе-пойнт</td><td>1 компл.</td><td class="link-muted"><a href="https://www.hoff.ru/catalog/gostinaya/stellazhi/" target="_blank">Ozon / Hoff</a></td><td>15 000 ₽</td></tr>
+<tr><td>Сеть</td><td>TP-Link TL-SG1016D, 16-портовый гигабитный коммутатор</td><td>1</td><td class="link-muted"><a href="https://tp-link.ru/catalog/kommutatory/tl-sg1016d/" target="_blank">TP-Link / DNS</a></td><td>5 990 ₽</td></tr>
+<tr><td>Wi‑Fi</td><td>Wi‑Fi 6 роутер / точка доступа Keenetic / аналог</td><td>2</td><td class="link-muted"><a href="https://yandex.ru/search?text=Keenetic%20WiFi%20%D1%80%D0%BE%D1%83%D1%82%D0%B5%D1%80" target="_blank">Яндекс Маркет</a></td><td>5 990 ₽ за 1 ед.</td></tr>
+<tr><td>Электрика</td><td>Розеточные блоки, кабель-каналы, кабель-менеджмент</td><td>15 компл.</td><td class="link-muted"><a href="https://www.etm.ru/catalog/1610_kabel_kanaly" target="_blank">ЭТМ / ВсеИнструменты</a></td><td>1 500 ₽ за 1 компл.</td></tr>
+<tr><td>Защита питания</td><td>ИБП Exegate SpecialPro 2000VA</td><td>1</td><td class="link-muted"><a href="https://www.citilink.ru/product/ibp-exegate-specialpro-ex292606rus-2000va-1932562/" target="_blank">Citilink</a></td><td>8 000 ₽</td></tr>
+<tr><td>Освещение</td><td>LED-панели Сириус А 600×600</td><td>16</td><td class="link-muted"><a href="https://www.vseinstrumenti.ru/tag-page/led-paneli-potolochnye-2535590/" target="_blank">ВсеИнструменты</a></td><td>1 268 ₽ за 1 ед.</td></tr>
+<tr><td>Отделка</td><td>Частичная отделка, акустические элементы, зонирование</td><td>1 компл.</td><td class="link-muted"><a href="https://petrovich.ru/catalog/" target="_blank">Лемана ПРО / Петрович</a></td><td>40 000 ₽</td></tr>
+<tr><td>Декор</td><td>Краска, растения, кашпо, настенный декор</td><td>1 компл.</td><td class="link-muted"><a href="https://www.ozon.ru/category/iskusstvennye-rasteniya-15073/" target="_blank">Ozon / Лемана ПРО</a></td><td>25 000 ₽</td></tr>
+<tr><td>Работы</td><td>Электромонтаж, сборка мебели, монтаж освещения</td><td>1 усл.</td><td class="link-muted"><a href="https://profi.ru/remont/electromontazh/" target="_blank">Профи.ру / подрядчик</a></td><td>90 000 ₽</td></tr>
+</tbody>
+</table></div>
+<div class="budget-summary">
+<div class="budget-chip"><strong>Бюджетная сборка ПК</strong><span>351 088 ₽</span></div>
+<div class="budget-chip"><strong>Остальная компьютерная техника</strong><span>278 228 ₽</span></div>
+<div class="budget-chip"><strong>Мебель</strong><span>221 508 ₽</span></div>
+<div class="budget-chip"><strong>Сеть, электрика и питание</strong><span>48 470 ₽</span></div>
+<div class="budget-chip"><strong>Отделка, свет, декор и работы</strong><span>175 288 ₽</span></div>
+</div>
+<div class="note"><strong>Обоснование:</strong> самый бюджетный вариант рассчитан на быстрое и экономичное обновление аудитории. Он сохраняет основные функции коворкинга: рабочие места с ПК, мобильную зону, ТВ-панель, Wi‑Fi, кабель-менеджмент, освещение и зону отдыха. Взамен снижается премиальность и запас мощности: используются Core i3, 24" Full HD-мониторы, меньше ноутбуков и более простая мебель.</div>
+</div>
+</div>
+<div class="subsection-title">Галерея: 8 ракурсов</div>
+<div class="grid-2">
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=model3d_1'" src="model3d_1.jpg"/><p><strong>Вид 1 – Общий план</strong></p></div>
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=model3d_2'" src="model3d_2.jpg"/><p><strong>Вид 2 – IT‑кластер</strong></p></div>
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=model3d_3'" src="model3d_3.jpg"/><p><strong>Вид 3 – Тихая зона</strong></p></div>
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=model3d_4'" src="model3d_4.jpg"/><p><strong>Вид 4 – Лаунж</strong></p></div>
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=model3d_5'" src="model3d_5.jpg"/><p><strong>Вид 5 – Переговорная</strong></p></div>
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=model3d_6'" src="model3d_6.jpg"/><p><strong>Вид 6 – Освещение</strong></p></div>
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=model3d_7'" src="model3d_7.jpg"/><p><strong>Вид 7 – Сверху</strong></p></div>
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=model3d_8'" src="model3d_8.jpg"/><p><strong>Вид 8 – Детали</strong></p></div>
+</div>
+</div>
+<!-- 3D МОДЕЛЬ ДЕНИСА -->
+<div class="page" id="model3d_2">
+<div class="section-title">3D модель 2 • Чижиков Д.К.</div>
+<div class="note">
+<strong>Разработчик:</strong> Чижиков Денис Кириллович<br/>
+<strong>Инструмент:</strong> Live Home 3D Pro<br/>
+<strong>Описание модели:</strong> Пространство разделено на функциональные зоны: рабочий блок с компьютерными местами, зона отдыха с мягкой мебелью, презентационная часть и инфраструктурный контур. Концепция делает аудиторию более гибкой: её можно использовать для самостоятельной работы, мини-лекций, групповых встреч и проектных сессий. Визуальная логика строится на спокойных светлых оттенках, аккуратном кабель-менеджменте, мягких местах отдыха и понятной навигации внутри помещения.
+        </div>
+<div class="metric-grid">
+<div class="metric-card">
+<div class="metric-label">Итог сметы</div>
+<div class="metric-value">2 044 660 руб.</div>
+<div class="metric-desc">Полная стоимость по XLSX-файлу Дениса</div>
+</div>
+<div class="metric-card">
+<div class="metric-label">Рабочие места</div>
+<div class="metric-value">8 ПК + 15 ноутбуков</div>
+<div class="metric-desc">Стационарный и мобильный сценарии работы</div>
+</div>
+<div class="metric-card">
+<div class="metric-label">Инфраструктура</div>
+<div class="metric-value">Wi‑Fi 6 + бронирование</div>
+<div class="metric-desc">Сеть, экраны и розеточные блоки</div>
+</div>
+<div class="metric-card">
+<div class="metric-label">Ремонт</div>
+<div class="metric-value">120 000 руб.</div>
+<div class="metric-desc">Обои, потолок и электромонтаж</div>
+</div>
+</div>
+<div class="subsection-title">Смета проекта Дениса</div>
 <div class="table-wrapper"><table>
 <thead><tr><th>Оборудование / работы</th><th>Кол-во</th><th>Цена за ед. (руб)</th><th>Сумма (руб)</th></tr></thead>
 <tbody>
 <tr class="category-row"><td>Офисная техника и компьютеры</td><td></td><td></td><td></td></tr>
 <tr><td>Системный блок (офисный) Intel Core i3 / 16GB RAM</td><td>8</td><td>45 000</td><td>360 000</td></tr>
-<tr><td>Монитор 24&quot; (бюджетный, IPS)</td><td>8</td><td>11 000</td><td>88 000</td></tr>
+<tr><td>Монитор 24" (бюджетный, IPS)</td><td>8</td><td>11 000</td><td>88 000</td></tr>
 <tr><td>Клавиатура + мышь (комплект)</td><td>8</td><td>1 700</td><td>13 600</td></tr>
 <tr><td>Ноутбук Xiaomi Redmi Book 2024 (i5, 16GB)</td><td>15</td><td>53 000</td><td>795 000</td></tr>
 <tr><td>Стул мягкий без колёсиков</td><td>12</td><td>7 900</td><td>94 800</td></tr>
@@ -272,67 +649,88 @@
 <tr class="category-row"><td>Ремонт и электрика</td><td></td><td></td><td></td></tr>
 <tr><td>LED-панель 600x600 (Sirius A)</td><td>20</td><td>940</td><td>18 800</td></tr>
 <tr><td>Кабель-канал + корзины для проводов</td><td>20</td><td>1 700</td><td>34 000</td></tr>
-<tr><td>Система бронирования (RPi 4 + 7&quot; экран)</td><td>3</td><td>18 900</td><td>56 700</td></tr>
+<tr><td>Система бронирования (RPi 4 + 7" экран)</td><td>3</td><td>18 900</td><td>56 700</td></tr>
 <tr><td>Розеточные блоки с USB+RJ45</td><td>20</td><td>2 200</td><td>44 000</td></tr>
 <tr><td>Ремонтные работы (обои, потолок, электромонтаж)</td><td>1</td><td>120 000</td><td>120 000</td></tr>
 <tr class="total-row"><td>ИТОГО</td><td></td><td></td><td>2 044 660</td></tr>
 </tbody></table></div>
-        <div class="subsection-title">Галерея: 8 ракурсов</div>
-        <div class="grid-2">
-            <div class="media-placeholder"><img src="3d1.jpg" onerror="this.src='https://placehold.co/600x400?text=3d1.jpg'"><p><strong>Вид 1</strong></p></div>
-            <div class="media-placeholder"><img src="3d2.jpg" onerror="this.src='https://placehold.co/600x400?text=3d2.jpg'"><p><strong>Вид 2</strong></p></div>
-            <div class="media-placeholder"><img src="3d3.jpg" onerror="this.src='https://placehold.co/600x400?text=3d3.jpg'"><p><strong>Вид 3</strong></p></div>
-            <div class="media-placeholder"><img src="3d4.jpg" onerror="this.src='https://placehold.co/600x400?text=3d4.jpg'"><p><strong>Вид 4</strong></p></div>
-            <div class="media-placeholder"><img src="3d5.jpg" onerror="this.src='https://placehold.co/600x400?text=3d5.jpg'"><p><strong>Вид 5</strong></p></div>
-            <div class="media-placeholder"><img src="3d6.jpg" onerror="this.src='https://placehold.co/600x400?text=3d6.jpg'"><p><strong>Вид 6</strong></p></div>
-            <div class="media-placeholder"><img src="3d7.jpg" onerror="this.src='https://placehold.co/600x400?text=3d7.jpg'"><p><strong>Вид 7</strong></p></div>
-            <div class="media-placeholder"><img src="3d8.jpg" onerror="this.src='https://placehold.co/600x400?text=3d8.jpg'"><p><strong>Вид 8</strong></p></div>
-        </div>
-    </div>
 
-    <!-- 3D МОДЕЛЬ ИЛЬИ (только три фото) -->
-    <div id="model3d_3" class="page">
-        <div class="section-title">3D модель 3 • Яковлев И.В.</div>
-        <div class="note">
-            <strong>Разработчик:</strong> Яковлев Илья Владимирович<br>
-            <strong>Инструмент:</strong> Искусственный интеллект (AI-генерация)<br>
-            <strong>Описание проекта:</strong> Концепция рассчитана на коворкинг на 13 рабочих мест с зоной отдыха и проекционным оборудованием. Акцент сделан на практичность: офисные ПК без переплаты за игровые компоненты, два монитора на место, светлая мебель, эргономичные кресла, пуфы для мобильной зоны отдыха и проектор с экраном для групповых демонстраций.
-            <br><span class="source-pill">Интегрировано из файла: илья.docx</span>
-        </div>
-        <div class="metric-grid">
-
-            <div class="metric-card">
-                <div class="metric-label">Итог сметы</div>
-                <div class="metric-value">1 078 280 руб.</div>
-                <div class="metric-desc">Коворкинг на 13 рабочих мест</div>
-            </div>
-
-            <div class="metric-card">
-                <div class="metric-label">Компьютеры</div>
-                <div class="metric-value">668 590 руб.</div>
-                <div class="metric-desc">13 офисных ПК i5 / 16 ГБ / SSD</div>
-            </div>
-
-            <div class="metric-card">
-                <div class="metric-label">Мониторы</div>
-                <div class="metric-value">120 770 руб.</div>
-                <div class="metric-desc">Acer 24” IPS для рабочих мест</div>
-            </div>
-
-            <div class="metric-card">
-                <div class="metric-label">Проекционная зона</div>
-                <div class="metric-value">38 590 руб.</div>
-                <div class="metric-desc">Проектор Cactus + экран</div>
-            </div>
+<div class="peer-analytics team-analytics">
+<h3>Аналитика модели Дениса <span class="rank-badge orange">требует оптимизации бюджета</span></h3>
+<p class="small-muted">Сильная сторона концепции — насыщенность сценариями: стационарные рабочие места, ноутбуки, мягкая зона, камин, декор, Wi‑Fi и система бронирования. Слабое место — итоговая стоимость выше целевого лимита.</p>
+<div class="analysis-grid">
+<div class="analysis-card"><div class="analysis-number">2 044 660 ₽</div><div class="analysis-label">итог сметы, примерно на 44 660 ₽ выше лимита</div></div>
+<div class="analysis-card"><div class="analysis-number">23</div><div class="analysis-label">единицы вычислительной техники: 8 ПК и 15 ноутбуков</div></div>
+<div class="analysis-card"><div class="analysis-number">3</div><div class="analysis-label">точки Wi‑Fi 6 для равномерного покрытия аудитории</div></div>
+<div class="analysis-card"><div class="analysis-number">120 000 ₽</div><div class="analysis-label">ремонтный резерв на обои, потолок и электромонтаж</div></div>
 </div>
-        <div class="subsection-title">Обоснование выбора</div>
-        <div class="card model-card"><div class="project-text"><p>Выбор товаров обоснован строго по факту: общая стоимость оснащения коворкинга на 13 рабочих мест с зоной отдыха и проекционным оборудованием составила 1 078 280 рублей; из них ПК (сборный офисный на Intel Core i5, 16 ГБ ОЗУ и SSD 512 ГБ) — 668 590 рублей за 13 единиц, так как эта конфигурация оптимальна для быстрой работы с документами и интернетом без переплаты за игровые компоненты; мониторы Acer 24&quot; IPS (1920×1080) — 120 770 рублей за 26 штук (по два на место), поскольку IPS-матрица обеспечивает отличные углы обзора и цветопередачу для комфортной работы; столы белые/кремовые 120×70 см — 57 200 рублей за 13 штук, так как их размер и цвет идеально вписываются в светлую эстетику помещения и рассчитаны на размещение двух мониторов; эргономичные офисные кресла с сетчатой спинкой — 174 330 рублей за 13 единиц, потому что сетка обеспечивает воздухопроницаемость и профилактику усталости спины при длительном сидении; мягкие бескаркасные пуфы (3 штуки) — 10 800 рублей, которые создают мобильную и безопасную зону отдыха; проектор Cactus CS-PRC.05B Full HD — 28 970 рублей, с достаточной для аудитории яркостью; экран Cactus Wallscreen CS-PSW-149x265 — 9 620 рублей для качественной проекции; декор (картины и кактусы) — 8 000 рублей, чтобы оживить интерьер и повысить визуальный комфорт без регулярного ухода.</p></div></div>
-        <div class="subsection-title">Смета проекта Ильи</div>
+<div class="grid-2">
+<div class="chart-card performance-chart">
+<div class="chart-title">Структура бюджета Дениса</div>
+<div class="bar-chart"><div class="bar-label">Техника и ноутбуки</div><div class="bar-bg"><div class="bar-fill" data-width="61%">≈ 1.26 млн ₽</div></div></div>
+<div class="bar-chart"><div class="bar-label">Мебель и декор</div><div class="bar-bg"><div class="bar-fill" data-width="21%">≈ 0.43 млн ₽</div></div></div>
+<div class="bar-chart"><div class="bar-label">Инфраструктура и ремонт</div><div class="bar-bg"><div class="bar-fill" data-width="18%">≈ 0.36 млн ₽</div></div></div>
+</div>
+<div class="chart-card performance-chart">
+<div class="chart-title">Функциональная оценка модели</div>
+<div class="bar-chart"><div class="bar-label">Мобильность за счёт ноутбуков</div><div class="bar-bg"><div class="bar-fill" data-width="95%">95</div></div></div>
+<div class="bar-chart"><div class="bar-label">Рабочая производительность</div><div class="bar-bg"><div class="bar-fill" data-width="78%">78</div></div></div>
+<div class="bar-chart"><div class="bar-label">Комфорт и лаунж</div><div class="bar-bg"><div class="bar-fill" data-width="88%">88</div></div></div>
+<div class="bar-chart"><div class="bar-label">Бюджетная дисциплина</div><div class="bar-bg"><div class="bar-fill" data-width="68%">68</div></div></div>
+</div>
+</div>
+<div class="recommend-box"><strong>Вывод по Денису:</strong> концепция хорошо раскрывает идею гибкого коворкинга, но для попадания в лимит стоит сократить декоративные позиции: часть картин, камин или количество мягкой мебели. Тогда модель станет финансово устойчивой без потери основного смысла.</div>
+</div>
+<div class="subsection-title">Галерея: 8 ракурсов</div>
+<div class="grid-2">
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=3d1.jpg'" src="3d1.jpg"/><p><strong>Вид 1</strong></p></div>
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=3d2.jpg'" src="3d2.jpg"/><p><strong>Вид 2</strong></p></div>
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=3d3.jpg'" src="3d3.jpg"/><p><strong>Вид 3</strong></p></div>
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=3d4.jpg'" src="3d4.jpg"/><p><strong>Вид 4</strong></p></div>
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=3d5.jpg'" src="3d5.jpg"/><p><strong>Вид 5</strong></p></div>
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=3d6.jpg'" src="3d6.jpg"/><p><strong>Вид 6</strong></p></div>
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=3d7.jpg'" src="3d7.jpg"/><p><strong>Вид 7</strong></p></div>
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=3d8.jpg'" src="3d8.jpg"/><p><strong>Вид 8</strong></p></div>
+</div>
+</div>
+<!-- 3D МОДЕЛЬ ИЛЬИ (только три фото) -->
+<div class="page" id="model3d_3">
+<div class="section-title">3D модель 3 • Яковлев И.В.</div>
+<div class="note">
+<strong>Разработчик:</strong> Яковлев Илья Владимирович<br/>
+<strong>Инструмент:</strong> Искусственный интеллект (AI-генерация)<br/>
+<strong>Описание проекта:</strong> Концепция рассчитана на коворкинг на 13 рабочих мест с зоной отдыха и проекционным оборудованием. Акцент сделан на практичность: офисные ПК без переплаты за игровые компоненты, два монитора на место, светлая мебель, эргономичные кресла, пуфы для мобильной зоны отдыха и проектор с экраном для групповых демонстраций.
+        </div>
+<div class="metric-grid">
+<div class="metric-card">
+<div class="metric-label">Итог сметы</div>
+<div class="metric-value">1 078 280 руб.</div>
+<div class="metric-desc">Коворкинг на 13 рабочих мест</div>
+</div>
+<div class="metric-card">
+<div class="metric-label">Компьютеры</div>
+<div class="metric-value">668 590 руб.</div>
+<div class="metric-desc">13 офисных ПК i5 / 16 ГБ / SSD</div>
+</div>
+<div class="metric-card">
+<div class="metric-label">Мониторы</div>
+<div class="metric-value">120 770 руб.</div>
+<div class="metric-desc">Acer 24” IPS для рабочих мест</div>
+</div>
+<div class="metric-card">
+<div class="metric-label">Проекционная зона</div>
+<div class="metric-value">38 590 руб.</div>
+<div class="metric-desc">Проектор Cactus + экран</div>
+</div>
+</div>
+<div class="subsection-title">Обоснование выбора</div>
+<div class="card model-card"><div class="project-text"><p>Выбор товаров обоснован строго по факту: общая стоимость оснащения коворкинга на 13 рабочих мест с зоной отдыха и проекционным оборудованием составила 1 078 280 рублей; из них ПК (сборный офисный на Intel Core i5, 16 ГБ ОЗУ и SSD 512 ГБ) — 668 590 рублей за 13 единиц, так как эта конфигурация оптимальна для быстрой работы с документами и интернетом без переплаты за игровые компоненты; мониторы Acer 24" IPS (1920×1080) — 120 770 рублей за 26 штук (по два на место), поскольку IPS-матрица обеспечивает отличные углы обзора и цветопередачу для комфортной работы; столы белые/кремовые 120×70 см — 57 200 рублей за 13 штук, так как их размер и цвет идеально вписываются в светлую эстетику помещения и рассчитаны на размещение двух мониторов; эргономичные офисные кресла с сетчатой спинкой — 174 330 рублей за 13 единиц, потому что сетка обеспечивает воздухопроницаемость и профилактику усталости спины при длительном сидении; мягкие бескаркасные пуфы (3 штуки) — 10 800 рублей, которые создают мобильную и безопасную зону отдыха; проектор Cactus CS-PRC.05B Full HD — 28 970 рублей, с достаточной для аудитории яркостью; экран Cactus Wallscreen CS-PSW-149x265 — 9 620 рублей для качественной проекции; декор (картины и кактусы) — 8 000 рублей, чтобы оживить интерьер и повысить визуальный комфорт без регулярного ухода.</p></div></div>
+<div class="subsection-title">Смета проекта Ильи</div>
 <div class="table-wrapper"><table>
 <thead><tr><th>Категория</th><th>Наименование</th><th>Кол-во</th><th>Где купить / Ссылка (пример)</th><th>Цена</th></tr></thead>
 <tbody>
 <tr><td>Компьютеры</td><td>Сборный ПК (офисный: i5, 16 ГБ, SSD 512 ГБ)</td><td>13</td><td>ПК Ситилинк</td><td>51 430  / за 1 ед</td></tr>
-<tr><td>Мониторы</td><td>24&quot; Монитор Acer SH242YP1bih / IPS 1920×1080 (2 шт. на место)</td><td>26</td><td>Монитор Acer</td><td>9 290 / за 1 ед</td></tr>
+<tr><td>Мониторы</td><td>24" Монитор Acer SH242YP1bih / IPS 1920×1080 (2 шт. на место)</td><td>26</td><td>Монитор Acer</td><td>9 290 / за 1 ед</td></tr>
 <tr><td>Столы</td><td>Офисный стол 120×70 см (белый/кремовый)</td><td>13</td><td>Стол компьютерный</td><td>4 400 / за 1 ед</td></tr>
 <tr><td>Кресла</td><td>Эргономичное офисное кресло (сетка)</td><td>13</td><td>Кресло офисное</td><td>13 410 / за 1 ед</td></tr>
 <tr><td>Пуфики</td><td>Мягкие бескаркасные пуфы</td><td>3</td><td>Пуфики озон</td><td>3 600 / за 1 ед</td></tr>
@@ -340,76 +738,96 @@
 <tr><td>Экран</td><td>Cactus Wallscreen CS-PSW-149x265</td><td>1</td><td>Экран под проектор</td><td>9 620 / за 1 ед</td></tr>
 <tr><td>Декор</td><td>Картины, кактусы, декор (комплект)</td><td>1 компл.</td><td>Кактусы</td><td>8 000 / за 1 ед</td></tr>
 </tbody></table></div>
-        <div class="note"><strong>Сводка из документа:</strong><br>ПК общая сумма = 668 590<br>Мониторы = 120 770<br>Столы = 57 200<br>Кресла = 174 330<br>Пуфики = 10 800<br>Проектор = 28 970<br>Экран = 9 620, Декор = 8000, Итого = 1 078 280</div>
-        <div class="subsection-title">Галерея: 3 ракурса</div>
-        <div class="grid-2">
-            <div class="media-placeholder"><img src="4d1.png" onerror="this.src='https://placehold.co/600x400?text=4d1.png'"><p><strong>Вид 1</strong></p></div>
-            <div class="media-placeholder"><img src="4d2.png" onerror="this.src='https://placehold.co/600x400?text=4d2.png'"><p><strong>Вид 2</strong></p></div>
-            <div class="media-placeholder"><img src="4d3.png" onerror="this.src='https://placehold.co/600x400?text=4d3.png'"><p><strong>Вид 3</strong></p></div>
-        </div>
-    </div>
+<div class="note"><strong>Сводка из документа:</strong><br/>ПК общая сумма = 668 590<br/>Мониторы = 120 770<br/>Столы = 57 200<br/>Кресла = 174 330<br/>Пуфики = 10 800<br/>Проектор = 28 970<br/>Экран = 9 620, Декор = 8000, Итого = 1 078 280</div>
 
-    <!-- 3D МОДЕЛЬ ШАМИЛЯ (только три фото) -->
-    <div id="model3d_4" class="page">
-        <div class="section-title">3D модель 4 • Якупов Ш.Р.</div>
-        <div class="note">
-            <strong>Разработчик:</strong> Якупов Шамиль Рустемович<br>
-            <strong>Инструмент:</strong> Искусственный интеллект (AI-генерация)<br>
-            <strong>Описание проекта:</strong> Альтернативная визуализация с упором на спокойный премиальный офисный стиль: белые рабочие поверхности, графитовые и деревянные акценты, эргономичная посадка, презентационная ТВ‑панель, климат-контроль и отделка с акустическими 3D‑панелями. Решение сохраняет визуальный объём помещения и одновременно усиливает технологичность аудитории.
-            <br><span class="source-pill">Интегрировано из файла: шамиль.docx</span>
-        </div>
-        <div class="metric-grid">
-
-            <div class="metric-card">
-                <div class="metric-label">Итог сметы</div>
-                <div class="metric-value">1 872 000 руб.</div>
-                <div class="metric-desc">Сумма четырёх разделов сметы</div>
-            </div>
-
-            <div class="metric-card">
-                <div class="metric-label">Мебель</div>
-                <div class="metric-value">365 000 руб.</div>
-                <div class="metric-desc">Рабочие столы, переговорная, кресла и стеллаж</div>
-            </div>
-
-            <div class="metric-card">
-                <div class="metric-label">Техника</div>
-                <div class="metric-value">960 000 руб.</div>
-                <div class="metric-desc">ПК, мониторы, ноутбуки, ТВ и климат</div>
-            </div>
-
-            <div class="metric-card">
-                <div class="metric-label">Отделка + работы</div>
-                <div class="metric-value">547 000 руб.</div>
-                <div class="metric-desc">Материалы, электрика и монтаж</div>
-            </div>
+<div class="peer-analytics team-analytics">
+<h3>Аналитика модели Ильи <span class="rank-badge green">самый экономный вариант</span></h3>
+<p class="small-muted">Концепция Ильи делает ставку на практичность: 13 рабочих мест, два монитора на место, офисные ПК, кресла, пуфы и простая проекционная зона.</p>
+<div class="analysis-grid">
+<div class="analysis-card"><div class="analysis-number">1 078 280 ₽</div><div class="analysis-label">итог сметы — большой запас относительно лимита 2 млн ₽</div></div>
+<div class="analysis-card"><div class="analysis-number">13</div><div class="analysis-label">стационарных рабочих мест</div></div>
+<div class="analysis-card"><div class="analysis-number">26</div><div class="analysis-label">мониторов: по два экрана на каждое место</div></div>
+<div class="analysis-card"><div class="analysis-number">82 945 ₽</div><div class="analysis-label">примерная стоимость одного рабочего места с учётом всей сметы</div></div>
 </div>
-        <div class="subsection-title">Обоснование проектных решений</div>
-        <div class="content-list">
-            <div class="card model-card">
-                <h3>1. Мебельное обеспечение: эргономика и пространственный баланс</h3>
-                <div class="project-text"><p>Столы индивидуальные и приоконные (белый/золото): Выбор облегченной металлоконструкции вместо монолитных глухих столов продиктован необходимостью сохранения визуального объема помещения. Цветовое сочетание белой поверхности и матового золота выступает главным колористическим акцентом, нивелирующим избыточную строгость офисного интерьера.</p>
+<div class="grid-2">
+<div class="chart-card performance-chart">
+<div class="chart-title">Структура бюджета Ильи</div>
+<div class="bar-chart"><div class="bar-label">ПК</div><div class="bar-bg"><div class="bar-fill" data-width="62%">668 590 ₽</div></div></div>
+<div class="bar-chart"><div class="bar-label">Кресла</div><div class="bar-bg"><div class="bar-fill" data-width="16%">174 330 ₽</div></div></div>
+<div class="bar-chart"><div class="bar-label">Мониторы</div><div class="bar-bg"><div class="bar-fill" data-width="11%">120 770 ₽</div></div></div>
+<div class="bar-chart"><div class="bar-label">Остальное</div><div class="bar-bg"><div class="bar-fill" data-width="11%">114 590 ₽</div></div></div>
+</div>
+<div class="chart-card performance-chart">
+<div class="chart-title">Производительность и удобство</div>
+<div class="bar-chart"><div class="bar-label">Цена / рабочее место</div><div class="bar-bg"><div class="bar-fill" data-width="96%">96</div></div></div>
+<div class="bar-chart"><div class="bar-label">Многозадачность: 2 монитора</div><div class="bar-bg"><div class="bar-fill" data-width="92%">92</div></div></div>
+<div class="bar-chart"><div class="bar-label">Офисная производительность</div><div class="bar-bg"><div class="bar-fill" data-width="84%">84</div></div></div>
+<div class="bar-chart"><div class="bar-label">Премиальность интерьера</div><div class="bar-bg"><div class="bar-fill" data-width="64%">64</div></div></div>
+</div>
+</div>
+<div class="recommend-box"><strong>Вывод по Илье:</strong> это лучший бюджетный сценарий: много рабочих мест, высокая практичность и низкая стоимость. Для усиления визуальной части можно добавить более качественный свет, кабель-менеджмент и 1–2 акцентные зоны.</div>
+</div>
+<div class="subsection-title">Галерея: 3 ракурса</div>
+<div class="grid-2">
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=4d1.png'" src="4d1.png"/><p><strong>Вид 1</strong></p></div>
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=4d2.png'" src="4d2.png"/><p><strong>Вид 2</strong></p></div>
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=4d3.png'" src="4d3.png"/><p><strong>Вид 3</strong></p></div>
+</div>
+</div>
+<!-- 3D МОДЕЛЬ ШАМИЛЯ (только три фото) -->
+<div class="page" id="model3d_4">
+<div class="section-title">3D модель 4 • Якупов Ш.Р.</div>
+<div class="note">
+<strong>Разработчик:</strong> Якупов Шамиль Рустемович<br/>
+<strong>Инструмент:</strong> Искусственный интеллект (AI-генерация)<br/>
+<strong>Описание проекта:</strong> Альтернативная визуализация с упором на спокойный премиальный офисный стиль: белые рабочие поверхности, графитовые и деревянные акценты, эргономичная посадка, презентационная ТВ‑панель, климат-контроль и отделка с акустическими 3D‑панелями. Решение сохраняет визуальный объём помещения и одновременно усиливает технологичность аудитории.
+        </div>
+<div class="metric-grid">
+<div class="metric-card">
+<div class="metric-label">Итог сметы</div>
+<div class="metric-value">1 872 000 руб.</div>
+<div class="metric-desc">Сумма четырёх разделов сметы</div>
+</div>
+<div class="metric-card">
+<div class="metric-label">Мебель</div>
+<div class="metric-value">365 000 руб.</div>
+<div class="metric-desc">Рабочие столы, переговорная, кресла и стеллаж</div>
+</div>
+<div class="metric-card">
+<div class="metric-label">Техника</div>
+<div class="metric-value">960 000 руб.</div>
+<div class="metric-desc">ПК, мониторы, ноутбуки, ТВ и климат</div>
+</div>
+<div class="metric-card">
+<div class="metric-label">Отделка + работы</div>
+<div class="metric-value">547 000 руб.</div>
+<div class="metric-desc">Материалы, электрика и монтаж</div>
+</div>
+</div>
+<div class="subsection-title">Обоснование проектных решений</div>
+<div class="content-list">
+<div class="card model-card">
+<h3>1. Мебельное обеспечение: эргономика и пространственный баланс</h3>
+<div class="project-text"><p>Столы индивидуальные и приоконные (белый/золото): Выбор облегченной металлоконструкции вместо монолитных глухих столов продиктован необходимостью сохранения визуального объема помещения. Цветовое сочетание белой поверхности и матового золота выступает главным колористическим акцентом, нивелирующим избыточную строгость офисного интерьера.</p>
 <p>Кресла Sihoo M57: Обусловлено требованиями длительной статической нагрузки. Сетчатая структура спинки обеспечивает необходимую терморегуляцию в условиях повышенного тепловыделения от техники, а регулируемый подголовник минимизирует нагрузку на шейный отдел позвоночника.</p>
 <p>Стулья «Сильвия» (зона переговоров): Консольное S-образное основание без колесной базы обеспечивает стабильность посадки и компактность размещения. Отсутствие подлокотников позволяет беспрепятственно интегрировать стулья под плоскость овального стола, сохраняя нормативные габариты проходов.</p>
 <p>Стеллаж (графит/дуб): Выступает композиционным связующим звеном (колористическим мостом) между темной акцентной плоскостью задней стены и теплыми деревянными панелями нижнего яруса.</p></div>
-            </div>
-
-            <div class="card model-card">
-                <h3>2. Аппаратный комплекс: синергия эстетики и производительности</h3>
-                <div class="project-text"><p>Мониторы Redmi 27&quot;: Безрамочная конструкция полностью соответствует визуализации. IPS-матрица гарантирует широкие углы обзора и корректную цветопередачу, что критически важно при групповом анализе информации на одном экране.</p>
+</div>
+<div class="card model-card">
+<h3>2. Аппаратный комплекс: синергия эстетики и производительности</h3>
+<div class="project-text"><p>Мониторы Redmi 27": Безрамочная конструкция полностью соответствует визуализации. IPS-матрица гарантирует широкие углы обзора и корректную цветопередачу, что критически важно при групповом анализе информации на одном экране.</p>
 <p>Вычислительные блоки (i5 / 16 GB / SSD): Оптимальная конфигурация для многозадачной образовательной среды. Скорость чтения/записи SSD-накопителей и объем оперативной памяти обеспечивают быструю инициализацию системы и стабильную работу профильного софта.</p>
 <p>Ноутбуки MateBook D 16: Выбраны в качестве мобильных рабочих станций для конференц-зоны. Металлический корпус обеспечивает механическую прочность, а архитектура процессора — автономность, достаточную для проведения длительных сессий без подключения к стационарной сети.</p>
-<p>Панель 75&quot; и климатическая система Haier: Размер дисплея рассчитан исходя из геометрии комнаты для обеспечения читаемости шрифтов с удаленных точек. Повышенная мощность сплит-системы (12 BTU) заложена для компенсации суммарных теплопритоков от оборудования и единовременного присутствия до 14 человек.</p></div>
-            </div>
-
-            <div class="card model-card">
-                <h3>3. Отделочные материалы: эксплуатационный ресурс</h3>
-                <div class="project-text"><p>Кварц-винил (дуб): В отличие от стандартного ламината, данный материал обладает высшим классом износостойкости к динамическим нагрузкам от роликовых колес кресел, сохраняя аутентичную текстуру модульного паркета.</p>
+<p>Панель 75" и климатическая система Haier: Размер дисплея рассчитан исходя из геометрии комнаты для обеспечения читаемости шрифтов с удаленных точек. Повышенная мощность сплит-системы (12 BTU) заложена для компенсации суммарных теплопритоков от оборудования и единовременного присутствия до 14 человек.</p></div>
+</div>
+<div class="card model-card">
+<h3>3. Отделочные материалы: эксплуатационный ресурс</h3>
+<div class="project-text"><p>Кварц-винил (дуб): В отличие от стандартного ламината, данный материал обладает высшим классом износостойкости к динамическим нагрузкам от роликовых колес кресел, сохраняя аутентичную текстуру модульного паркета.</p>
 <p>Гипсовые 3D-панели: Позволяют создать бесшовное монолитное покрытие за счет затирки стыков перед финишным окрашиванием. Дополнительно выполняют функцию диффузоров, улучшая акустический комфорт помещения и снижая реверберацию (эхо).</p>
 <p>Краска Tikkurila Euro 7: Глубокоматовая интерьерная краска, которая эффективно нивелирует мелкие дефекты подготовки стен при боковом скользящем свете из окон. Обладает высоким коэффициентом устойчивости к влажному истиранию.</p>
 <p>Деревянные жалюзи: Эстетическая альтернатива стандартным текстильным роллетам. Позволяют осуществлять точную направленную регулировку светового потока для предотвращения бликов на отражающих поверхностях мониторов.</p></div>
-            </div></div>
-        <div class="subsection-title">Смета проекта Шамиля</div>
+</div></div>
+<div class="subsection-title">Смета проекта Шамиля</div>
 <div class="table-wrapper"><table>
 <thead><tr><th>Категория и наименование позиций</th><th>Кол-во</th><th>Цена за ед. (руб.)</th><th>Всего (руб.)</th><th>Прямая ссылка на продукт / модель</th></tr></thead>
 <tbody>
@@ -423,10 +841,10 @@
 <tr><td>Пуф дизайнерский цилиндрический (серый/синий)</td><td>1 шт.</td><td>4 000</td><td>4 000</td><td>Яндекс.Маркет — Пуф цилиндр ткань</td></tr>
 <tr class="category-row"><td>2. Компьютерная техника и электроника</td><td></td><td></td><td>960 000</td><td></td></tr>
 <tr><td>Системные блоки (Core i5 / 16 ГБ / 512 ГБ SSD / Black)</td><td>6 шт.</td><td>60 000</td><td>360 000</td><td>DNS — Компьютер Intel Core i5</td></tr>
-<tr><td>Мониторы (27&quot;, IPS, ультратонкая рамка)</td><td>6 шт.</td><td>15 000</td><td>90 000</td><td>DNS — Монитор Xiaomi Redmi 27</td></tr>
+<tr><td>Мониторы (27", IPS, ультратонкая рамка)</td><td>6 шт.</td><td>15 000</td><td>90 000</td><td>DNS — Монитор Xiaomi Redmi 27</td></tr>
 <tr><td>Ноутбуки для совещаний (тонкий алюминиевый корпус)</td><td>6 шт.</td><td>65 000</td><td>390 000</td><td>Ситилинк — Huawei MateBook D 16</td></tr>
 <tr><td>Комплекты периферии (черные, проводные)</td><td>6 компл.</td><td>2 500</td><td>15 000</td><td>Яндекс.Маркет — Комплект Logitech MK120</td></tr>
-<tr><td>Настенная ТВ-панель (75&quot; 4K UHD для презентаций)</td><td>1 шт.</td><td>70 000</td><td>70 000</td><td>М.Видео — Телевизор Xiaomi 75</td></tr>
+<tr><td>Настенная ТВ-панель (75" 4K UHD для презентаций)</td><td>1 шт.</td><td>70 000</td><td>70 000</td><td>М.Видео — Телевизор Xiaomi 75</td></tr>
 <tr><td>Сплит-система (инверторная, на площадь до 40 м²)</td><td>1 шт.</td><td>35 000</td><td>35 000</td><td>DNS — Кондиционер Haier 12</td></tr>
 <tr class="category-row"><td>3. Строительные и отделочные материалы</td><td></td><td></td><td>282 000</td><td></td></tr>
 <tr><td>Кварц-винил / ПВХ-плитка (износостойкая, под дерево)</td><td>45 м²</td><td>2 200</td><td>100 000</td><td>Петрович — Кварцвиниловая плитка</td></tr>
@@ -441,178 +859,308 @@
 <tr><td>Комплексные отделочные работы и малярка</td><td>1 усл.</td><td>150 000</td><td>150 000</td><td>Профи.ру — Поиск маляров-отделочников</td></tr>
 <tr><td>Электромонтаж и прокладка сетей (СКС, интернет)</td><td>1 усл.</td><td>80 000</td><td>80 000</td><td>Авито — Услуги электрика / монтаж СКС</td></tr>
 <tr><td>Монтаж кондиционера и сборка мебели с кабель-менеджментом</td><td>1 усл.</td><td>35 000</td><td>35 000</td><td>Оформляется при доставке товаров</td></tr>
-<tr class="total-row"><td>ИТОГО</td><td></td><td></td><td>1 872 000</td><td></td></tr>
 </tbody></table></div>
-        <div class="subsection-title">Галерея: 3 ракурса</div>
-        <div class="grid-2">
-            <div class="media-placeholder"><img src="62361.png" onerror="this.src='https://placehold.co/600x400?text=62361.png'"><p><strong>Вид 1</strong></p></div>
-            <div class="media-placeholder"><img src="62362.png" onerror="this.src='https://placehold.co/600x400?text=62362.png'"><p><strong>Вид 2</strong></p></div>
-            <div class="media-placeholder"><img src="62363.png" onerror="this.src='https://placehold.co/600x400?text=62363.png'"><p><strong>Вид 3</strong></p></div>
-        </div>
-    </div>
 
-    <!-- КОМАНДА -->
-    <div id="team" class="page">
-        <div class="section-title">Команда проекта</div>
-        <div class="team-grid">
-            <div class="team-card">
-                <div class="team-name">Железкин Ефим Сергеевич</div>
-                <div class="team-role">Team Lead / Full-stack разработчик</div>
-                <div class="team-desc">Разработка полной HTML-структуры, публикация на GitHub, подбор шрифтов (Apple SF Pro), составление смет, дизайн, генерация изображений при помощи ИИ и их интеграция, а также координация проекта.</div>
-                <div class="social-links">
-                    <a href="https://vk.com/e.zhelezkin" target="_blank" class="social-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.684 17.238c.52-.26 1.1-.76 1.34-1.34.28-.68.2-1.14-.5-1.72-.8-.66-1.78-1.12-2.58-1.72-.8-.6-.98-1.06-.6-1.72.44-.78 1.26-1.52 1.68-2.32.64-1.2.56-2.26-.34-3.08-.94-.86-2.28-.86-3.4-.3-1.12.56-1.96 1.68-2.34 2.88-.2.66-.18 1.4.02 2.08.12.42.32.8.54 1.18-.4.36-.86.66-1.24 1.02-.8.76-1.48 1.68-2.02 2.68-.36.66-.4 1.4.04 2.04.5.72 1.38 1.08 2.24 1.04 1.1-.06 2.08-.66 2.96-1.2.36-.22.7-.48 1.02-.76.3.28.64.52 1 .72.86.5 1.84.86 2.84.78.68-.06 1.28-.34 1.74-.84.44-.48.58-1.06.48-1.66-.1-.56-.44-1.02-.88-1.34z"/></svg></a>
-                    <a href="https://t.me/zhelk1zzz" target="_blank" class="social-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.6-1.38-.97-2.23-1.56-.99-.68-.35-1.06.22-1.68.15-.15 2.71-2.48 2.76-2.69.01-.03.02-.13-.06-.18-.08-.06-.2-.04-.28-.02-.12.02-1.96 1.24-5.52 3.65-.52.36-.99.54-1.41.53-.46-.01-1.35-.26-2.01-.48-.81-.27-1.45-.41-1.4-.87.03-.24.36-.49.99-.74 3.36-1.46 5.6-2.42 6.72-2.88 3.2-1.31 3.86-1.54 4.29-1.55.1 0 .31.02.45.13.12.09.16.22.17.35.01.08.01.2-.03.36z"/></svg></a>
-                    <a href="https://github.com/efim26470-ops" target="_blank" class="social-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.21.68-.48 0-.24-.01-.88-.01-1.73-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48C19.13 20.17 22 16.42 22 12c0-5.52-4.48-10-10-10z"/></svg></a>
-                    <a href="https://www.twitch.tv/zhelk1zzz" target="_blank" class="social-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.64 5.93H13.3V9.57H11.64V5.93ZM15.15 5.93H16.81V9.57H15.15V5.93ZM7.73 1L4 5.48V18.1H8.32V22L12.09 18.1H15.65L20 11.76V1H7.73ZM18.33 10.97L15.65 14.02H12.09L9.38 16.7V14.02H6.64V2.48H18.33V10.97Z"/></svg></a>
-                    <a href="https://steamcommunity.com/profiles/76561198964159029/" target="_blank" class="social-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.21.68-.48 0-.24-.01-.88-.01-1.73-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48C19.13 20.17 22 16.42 22 12c0-5.52-4.48-10-10-10z"/></svg></a>
-                    <a href="https://www.youtube.com/@proectprod" target="_blank" class="social-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5 3-5 3z"/></svg></a>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="team-name">Яковлев Илья Владимирович</div>
-                <div class="team-role">Аналитик / Тестировщик</div>
-                <div class="team-desc">Отвечает за аналитическую часть проекта: сбор и обработка требований, анализ рисков, расчёт KPI. Готовит отчёты, обоснования и участвует в тестировании внедряемых решений.</div>
-            </div>
-            <div class="team-card">
-                <div class="team-name">Чижиков Денис Кириллович</div>
-                <div class="team-role">3D-визуализатор / Data Science</div>
-                <div class="team-desc">Создаёт альтернативную 3D-визуализацию проекта в Live Home 3D Pro. Прорабатывает детали интерьера, текстуры и освещение, готовит модели для презентации.</div>
-            </div>
-            <div class="team-card">
-                <div class="team-name">Якупов Шамиль Рустемович</div>
-                <div class="team-role">3D-дизайнер / AI-моделирование</div>
-                <div class="team-desc">Разработка альтернативных 3D-визуализаций коворкинга с использованием нейросетей и генеративных алгоритмов. Экспериментирует с футуристичным дизайном и умными технологиями.</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ЗАКУПКИ (детализированные) -->
-    <div id="procurement" class="page">
-        <div class="section-title">План закупок и детализация</div>
-        <div class="table-wrapper">
-            <table>
-                <thead><tr><th>Этап</th><th>Наименование</th><th>Кол-во</th><th>Цена за ед. (руб)</th><th>Сумма (руб)</th><th>Поставщик</th><th>Срок поставки</th><th>Статус</th><th>Ответственный</th></tr></thead>
-                <tbody>
-                    <tr><td rowspan="3" style="background:#f9f9fb;">1. Подготовка (0-6 мес.)</td><td>Серверная стойка 12U</td><td>1</td><td>13 490</td><td>13 490</td><td>Citilink</td><td>12 дней</td><td>Заказано</td><td>Ефим</td></tr>
-                    <tr><td>Коммутатор TP-Link TL-SG1428PE</td><td>1</td><td>27 000</td><td>27 000</td><td>Regard</td><td>10 дней</td><td>Тендер</td><td>Илья</td></tr>
-                    <tr><td>Точки доступа Wi-Fi 6 (Netcraze Orbiter 6)</td><td>3</td><td>10 990</td><td>32 970</td><td>Regard</td><td>10 дней</td><td>Заказано</td><td>Илья</td></tr>
-                    <tr><td rowspan="4" style="background:#f9f9fb;">2. Основная модернизация (6-18 мес.)</td><td>ПК Ardor Gaming Neo M286</td><td>8</td><td>63 000</td><td>504 000</td><td>DNS</td><td>14 дней</td><td>Тендер</td><td>Ефим</td></tr>
-                    <tr><td>Ноутбуки Xiaomi Redmi Book 2024</td><td>15</td><td>53 000</td><td>795 000</td><td>Яндекс Маркет</td><td>10 дней</td><td>Согласование</td><td>Ефим</td></tr>
-                    <tr><td>Столы-трансформеры Ergostol DeskUp</td><td>12</td><td>18 090</td><td>217 080</td><td>Ergostol</td><td>30 дней</td><td>Изготовление</td><td>Илья</td></tr>
-                    <tr><td>Кресла Defo Direct New</td><td>24</td><td>8 900</td><td>213 600</td><td>Defo.ru</td><td>14 дней</td><td>Оплачено</td><td>Ефим</td></tr>
-                    <tr><td rowspan="3" style="background:#f9f9fb;">3. Освещение и эстетика (12-18 мес.)</td><td>LED-панели Sirius A 600x600</td><td>20</td><td>940</td><td>18 800</td><td>ВсеИнструменты</td><td>7 дней</td><td>В наличии</td><td>Денис</td></tr>
-                    <tr><td>Кабель-каналы + корзины</td><td>20</td><td>1 700</td><td>34 000</td><td>ЭТМ</td><td>7 дней</td><td>В наличии</td><td>Денис</td></tr>
-                    <tr><td>Система бронирования (RPi 4 + 7" экраны)</td><td>3</td><td>18 900</td><td>56 700</td><td>Sinardcom / Яндекс</td><td>14 дней</td><td>Согласование</td><td>Ефим</td></tr>
-                    <tr><td rowspan="2" style="background:#f9f9fb;">4. Завершение (18-24 мес.)</td><td>ИБП Exegate SpecialPro 2000</td><td>1</td><td>10 000</td><td>10 000</td><td>Citilink</td><td>12 дней</td><td>Запланировано</td><td>Ефим</td></tr>
-                    <tr><td>Розеточные блоки с USB+RJ45</td><td>20</td><td>2 200</td><td>44 000</td><td>—</td><td>14 дней</td><td>Поиск</td><td>Илья</td></tr>
-                    <tr style="background:#fff0db;"><td colspan="2"><strong>Ремонтные работы</strong> (обои, потолок, электромонтаж)</td><td>1</td><td>120 000</td><td>120 000</td><td>Подрядчик</td><td>60 дней</td><td>Аукцион</td><td>Ефим</td></tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="note">Все контракты заключаются централизованно. Оборудование закупается поэтапно, начиная с сетевой инфраструктуры и заканчивая элементами декора.</div>
-    </div>
-
-    <!-- БЮДЖЕТ + ROI (полная таблица) -->
-    <div id="budget" class="page">
-        <div class="section-title">Смета и план закупок (с учётом ремонта и актуальных цен)</div>
-        <div class="table-wrapper">
-            <table>
-                <thead><tr><th>Оборудование / работы</th><th>Кол-во</th><th>Цена за ед. (руб)</th><th>Сумма (руб)</th><th>Ссылка</th></tr></thead>
-                <tbody>
-                    <tr><td>Стол-трансформер Ergostol DeskUp</td><td>12</td><td>18 090</td><td>217 080</td><td><a href="https://ergostol.ru/goods/stol_ergostol_deskup/?offer_id=1183046" target="_blank">Купить</a></td></tr>
-                    <tr><td>Кресло эргономическое Defo Direct New</td><td>24</td><td>8 900</td><td>213 600</td><td><a href="https://spb.defo.ru/catalog/direct-new-ekokozha/185114/" target="_blank">Купить</a></td></tr>
-                    <tr><td>Системный блок Ardor Gaming Neo M286</td><td>8</td><td>63 000</td><td>504 000</td><td><a href="https://www.dns-shop.ru/product/83c1702321a0d9cb/pk-ardor-gaming-neo-m286/" target="_blank">M286</a></td></tr>
-                    <tr><td>Ноутбук Xiaomi Redmi Book 2024 (i5, 16GB)</td><td>15</td><td>53 000</td><td>795 000</td><td><a href="https://market.yandex.ru/card/16-noutbuk-xiaomi-redmi-book--2024--i5-12450h8-yader-lpddr5-16-gb1-tb-windows-11pro-rus-russkaya-klaviatura/5219552276" target="_blank">Купить</a></td></tr>
-                    <tr><td>Коммутатор TP-Link TL-SG1428PE</td><td>1</td><td>27 000</td><td>27 000</td><td><a href="https://market.yandex.ru/card/kommutator-tp-link-easy-smart-tl-sg1428pe/102217635047" target="_blank">Купить</a></td></tr>
-                    <tr><td>Точка доступа Wi‑Fi 6 Netcraze Orbiter 6</td><td>3</td><td>10 990</td><td>32 970</td><td><a href="https://www.regard.ru/product/758537/wi-fi-tocka-dostupa-netcraze-orbiter-6-nap-630" target="_blank">Купить</a></td></tr>
-                    <tr><td>ИБП Exegate SpecialPro Smart LLB 2000</td><td>1</td><td>10 000</td><td>10 000</td><td><a href="https://market.yandex.ru/card/ibp-exegate-ex292632rus-specialpro-smart-llb-2000-lcd-avr2sh-r-black/103200908926" target="_blank">Купить</a></td></tr>
-                    <tr><td>Серверная стойка 12U + кулеры</td><td>1</td><td>13 490</td><td>13 490</td><td><a href="https://www.citilink.ru/product/shkaf-kommutacionnyi-cmo-shrn-e-12-500-9005-nastennyi-steklyannaya-per-321480/" target="_blank">Купить</a></td></tr>
-                    <tr><td>LED-панель 600×600 (Sirius A)</td><td>20</td><td>940</td><td>18 800</td><td><a href="https://www.vseinstrumenti.ru/product/ultratonkaya-svetodiodnaya-panel-sirius-a-36w-4000k-600h600h9mm-ip40-spl-600x600-36w-4k-1546710/" target="_blank">Купить</a></td></tr>
-                    <tr><td>Кабель-канал + корзины для проводов</td><td>20</td><td>1 700</td><td>34 000</td><td><a href="https://www.etm.ru/cat/nn/9669550" target="_blank">Купить</a></td></tr>
-                    <tr><td>Система бронирования (RPi 4 + 7″ экран)</td><td>3</td><td>18 900</td><td>56 700</td><td><a href="https://sinardcom.ru/product/7-dyuymovyy-ekran-dlya-mikrokompyutera-orange-pi-2" target="_blank">Экран</a> + <a href="https://market.yandex.ru/card/mikrokompyuter-raspberry-pi-4-model-b-ra608-retail-8gb-ram/102479797884" target="_blank">RPi4</a></td></tr>
-                    <tr><td>Розеточные блоки с USB+RJ45</td><td>20</td><td>2 200</td><td>44 000</td><td>—</td></tr>
-                    <tr style="background:#fff0db;"><td><strong>Ремонтные работы</strong> (обои, потолок, электромонтаж)</td><td>1</td><td>120 000</td><td>120 000</td><td>—</td></tr>
-                    <tr style="background:#eef3fc;"><th colspan="3">ИТОГО</th><th>2 086 640 ₽</th><th></th></tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="grid-2">
-            <div class="card"><strong>Решения без бюджета</strong><br>Кабельные стяжки, перестановка мебели, график проветривания, бесплатное ПО.</div>
-            <div class="card"><strong>Решения с бюджетом</strong><br>Замена столов, ПК, освещения, кабель-менеджмент, система бронирования, ремонт.</div>
-        </div>
-        <div class="note"><strong>Стоимость владения (TCO):</strong> Ежегодное обслуживание — 180 000 руб. Срок службы мебели 8 лет, ПК — 5 лет. Окупаемость — 3,5-4 года.</div>
-        <div class="subsection-title">Оценка окупаемости (ROI)</div>
-        <p>Повышение производительности на 25%, годовой эффект ~850 000 руб. Окупаемость 3,5–4 года.</p>
-    </div>
-
-    <!-- ПЛАН ВНЕДРЕНИЯ (5 ЛЕТ) -->
-    <div id="plan5y" class="page">
-        <div class="section-title">План внедрения на 5 лет</div>
-        <div class="bar-chart"><div class="bar-label">Год 1. Пилотный ремонт и IT-кластер</div><div class="bar-bg"><div class="bar-fill" data-width="20%">20%</div></div></div>
-        <div class="bar-chart"><div class="bar-label">Год 2. Тихая зона, запуск системы бронирования</div><div class="bar-bg"><div class="bar-fill" data-width="40%">40%</div></div></div>
-        <div class="bar-chart"><div class="bar-label">Год 3. Лаунж-зона, переговорная, умный свет</div><div class="bar-bg"><div class="bar-fill" data-width="70%">70%</div></div></div>
-        <div class="bar-chart"><div class="bar-label">Год 4. Оптимизация и масштабирование</div><div class="bar-bg"><div class="bar-fill" data-width="85%">85%</div></div></div>
-        <div class="bar-chart"><div class="bar-label">Год 5. Полная автономность и экспорт модели</div><div class="bar-bg"><div class="bar-fill" data-width="100%">100%</div></div></div>
-        <div class="note">
-            <strong>Год 1 (0–12 месяцев):</strong><br>
-            - Аудит и проектирование, утверждение сметы.<br>
-            - Ремонтные работы: замена потолка, стен, электропроводки.<br>
-            - Закупка и монтаж серверной стойки, коммутатора, точек Wi-Fi 6.<br>
-            - Приобретение и установка 8 ПК Ardor Gaming Neo M286.<br>
-            - Открытие пилотного IT-кластера, тестовая эксплуатация.<br><br>
-            <strong>Год 2 (12–24 месяца):</strong><br>
-            - Установка 15 ноутбуков Xiaomi Redmi Book, закупка столов-трансформеров и кресел.<br>
-            - Оборудование тихой зоны с акустическими перегородками.<br>
-            - Запуск веб-портала бронирования, интеграция с Raspberry Pi.<br>
-            - Сбор обратной связи, доработка интерфейса.<br><br>
-            <strong>Год 3 (24–36 месяцев):</strong><br>
-            - Создание лаунж-зоны: мягкая мебель, интерактивная панель, кофе-пойнт.<br>
-            - Обустройство переговорной комнаты (стеклянные перегородки, конференц-система).<br>
-            - Установка умного освещения и датчиков движения, интеграция с календарями.<br>
-            - Начало мониторинга загрузки пространства.<br><br>
-            <strong>Год 4 (36–48 месяцев):</strong><br>
-            - Анализ использования: оптимизация расстановки мебели, дооснащение.<br>
-            - Замена/добавление оборудования по мере износа.<br>
-            - Обучение персонала, внедрение системы климат-контроля.<br>
-            - Подключение к центральному мониторингу вуза.<br><br>
-            <strong>Год 5 (48–60 месяцев):</strong><br>
-            - Выход на полную мощность, полная автономность экосистемы.<br>
-            - Документирование опыта, создание методических рекомендаций.<br>
-            - Тиражирование модели в другие аудитории университета.
-        </div>
-    </div>
-
-    <!-- ГРАФИК РАБОТ (1 год) -->
-    <div id="schedule" class="page">
-        <div class="section-title">Календарный график реализации (1 год)</div>
-        <div class="bar-chart"><div class="bar-label">Подготовка ТЗ и тендер</div><div class="bar-bg"><div class="bar-fill" data-width="15%">14 дней</div></div></div>
-        <div class="bar-chart"><div class="bar-label">Закупка оборудования</div><div class="bar-bg"><div class="bar-fill" data-width="30%">30 дней</div></div></div>
-        <div class="bar-chart"><div class="bar-label">Демонтаж</div><div class="bar-bg"><div class="bar-fill" data-width="8%">5 дней</div></div></div>
-        <div class="bar-chart"><div class="bar-label">Электромонтаж и кабели</div><div class="bar-bg"><div class="bar-fill" data-width="15%">14 дней</div></div></div>
-        <div class="bar-chart"><div class="bar-label">Установка мебели и ПК</div><div class="bar-bg"><div class="bar-fill" data-width="12%">10 дней</div></div></div>
-        <div class="bar-chart"><div class="bar-label">Настройка ПО и тестирование</div><div class="bar-bg"><div class="bar-fill" data-width="8%">7 дней</div></div></div>
-        <div class="bar-chart"><div class="bar-label">Приёмка и обучение</div><div class="bar-bg"><div class="bar-fill" data-width="5%">3 дня</div></div></div>
-        <div class="result-panel">Плановое открытие первой очереди — 1 сентября 2026 года.</div>
-    </div>
-
-    <!-- KPI и РИСКИ -->
-    <div id="kpi" class="page">
-        <div class="section-title">KPI и управление рисками</div>
-        <div class="grid-2">
-            <div class="card"><h3>KPI после модернизации</h3><ul><li>Удовлетворённость ≥85%</li><li>Снижение жалоб на 70%</li><li>Время запуска ПК < 20 сек</li><li>Энергопотребление -40%</li><li>Производительность ×4</li><li>Загрузка мест >75%</li></ul></div>
-            <div class="card"><h3>Риски и меры</h3><ul><li>Задержка поставки → резервные поставщики</li><li>Превышение бюджета → твёрдая смета</li><li>Некорректный монтаж → приёмка с актом</li><li>Недостаточная компетенция → обучение</li></ul></div>
-        </div>
-    </div>
-
-    <!-- ОБСЛУЖИВАНИЕ -->
-    <div id="maintenance" class="page">
-        <div class="section-title">План обслуживания и эксплуатации</div>
-        <p>Ежегодный бюджет обслуживания: 300 000 руб. Гарантия на ПК 3 года, на мебель 1 год. Регламент включает ежемесячную очистку ПК, квартальную проверку мебели, полугодовое обновление ПО и ежегодную калибровку датчиков.</p>
-    </div>
-
-    <footer>Проект коворкинга в аудитории 6236 • Группа 6481</footer>
+<div class="peer-analytics team-analytics">
+<h3>Аналитика модели Шамиля <span class="rank-badge blue">премиальный офисный стиль</span></h3>
+<p class="small-muted">Модель Шамиля сильна как визуально завершённое пространство: белые поверхности, графит/дуб, 3D‑панели, ТВ‑панель, климат и продуманная мебель.</p>
+<div class="analysis-grid">
+<div class="analysis-card"><div class="analysis-number">1 872 000 ₽</div><div class="analysis-label">смета остаётся ниже лимита 2 млн ₽</div></div>
+<div class="analysis-card"><div class="analysis-number">960 000 ₽</div><div class="analysis-label">техника: ПК, мониторы, ноутбуки, ТВ и кондиционер</div></div>
+<div class="analysis-card"><div class="analysis-number">547 000 ₽</div><div class="analysis-label">отделка и работы: материалы, свет, электрика, монтаж</div></div>
+<div class="analysis-card"><div class="analysis-number">128 000 ₽</div><div class="analysis-label">примерный резерв до лимита проекта</div></div>
+</div>
+<div class="grid-2">
+<div class="chart-card performance-chart">
+<div class="chart-title">Структура бюджета Шамиля</div>
+<div class="bar-chart"><div class="bar-label">Техника</div><div class="bar-bg"><div class="bar-fill" data-width="51%">960 000 ₽</div></div></div>
+<div class="bar-chart"><div class="bar-label">Мебель</div><div class="bar-bg"><div class="bar-fill" data-width="20%">365 000 ₽</div></div></div>
+<div class="bar-chart"><div class="bar-label">Материалы</div><div class="bar-bg"><div class="bar-fill" data-width="15%">282 000 ₽</div></div></div>
+<div class="bar-chart"><div class="bar-label">Работы</div><div class="bar-bg"><div class="bar-fill" data-width="14%">265 000 ₽</div></div></div>
+</div>
+<div class="chart-card performance-chart">
+<div class="chart-title">Качество среды</div>
+<div class="bar-chart"><div class="bar-label">Визуальная цельность</div><div class="bar-bg"><div class="bar-fill" data-width="95%">95</div></div></div>
+<div class="bar-chart"><div class="bar-label">Акустический комфорт</div><div class="bar-bg"><div class="bar-fill" data-width="88%">88</div></div></div>
+<div class="bar-chart"><div class="bar-label">Климат и презентации</div><div class="bar-bg"><div class="bar-fill" data-width="92%">92</div></div></div>
+<div class="bar-chart"><div class="bar-label">Бюджетная устойчивость</div><div class="bar-bg"><div class="bar-fill" data-width="90%">90</div></div></div>
+</div>
+</div>
+<div class="recommend-box"><strong>Вывод по Шамилю:</strong> это самый цельный интерьерный вариант среди альтернатив: он хорошо показывает эстетику, акустику и комфорт. Для защиты его можно подавать как премиальную, но всё ещё реалистичную конфигурацию.</div>
+</div>
+<div class="subsection-title">Галерея: 3 ракурса</div>
+<div class="grid-2">
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=62361.png'" src="62361.png"/><p><strong>Вид 1</strong></p></div>
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=62362.png'" src="62362.png"/><p><strong>Вид 2</strong></p></div>
+<div class="media-placeholder"><img onerror="this.src='https://placehold.co/600x400?text=62363.png'" src="62363.png"/><p><strong>Вид 3</strong></p></div>
+</div>
+</div>
+<!-- КОМАНДА -->
+<div class="page" id="team">
+<div class="section-title">Команда проекта</div>
+<div class="team-grid">
+<div class="team-card">
+<div class="team-name">Железкин Ефим Сергеевич</div>
+<div class="team-role">Team Lead / Full-stack разработчик</div>
+<div class="team-desc">Разработка полной HTML-структуры, публикация на GitHub, подбор шрифтов (Apple SF Pro), составление смет, дизайн, генерация изображений при помощи ИИ и их интеграция, а также координация проекта.</div>
+<div class="social-links">
+<a class="social-icon" href="https://vk.com/e.zhelezkin" target="_blank"><svg fill="currentColor" viewbox="0 0 24 24"><path d="M15.684 17.238c.52-.26 1.1-.76 1.34-1.34.28-.68.2-1.14-.5-1.72-.8-.66-1.78-1.12-2.58-1.72-.8-.6-.98-1.06-.6-1.72.44-.78 1.26-1.52 1.68-2.32.64-1.2.56-2.26-.34-3.08-.94-.86-2.28-.86-3.4-.3-1.12.56-1.96 1.68-2.34 2.88-.2.66-.18 1.4.02 2.08.12.42.32.8.54 1.18-.4.36-.86.66-1.24 1.02-.8.76-1.48 1.68-2.02 2.68-.36.66-.4 1.4.04 2.04.5.72 1.38 1.08 2.24 1.04 1.1-.06 2.08-.66 2.96-1.2.36-.22.7-.48 1.02-.76.3.28.64.52 1 .72.86.5 1.84.86 2.84.78.68-.06 1.28-.34 1.74-.84.44-.48.58-1.06.48-1.66-.1-.56-.44-1.02-.88-1.34z"></path></svg></a>
+<a class="social-icon" href="https://t.me/zhelk1zzz" target="_blank"><svg fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.6-1.38-.97-2.23-1.56-.99-.68-.35-1.06.22-1.68.15-.15 2.71-2.48 2.76-2.69.01-.03.02-.13-.06-.18-.08-.06-.2-.04-.28-.02-.12.02-1.96 1.24-5.52 3.65-.52.36-.99.54-1.41.53-.46-.01-1.35-.26-2.01-.48-.81-.27-1.45-.41-1.4-.87.03-.24.36-.49.99-.74 3.36-1.46 5.6-2.42 6.72-2.88 3.2-1.31 3.86-1.54 4.29-1.55.1 0 .31.02.45.13.12.09.16.22.17.35.01.08.01.2-.03.36z"></path></svg></a>
+<a class="social-icon" href="https://github.com/efim26470-ops" target="_blank"><svg fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.21.68-.48 0-.24-.01-.88-.01-1.73-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48C19.13 20.17 22 16.42 22 12c0-5.52-4.48-10-10-10z"></path></svg></a>
+<a class="social-icon" href="https://www.twitch.tv/zhelk1zzz" target="_blank"><svg fill="currentColor" viewbox="0 0 24 24"><path d="M11.64 5.93H13.3V9.57H11.64V5.93ZM15.15 5.93H16.81V9.57H15.15V5.93ZM7.73 1L4 5.48V18.1H8.32V22L12.09 18.1H15.65L20 11.76V1H7.73ZM18.33 10.97L15.65 14.02H12.09L9.38 16.7V14.02H6.64V2.48H18.33V10.97Z"></path></svg></a>
+<a class="social-icon" href="https://steamcommunity.com/profiles/76561198964159029/" target="_blank"><svg fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.21.68-.48 0-.24-.01-.88-.01-1.73-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48C19.13 20.17 22 16.42 22 12c0-5.52-4.48-10-10-10z"></path></svg></a>
+<a class="social-icon" href="https://www.youtube.com/@proectprod" target="_blank"><svg fill="currentColor" viewbox="0 0 24 24"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5 3-5 3z"></path></svg></a>
+</div>
+</div>
+<div class="team-card">
+<div class="team-name">Яковлев Илья Владимирович</div>
+<div class="team-role">Аналитик / Тестировщик</div>
+<div class="team-desc">Отвечает за аналитическую часть проекта: сбор и обработка требований, анализ рисков, расчёт KPI. Готовит отчёты, обоснования и участвует в тестировании внедряемых решений.</div>
+</div>
+<div class="team-card">
+<div class="team-name">Чижиков Денис Кириллович</div>
+<div class="team-role">3D-визуализатор / Data Science</div>
+<div class="team-desc">Создаёт альтернативную 3D-визуализацию проекта в Live Home 3D Pro. Прорабатывает детали интерьера, текстуры и освещение, готовит модели для презентации.</div>
+</div>
+<div class="team-card">
+<div class="team-name">Якупов Шамиль Рустемович</div>
+<div class="team-role">3D-дизайнер / AI-моделирование</div>
+<div class="team-desc">Разработка альтернативных 3D-визуализаций коворкинга с использованием нейросетей и генеративных алгоритмов. Экспериментирует с футуристичным дизайном и умными технологиями.</div>
+</div>
 </div>
 
+<div class="enhanced-block global-enhancement whole-project-enhancement">
+<div class="subsection-title">Матрица вклада команды</div>
+<div class="chart-card performance-chart">
+<div class="chart-title">Сильные стороны участников по проектным направлениям</div>
+<div class="bar-chart"><div class="bar-label">Ефим — код, интеграция, сметы</div><div class="bar-bg"><div class="bar-fill" data-width="98%">98</div></div></div>
+<div class="bar-chart"><div class="bar-label">Денис — 3D и насыщенность сценариев</div><div class="bar-bg"><div class="bar-fill" data-width="86%">86</div></div></div>
+<div class="bar-chart"><div class="bar-label">Илья — экономичная комплектация</div><div class="bar-bg"><div class="bar-fill" data-width="92%">92</div></div></div>
+<div class="bar-chart"><div class="bar-label">Шамиль — интерьер и обоснование</div><div class="bar-bg"><div class="bar-fill" data-width="91%">91</div></div></div>
+</div>
+<div class="table-wrapper"><table class="table-compact"><thead><tr><th>Участник</th><th>Главная роль</th><th>Что усиливает проект</th><th>Практический результат</th></tr></thead><tbody>
+<tr><td>Ефим</td><td>Team Lead / разработчик</td><td>Сайт, структура, интеграция, финальная логика</td><td>Единый HTML-проект с вкладками, графиками и сметами</td></tr>
+<tr><td>Денис</td><td>3D-визуализатор</td><td>Гибкая модель с большим числом сценариев</td><td>Альтернативный вариант с насыщенной мебелью и инфраструктурой</td></tr>
+<tr><td>Илья</td><td>Аналитик</td><td>Экономика и практичность</td><td>Самая бюджетная комплектация на 13 мест</td></tr>
+<tr><td>Шамиль</td><td>AI-дизайнер</td><td>Премиальный интерьер и обоснование материалов</td><td>Вариант с акцентом на эстетику, акустику и климат</td></tr>
+</tbody></table></div>
+</div>
+</div>
+<!-- ЗАКУПКИ (детализированные) -->
+<div class="page" id="procurement">
+<div class="section-title">План закупок и детализация</div>
+<div class="table-wrapper">
+<table>
+<thead><tr><th>Этап</th><th>Наименование</th><th>Кол-во</th><th>Цена за ед. (руб)</th><th>Сумма (руб)</th><th>Поставщик</th><th>Срок поставки</th><th>Статус</th><th>Ответственный</th></tr></thead>
+<tbody>
+<tr><td rowspan="3" style="background:#f9f9fb;">1. Подготовка (0-6 мес.)</td><td>Серверная стойка 12U</td><td>1</td><td>13 490</td><td>13 490</td><td>Citilink</td><td>12 дней</td><td>Заказано</td><td>Ефим</td></tr>
+<tr><td>Коммутатор TP-Link TL-SG1428PE</td><td>1</td><td>27 000</td><td>27 000</td><td>Regard</td><td>10 дней</td><td>Тендер</td><td>Илья</td></tr>
+<tr><td>Точки доступа Wi-Fi 6 (Netcraze Orbiter 6)</td><td>3</td><td>10 990</td><td>32 970</td><td>Regard</td><td>10 дней</td><td>Заказано</td><td>Илья</td></tr>
+<tr><td rowspan="4" style="background:#f9f9fb;">2. Основная модернизация (6-18 мес.)</td><td>ПК Ardor Gaming Neo M286</td><td>8</td><td>63 000</td><td>504 000</td><td>DNS</td><td>14 дней</td><td>Тендер</td><td>Ефим</td></tr>
+<tr><td>Ноутбуки Xiaomi Redmi Book 2024</td><td>15</td><td>53 000</td><td>795 000</td><td>Яндекс Маркет</td><td>10 дней</td><td>Согласование</td><td>Ефим</td></tr>
+<tr><td>Столы-трансформеры Ergostol DeskUp</td><td>12</td><td>18 090</td><td>217 080</td><td>Ergostol</td><td>30 дней</td><td>Изготовление</td><td>Илья</td></tr>
+<tr><td>Кресла Defo Direct New</td><td>24</td><td>8 900</td><td>213 600</td><td>Defo.ru</td><td>14 дней</td><td>Оплачено</td><td>Ефим</td></tr>
+<tr><td rowspan="3" style="background:#f9f9fb;">3. Освещение и эстетика (12-18 мес.)</td><td>LED-панели Sirius A 600x600</td><td>20</td><td>940</td><td>18 800</td><td>ВсеИнструменты</td><td>7 дней</td><td>В наличии</td><td>Денис</td></tr>
+<tr><td>Кабель-каналы + корзины</td><td>20</td><td>1 700</td><td>34 000</td><td>ЭТМ</td><td>7 дней</td><td>В наличии</td><td>Денис</td></tr>
+<tr><td>Система бронирования (RPi 4 + 7" экраны)</td><td>3</td><td>18 900</td><td>56 700</td><td>Sinardcom / Яндекс</td><td>14 дней</td><td>Согласование</td><td>Ефим</td></tr>
+<tr><td rowspan="2" style="background:#f9f9fb;">4. Завершение (18-24 мес.)</td><td>ИБП Exegate SpecialPro 2000</td><td>1</td><td>10 000</td><td>10 000</td><td>Citilink</td><td>12 дней</td><td>Запланировано</td><td>Ефим</td></tr>
+<tr><td>Розеточные блоки с USB+RJ45</td><td>20</td><td>2 200</td><td>44 000</td><td>—</td><td>14 дней</td><td>Поиск</td><td>Илья</td></tr>
+<tr style="background:#fff0db;"><td colspan="2"><strong>Ремонтные работы</strong> (обои, потолок, электромонтаж)</td><td>1</td><td>120 000</td><td>120 000</td><td>Подрядчик</td><td>60 дней</td><td>Аукцион</td><td>Ефим</td></tr>
+</tbody>
+</table>
+</div>
+<div class="note">Все контракты заключаются централизованно. Оборудование закупается поэтапно, начиная с сетевой инфраструктуры и заканчивая элементами декора.</div>
+
+<div class="enhanced-block global-enhancement whole-project-enhancement">
+<div class="subsection-title">Аналитика закупок</div>
+<div class="grid-2">
+<div class="chart-card performance-chart">
+<div class="chart-title">Вес этапов в закупочной нагрузке</div>
+<div class="bar-chart"><div class="bar-label">Основная модернизация</div><div class="bar-bg"><div class="bar-fill" data-width="100%">1 729 680 ₽</div></div></div>
+<div class="bar-chart"><div class="bar-label">Ремонтные работы</div><div class="bar-bg"><div class="bar-fill" data-width="7%">120 000 ₽</div></div></div>
+<div class="bar-chart"><div class="bar-label">Освещение и эстетика</div><div class="bar-bg"><div class="bar-fill" data-width="6%">109 500 ₽</div></div></div>
+<div class="bar-chart"><div class="bar-label">Подготовка инфраструктуры</div><div class="bar-bg"><div class="bar-fill" data-width="4%">73 460 ₽</div></div></div>
+</div>
+<div class="chart-card performance-chart">
+<div class="chart-title">Статус управляемости поставок</div>
+<div class="bar-chart"><div class="bar-label">В наличии / заказано</div><div class="bar-bg"><div class="bar-fill" data-width="42%">42%</div></div></div>
+<div class="bar-chart"><div class="bar-label">Согласование / тендер</div><div class="bar-bg"><div class="bar-fill" data-width="46%">46%</div></div></div>
+<div class="bar-chart"><div class="bar-label">Поиск / аукцион</div><div class="bar-bg"><div class="bar-fill" data-width="12%">12%</div></div></div>
+</div>
+</div>
+<div class="recommend-box"><strong>Приоритет закупок:</strong> сначала сеть, электрика и места подключения; затем техника и мебель; в конце — эстетика, декор и доводка. Такой порядок снижает риск, что красивые элементы будут смонтированы до готовности инфраструктуры.</div>
+</div>
+</div>
+<!-- БЮДЖЕТ + ROI (полная таблица) -->
+<div class="page" id="budget">
+<div class="section-title">Смета и план закупок (с учётом ремонта и актуальных цен)</div>
+<div class="table-wrapper">
+<table>
+<thead><tr><th>Оборудование / работы</th><th>Кол-во</th><th>Цена за ед. (руб)</th><th>Сумма (руб)</th><th>Ссылка</th></tr></thead>
+<tbody>
+<tr><td>Стол-трансформер Ergostol DeskUp</td><td>12</td><td>18 090</td><td>217 080</td><td><a href="https://ergostol.ru/goods/stol_ergostol_deskup/?offer_id=1183046" target="_blank">Купить</a></td></tr>
+<tr><td>Кресло эргономическое Defo Direct New</td><td>24</td><td>8 900</td><td>213 600</td><td><a href="https://spb.defo.ru/catalog/direct-new-ekokozha/185114/" target="_blank">Купить</a></td></tr>
+<tr><td>Системный блок Ardor Gaming Neo M286</td><td>8</td><td>63 000</td><td>504 000</td><td><a href="https://www.dns-shop.ru/product/83c1702321a0d9cb/pk-ardor-gaming-neo-m286/" target="_blank">M286</a></td></tr>
+<tr><td>Ноутбук Xiaomi Redmi Book 2024 (i5, 16GB)</td><td>15</td><td>53 000</td><td>795 000</td><td><a href="https://market.yandex.ru/card/16-noutbuk-xiaomi-redmi-book--2024--i5-12450h8-yader-lpddr5-16-gb1-tb-windows-11pro-rus-russkaya-klaviatura/5219552276" target="_blank">Купить</a></td></tr>
+<tr><td>Коммутатор TP-Link TL-SG1428PE</td><td>1</td><td>27 000</td><td>27 000</td><td><a href="https://market.yandex.ru/card/kommutator-tp-link-easy-smart-tl-sg1428pe/102217635047" target="_blank">Купить</a></td></tr>
+<tr><td>Точка доступа Wi‑Fi 6 Netcraze Orbiter 6</td><td>3</td><td>10 990</td><td>32 970</td><td><a href="https://www.regard.ru/product/758537/wi-fi-tocka-dostupa-netcraze-orbiter-6-nap-630" target="_blank">Купить</a></td></tr>
+<tr><td>ИБП Exegate SpecialPro Smart LLB 2000</td><td>1</td><td>10 000</td><td>10 000</td><td><a href="https://market.yandex.ru/card/ibp-exegate-ex292632rus-specialpro-smart-llb-2000-lcd-avr2sh-r-black/103200908926" target="_blank">Купить</a></td></tr>
+<tr><td>Серверная стойка 12U + кулеры</td><td>1</td><td>13 490</td><td>13 490</td><td><a href="https://www.citilink.ru/product/shkaf-kommutacionnyi-cmo-shrn-e-12-500-9005-nastennyi-steklyannaya-per-321480/" target="_blank">Купить</a></td></tr>
+<tr><td>LED-панель 600×600 (Sirius A)</td><td>20</td><td>940</td><td>18 800</td><td><a href="https://www.vseinstrumenti.ru/product/ultratonkaya-svetodiodnaya-panel-sirius-a-36w-4000k-600h600h9mm-ip40-spl-600x600-36w-4k-1546710/" target="_blank">Купить</a></td></tr>
+<tr><td>Кабель-канал + корзины для проводов</td><td>20</td><td>1 700</td><td>34 000</td><td><a href="https://www.etm.ru/cat/nn/9669550" target="_blank">Купить</a></td></tr>
+<tr><td>Система бронирования (RPi 4 + 7″ экран)</td><td>3</td><td>18 900</td><td>56 700</td><td><a href="https://sinardcom.ru/product/7-dyuymovyy-ekran-dlya-mikrokompyutera-orange-pi-2" target="_blank">Экран</a> + <a href="https://market.yandex.ru/card/mikrokompyuter-raspberry-pi-4-model-b-ra608-retail-8gb-ram/102479797884" target="_blank">RPi4</a></td></tr>
+<tr><td>Розеточные блоки с USB+RJ45</td><td>20</td><td>2 200</td><td>44 000</td><td>—</td></tr>
+<tr style="background:#fff0db;"><td><strong>Ремонтные работы</strong> (обои, потолок, электромонтаж)</td><td>1</td><td>120 000</td><td>120 000</td><td>—</td></tr>
+<tr style="background:#eef3fc;"><th colspan="3">ИТОГО</th><th>2 086 640 ₽</th><th></th></tr>
+</tbody>
+</table>
+</div>
+<div class="grid-2">
+<div class="card"><strong>Решения без бюджета</strong><br/>Кабельные стяжки, перестановка мебели, график проветривания, бесплатное ПО.</div>
+<div class="card"><strong>Решения с бюджетом</strong><br/>Замена столов, ПК, освещения, кабель-менеджмент, система бронирования, ремонт.</div>
+</div>
+<div class="note"><strong>Стоимость владения (TCO):</strong> Ежегодное обслуживание — 180 000 руб. Срок службы мебели 8 лет, ПК — 5 лет. Окупаемость — 3,5-4 года.</div>
+<div class="subsection-title">Оценка окупаемости (ROI)</div>
+<p>Повышение производительности на 25%, годовой эффект ~850 000 руб. Окупаемость 3,5–4 года.</p>
+
+<div class="enhanced-block global-enhancement whole-project-enhancement">
+<div class="subsection-title">Сравнение бюджетных стратегий команды</div>
+<div class="chart-card performance-chart">
+<div class="chart-title">Финансовая нагрузка вариантов</div>
+<div class="bar-chart"><div class="bar-label">Илья — экономичный</div><div class="bar-bg"><div class="bar-fill" data-width="54%">1 078 280 ₽</div></div></div>
+<div class="bar-chart"><div class="bar-label">Шамиль — премиальный интерьер</div><div class="bar-bg"><div class="bar-fill" data-width="94%">1 872 000 ₽</div></div></div>
+<div class="bar-chart"><div class="bar-label">Ефим — рекомендуемый баланс</div><div class="bar-bg"><div class="bar-fill" data-width="97%">1 941 196 ₽</div></div></div>
+<div class="bar-chart"><div class="bar-label">Денис — насыщенная модель</div><div class="bar-bg"><div class="bar-fill" data-width="102%">2 044 660 ₽</div></div></div>
+</div>
+<div class="table-wrapper"><table class="table-compact"><thead><tr><th>Вариант</th><th>Сильная сторона</th><th>Финансовый вывод</th><th>Как использовать в защите</th></tr></thead><tbody>
+<tr><td>Ефим, вариант 2</td><td>Баланс мощности, ремонта и дизайна</td><td><span class="status-dot ok"></span>В лимите</td><td>Основной рекомендуемый вариант</td></tr>
+<tr><td>Илья</td><td>Минимальная стоимость на большое число мест</td><td><span class="status-dot ok"></span>Большой резерв</td><td>Показать бюджетную альтернативу</td></tr>
+<tr><td>Шамиль</td><td>Премиальный интерьер и отделка</td><td><span class="status-dot ok"></span>В лимите</td><td>Показать эстетический максимум</td></tr>
+<tr><td>Денис</td><td>Максимум сценариев и мебели</td><td><span class="status-dot warn"></span>Чуть выше лимита</td><td>Показать, где нужна оптимизация</td></tr>
+</tbody></table></div>
+</div>
+</div>
+<!-- ПЛАН ВНЕДРЕНИЯ (5 ЛЕТ) -->
+<div class="page" id="plan5y">
+<div class="section-title">План внедрения на 5 лет</div>
+<div class="bar-chart"><div class="bar-label">Год 1. Пилотный ремонт и IT-кластер</div><div class="bar-bg"><div class="bar-fill" data-width="20%">20%</div></div></div>
+<div class="bar-chart"><div class="bar-label">Год 2. Тихая зона, запуск системы бронирования</div><div class="bar-bg"><div class="bar-fill" data-width="40%">40%</div></div></div>
+<div class="bar-chart"><div class="bar-label">Год 3. Лаунж-зона, переговорная, умный свет</div><div class="bar-bg"><div class="bar-fill" data-width="70%">70%</div></div></div>
+<div class="bar-chart"><div class="bar-label">Год 4. Оптимизация и масштабирование</div><div class="bar-bg"><div class="bar-fill" data-width="85%">85%</div></div></div>
+<div class="bar-chart"><div class="bar-label">Год 5. Полная автономность и экспорт модели</div><div class="bar-bg"><div class="bar-fill" data-width="100%">100%</div></div></div>
+<div class="note">
+<strong>Год 1 (0–12 месяцев):</strong><br/>
+            - Аудит и проектирование, утверждение сметы.<br/>
+            - Ремонтные работы: замена потолка, стен, электропроводки.<br/>
+            - Закупка и монтаж серверной стойки, коммутатора, точек Wi-Fi 6.<br/>
+            - Приобретение и установка 8 ПК Ardor Gaming Neo M286.<br/>
+            - Открытие пилотного IT-кластера, тестовая эксплуатация.<br/><br/>
+<strong>Год 2 (12–24 месяца):</strong><br/>
+            - Установка 15 ноутбуков Xiaomi Redmi Book, закупка столов-трансформеров и кресел.<br/>
+            - Оборудование тихой зоны с акустическими перегородками.<br/>
+            - Запуск веб-портала бронирования, интеграция с Raspberry Pi.<br/>
+            - Сбор обратной связи, доработка интерфейса.<br/><br/>
+<strong>Год 3 (24–36 месяцев):</strong><br/>
+            - Создание лаунж-зоны: мягкая мебель, интерактивная панель, кофе-пойнт.<br/>
+            - Обустройство переговорной комнаты (стеклянные перегородки, конференц-система).<br/>
+            - Установка умного освещения и датчиков движения, интеграция с календарями.<br/>
+            - Начало мониторинга загрузки пространства.<br/><br/>
+<strong>Год 4 (36–48 месяцев):</strong><br/>
+            - Анализ использования: оптимизация расстановки мебели, дооснащение.<br/>
+            - Замена/добавление оборудования по мере износа.<br/>
+            - Обучение персонала, внедрение системы климат-контроля.<br/>
+            - Подключение к центральному мониторингу вуза.<br/><br/>
+<strong>Год 5 (48–60 месяцев):</strong><br/>
+            - Выход на полную мощность, полная автономность экосистемы.<br/>
+            - Документирование опыта, создание методических рекомендаций.<br/>
+            - Тиражирование модели в другие аудитории университета.
+        </div>
+
+<div class="enhanced-block global-enhancement whole-project-enhancement">
+<div class="subsection-title">Контрольные точки внедрения</div>
+<div class="timeline-mini">
+<div class="timeline-row"><div class="timeline-name">Год 1</div><div class="timeline-track"><div class="timeline-fill" data-width="20%">Пилот</div></div></div>
+<div class="timeline-row"><div class="timeline-name">Год 2</div><div class="timeline-track"><div class="timeline-fill" data-width="40%">Система бронирования</div></div></div>
+<div class="timeline-row"><div class="timeline-name">Год 3</div><div class="timeline-track"><div class="timeline-fill" data-width="70%">Лаунж + переговорная</div></div></div>
+<div class="timeline-row"><div class="timeline-name">Год 4</div><div class="timeline-track"><div class="timeline-fill" data-width="85%">Оптимизация</div></div></div>
+<div class="timeline-row"><div class="timeline-name">Год 5</div><div class="timeline-track"><div class="timeline-fill" data-width="100%">Тиражирование</div></div></div>
+</div>
+<div class="analysis-grid">
+<div class="analysis-card"><div class="analysis-number">MVP</div><div class="analysis-label">первая очередь должна дать работающий IT-кластер, а не только ремонт</div></div>
+<div class="analysis-card"><div class="analysis-number">Feedback</div><div class="analysis-label">после запуска нужна обратная связь студентов для корректировки зон</div></div>
+<div class="analysis-card"><div class="analysis-number">Scale</div><div class="analysis-label">к пятому году проект можно переносить в другие аудитории</div></div>
+</div>
+</div>
+</div>
+<!-- ГРАФИК РАБОТ (1 год) -->
+<div class="page" id="schedule">
+<div class="section-title">Календарный график реализации (1 год)</div>
+<div class="bar-chart"><div class="bar-label">Подготовка ТЗ и тендер</div><div class="bar-bg"><div class="bar-fill" data-width="15%">14 дней</div></div></div>
+<div class="bar-chart"><div class="bar-label">Закупка оборудования</div><div class="bar-bg"><div class="bar-fill" data-width="30%">30 дней</div></div></div>
+<div class="bar-chart"><div class="bar-label">Демонтаж</div><div class="bar-bg"><div class="bar-fill" data-width="8%">5 дней</div></div></div>
+<div class="bar-chart"><div class="bar-label">Электромонтаж и кабели</div><div class="bar-bg"><div class="bar-fill" data-width="15%">14 дней</div></div></div>
+<div class="bar-chart"><div class="bar-label">Установка мебели и ПК</div><div class="bar-bg"><div class="bar-fill" data-width="12%">10 дней</div></div></div>
+<div class="bar-chart"><div class="bar-label">Настройка ПО и тестирование</div><div class="bar-bg"><div class="bar-fill" data-width="8%">7 дней</div></div></div>
+<div class="bar-chart"><div class="bar-label">Приёмка и обучение</div><div class="bar-bg"><div class="bar-fill" data-width="5%">3 дня</div></div></div>
+<div class="result-panel">Плановое открытие первой очереди — 1 сентября 2026 года.</div>
+
+<div class="enhanced-block global-enhancement whole-project-enhancement">
+<div class="subsection-title">Критический путь первого года</div>
+<div class="chart-card performance-chart">
+<div class="chart-title">Длительность этапов</div>
+<div class="bar-chart"><div class="bar-label">Закупка оборудования</div><div class="bar-bg"><div class="bar-fill" data-width="100%">30 дней</div></div></div>
+<div class="bar-chart"><div class="bar-label">ТЗ и тендер</div><div class="bar-bg"><div class="bar-fill" data-width="47%">14 дней</div></div></div>
+<div class="bar-chart"><div class="bar-label">Электромонтаж</div><div class="bar-bg"><div class="bar-fill" data-width="47%">14 дней</div></div></div>
+<div class="bar-chart"><div class="bar-label">Установка мебели и ПК</div><div class="bar-bg"><div class="bar-fill" data-width="33%">10 дней</div></div></div>
+<div class="bar-chart"><div class="bar-label">ПО и тестирование</div><div class="bar-bg"><div class="bar-fill" data-width="23%">7 дней</div></div></div>
+</div>
+<div class="recommend-box"><strong>Критический риск графика:</strong> закупка оборудования и электромонтаж. Если эти этапы сдвигаются, открытие первой очереди тоже переносится, поэтому их нужно начинать параллельно с согласованием дизайна.</div>
+</div>
+</div>
+<!-- KPI и РИСКИ -->
+<div class="page" id="kpi"><div class="section-title">KPI и управление рисками</div>
+<div class="grid-2 global-enhancement whole-project-enhancement">
+<div class="card"><h3>KPI после модернизации</h3><ul><li>Удовлетворённость студентов ≥85%</li><li>Снижение жалоб на эргономику ≥70%</li><li>Среднее время запуска ПК &lt; 20 сек</li><li>Загрузка рабочих мест &gt;75%</li><li>Доля исправной техники ≥95%</li><li>Срок реакции на поломку ≤48 часов</li></ul></div>
+<div class="card"><h3>Риски и меры</h3><ul><li>Задержка поставки → резервные поставщики</li><li>Превышение бюджета → приоритетная корзина закупок</li><li>Некорректный монтаж → поэтапная приёмка с актом</li><li>Перегрузка сети → тестирование Wi‑Fi до открытия</li><li>Быстрый износ мебели → регламент осмотра</li></ul></div>
+</div>
+<div class="enhanced-block global-enhancement whole-project-enhancement">
+<div class="subsection-title">KPI-панель</div>
+<div class="grid-2">
+<div class="chart-card performance-chart">
+<div class="chart-title">Целевые показатели</div>
+<div class="bar-chart"><div class="bar-label">Удовлетворённость</div><div class="bar-bg"><div class="bar-fill" data-width="85%">85%</div></div></div>
+<div class="bar-chart"><div class="bar-label">Исправность техники</div><div class="bar-bg"><div class="bar-fill" data-width="95%">95%</div></div></div>
+<div class="bar-chart"><div class="bar-label">Загрузка мест</div><div class="bar-bg"><div class="bar-fill" data-width="75%">75%</div></div></div>
+<div class="bar-chart"><div class="bar-label">Снижение жалоб</div><div class="bar-bg"><div class="bar-fill" data-width="70%">70%</div></div></div>
+</div>
+<div class="chart-card performance-chart">
+<div class="chart-title">Остаточный риск после мер контроля</div>
+<div class="bar-chart"><div class="bar-label">Поставка</div><div class="bar-bg"><div class="bar-fill" data-width="42%">42</div></div></div>
+<div class="bar-chart"><div class="bar-label">Бюджет</div><div class="bar-bg"><div class="bar-fill" data-width="38%">38</div></div></div>
+<div class="bar-chart"><div class="bar-label">Монтаж</div><div class="bar-bg"><div class="bar-fill" data-width="30%">30</div></div></div>
+<div class="bar-chart"><div class="bar-label">Эксплуатация</div><div class="bar-bg"><div class="bar-fill" data-width="35%">35</div></div></div>
+</div>
+</div>
+</div>
+</div>
+<!-- ОБСЛУЖИВАНИЕ -->
+<div class="page" id="maintenance"><div class="section-title">План обслуживания и эксплуатации</div>
+<div class="analysis-grid global-enhancement whole-project-enhancement">
+<div class="analysis-card"><div class="analysis-number">300 000 ₽</div><div class="analysis-label">ежегодный бюджет обслуживания техники, мебели, ПО и мелкого ремонта</div></div>
+<div class="analysis-card"><div class="analysis-number">1 раз/мес</div><div class="analysis-label">очистка ПК, проверка кабелей, визуальный осмотр рабочих мест</div></div>
+<div class="analysis-card"><div class="analysis-number">1 раз/квартал</div><div class="analysis-label">проверка мебели, креплений, розеточных блоков и Wi‑Fi покрытия</div></div>
+<div class="analysis-card"><div class="analysis-number">1 раз/год</div><div class="analysis-label">инвентаризация, обновление сметы и план апгрейда оборудования</div></div>
+</div>
+<div class="table-wrapper global-enhancement whole-project-enhancement"><table class="table-compact"><thead><tr><th>Регламент</th><th>Периодичность</th><th>Ответственный</th><th>Результат</th></tr></thead><tbody>
+<tr><td>Очистка ПК и проверка кабелей</td><td>Ежемесячно</td><td>Технический специалист</td><td>Снижение перегрева и сбоев</td></tr>
+<tr><td>Обновление ПО и проверка лицензий</td><td>Раз в полгода</td><td>Администратор</td><td>Стабильная работа учебного ПО</td></tr>
+<tr><td>Осмотр мебели и креплений</td><td>Ежеквартально</td><td>Завхоз / подрядчик</td><td>Безопасная эксплуатация</td></tr>
+<tr><td>Анализ загрузки и обратной связи</td><td>Каждый семестр</td><td>Команда проекта</td><td>Корректировка зон и расписания</td></tr>
+</tbody></table></div>
+<div class="recommend-box global-enhancement whole-project-enhancement"><strong>Логика эксплуатации:</strong> коворкинг должен обслуживаться как IT‑пространство, а не как обычная аудитория. Поэтому в регламент включены техника, мебель, сеть, ПО и пользовательская обратная связь.</div>
+</div>
+<footer>Проект коворкинга в аудитории 6236 • Группа 6481</footer>
+</div>
 <script>
     // Чек-лист (46 пунктов)
     const checklistItems = [
@@ -746,14 +1294,12 @@
             if (btn.dataset.page === pageId) btn.classList.add('active');
             else btn.classList.remove('active');
         });
-        if (pageId === 'schedule' || pageId === 'plan5y') {
-            setTimeout(() => { document.querySelectorAll('.bar-fill').forEach(b => { let w = b.getAttribute('data-width'); if(w) b.style.width = w; }); }, 80);
-        }
+        setTimeout(() => { document.querySelectorAll('.bar-fill, .timeline-fill').forEach(b => { let w = b.getAttribute('data-width'); if(w) b.style.width = w; }); }, 80);
     }
     document.querySelectorAll('.tab-btn').forEach(btn => btn.addEventListener('click', () => showPage(btn.dataset.page)));
     window.printChecklistPage = () => { const win = window.open('', '_blank'); win.document.write('<html><head><title>Чек-лист</title></head><body>' + document.getElementById('checklist').innerHTML + '</body></html>'); win.print(); };
     window.printReportPage = () => { const win = window.open('', '_blank'); win.document.write('<html><head><title>Отчёт</title></head><body>' + document.getElementById('report').innerHTML + '</body></html>'); win.print(); };
-    setTimeout(() => { document.querySelectorAll('.bar-fill').forEach(b => { let w = b.getAttribute('data-width'); if(w) b.style.width = w; }); }, 200);
+    setTimeout(() => { document.querySelectorAll('.bar-fill, .timeline-fill').forEach(b => { let w = b.getAttribute('data-width'); if(w) b.style.width = w; }); }, 200);
 </script>
 </body>
 </html>
