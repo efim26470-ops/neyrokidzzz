@@ -5,168 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Коворкинг в аудитории 6236 • Apple стиль</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background-color: #f5f5f7;
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
-            color: #1d1d1f;
-            line-height: 1.5;
-            font-weight: 400;
-            -webkit-font-smoothing: antialiased;
+            color: #1d1d1f; line-height: 1.5; font-weight: 400; -webkit-font-smoothing: antialiased;
         }
-
-        .wrap {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 32px 24px 64px;
-        }
-
-        @keyframes fadeInUp {
-            0% { opacity: 0; transform: translateY(12px) scale(0.98); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        @keyframes fadeInScale {
-            0% { opacity: 0; transform: scale(0.96); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-
-        .hero {
-            background: #ffffff;
-            border-radius: 28px;
-            padding: 48px 40px;
-            margin-bottom: 40px;
-            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.02);
-            animation: fadeInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-            opacity: 0;
-        }
-
-        .tab-bar {
-            display: flex;
-            gap: 4px;
-            flex-wrap: wrap;
-            margin-bottom: 32px;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            padding: 6px 12px;
-            border-radius: 48px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03), 0 0 0 1px rgba(0, 0, 0, 0.02);
-            border: 0.5px solid rgba(0, 0, 0, 0.04);
-            animation: fadeInUp 0.5s ease 0.1s forwards;
-            opacity: 0;
-        }
-
-        .page {
-            display: none;
-            background: #ffffff;
-            border-radius: 28px;
-            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
-            padding: 32px 36px;
-            border: 0.5px solid rgba(0, 0, 0, 0.04);
-            will-change: transform, opacity;
-        }
-
-        .page.active-page {
-            display: block;
-            animation: fadeInScale 0.45s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px 24px;
-            border-radius: 980px;
-            font-weight: 500;
-            transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            border: 1px solid transparent;
-            cursor: pointer;
-            font-family: inherit;
-            font-size: 0.9rem;
-            background: transparent;
-        }
-        .btn-primary { background: #007aff; color: white; }
-        .btn-primary:hover { background: #0063ce; transform: scale(1.02); }
-        .btn-secondary { background: white; color: #007aff; border-color: #c6c6c8; }
-        .btn-secondary:hover { background: #f5f5f7; border-color: #007aff; transform: translateY(-1px); }
-        .btn-outline { border-color: #c6c6c8; color: #1d1d1f; }
-        .btn-outline:hover { background: #f5f5f7; transform: translateY(-1px); }
-
-        .tab-btn {
-            background: transparent;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 40px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
-            color: #1d1d1f;
-            font-family: inherit;
-        }
+        .wrap { max-width: 1280px; margin: 0 auto; padding: 32px 24px 64px; }
+        @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(12px) scale(0.98); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes fadeInScale { 0% { opacity: 0; transform: scale(0.96); } 100% { opacity: 1; transform: scale(1); } }
+        .hero { background: #fff; border-radius: 28px; padding: 48px 40px; margin-bottom: 40px; box-shadow: 0 8px 28px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.02); animation: fadeInUp 0.6s cubic-bezier(0.23,1,0.32,1) forwards; opacity: 0; }
+        .tab-bar { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 32px; background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); padding: 6px 12px; border-radius: 48px; box-shadow: 0 2px 12px rgba(0,0,0,0.03), 0 0 0 1px rgba(0,0,0,0.02); border: 0.5px solid rgba(0,0,0,0.04); animation: fadeInUp 0.5s ease 0.1s forwards; opacity: 0; }
+        .page { display: none; background: #fff; border-radius: 28px; box-shadow: 0 8px 28px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02); padding: 32px 36px; border: 0.5px solid rgba(0,0,0,0.04); will-change: transform, opacity; }
+        .page.active-page { display: block; animation: fadeInScale 0.45s cubic-bezier(0.2,0.9,0.4,1.1) forwards; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 24px; border-radius: 980px; font-weight: 500; transition: all 0.25s cubic-bezier(0.2,0.9,0.4,1.1); border: 1px solid transparent; cursor: pointer; font-family: inherit; font-size: 0.9rem; background: transparent; }
+        .btn-primary { background: #007aff; color: white; } .btn-primary:hover { background: #0063ce; transform: scale(1.02); }
+        .btn-secondary { background: white; color: #007aff; border-color: #c6c6c8; } .btn-secondary:hover { background: #f5f5f7; border-color: #007aff; transform: translateY(-1px); }
+        .btn-outline { border-color: #c6c6c8; color: #1d1d1f; } .btn-outline:hover { background: #f5f5f7; transform: translateY(-1px); }
+        .tab-btn { background: transparent; border: none; padding: 8px 20px; border-radius: 40px; font-weight: 500; font-size: 0.9rem; cursor: pointer; transition: all 0.2s cubic-bezier(0.23,1,0.32,1); color: #1d1d1f; font-family: inherit; }
         .tab-btn.active { background: #1d1d1f; color: white; transform: scale(0.98); }
-        .tab-btn:not(.active):hover { background: rgba(0, 0, 0, 0.05); transform: translateY(-2px); }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 28px;
-            margin: 24px 0;
-        }
-        .team-card {
-            background: #f9f9fb;
-            border-radius: 28px;
-            padding: 24px;
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            border: 0.5px solid #e9e9ef;
-            opacity: 0;
-            transform: translateY(12px);
-            animation: fadeInUp 0.5s ease forwards;
-        }
-        .team-card:hover { transform: translateY(-6px) scale(1.01); background: #ffffff; box-shadow: 0 20px 32px rgba(0, 0, 0, 0.08); }
-        .team-name { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
-        .team-role { font-size: 0.9rem; font-weight: 500; color: #007aff; margin-bottom: 16px; }
+        .tab-btn:not(.active):hover { background: rgba(0,0,0,0.05); transform: translateY(-2px); }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 28px; margin: 24px 0; }
+        .team-card { background: #f9f9fb; border-radius: 28px; padding: 24px; transition: all 0.3s cubic-bezier(0.2,0.9,0.4,1.1); border: 0.5px solid #e9e9ef; opacity: 0; transform: translateY(12px); animation: fadeInUp 0.5s ease forwards; }
+        .team-card:hover { transform: translateY(-6px) scale(1.01); background: #fff; box-shadow: 0 20px 32px rgba(0,0,0,0.08); }
+        .team-name { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; } .team-role { font-size: 0.9rem; font-weight: 500; color: #007aff; margin-bottom: 16px; }
         .social-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
-        .social-icon {
-            display: inline-flex; align-items: center; justify-content: center;
-            width: 40px; height: 40px; background: #ffffff; border-radius: 30px;
-            transition: all 0.25s ease; text-decoration: none; color: #1d1d1f;
-            border: 0.5px solid #d2d2d6;
-        }
-        .social-icon svg { width: 20px; height: 20px; }
-        .social-icon:hover { transform: translateY(-4px); border-color: #007aff; box-shadow: 0 6px 12px rgba(0,0,0,0.1); }
-
+        .social-icon { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #fff; border-radius: 30px; transition: all 0.25s ease; text-decoration: none; color: #1d1d1f; border: 0.5px solid #d2d2d6; }
+        .social-icon svg { width: 20px; height: 20px; } .social-icon:hover { transform: translateY(-4px); border-color: #007aff; box-shadow: 0 6px 12px rgba(0,0,0,0.1); }
         .table-wrapper { overflow-x: auto; margin: 24px 0; border-radius: 20px; }
         table { width: 100%; border-collapse: collapse; background: white; border-radius: 20px; overflow: hidden; }
-        th, td { border: 1px solid #e5e5ea; padding: 12px 14px; text-align: left; vertical-align: top; }
-        th { background: #f9f9fb; font-weight: 600; }
-
+        th, td { border: 1px solid #e5e5ea; padding: 12px 14px; text-align: left; vertical-align: top; } th { background: #f9f9fb; font-weight: 600; }
         .bar-chart { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
-        .bar-label { width: 200px; font-weight: 500; }
-        .bar-bg { flex: 1; height: 32px; background: #e5e5ea; border-radius: 20px; overflow: hidden; }
-        .bar-fill {
-            height: 100%; background: #007aff; border-radius: 20px; color: white;
-            line-height: 32px; padding-left: 12px; font-size: 0.8rem; font-weight: 500;
-            width: 0%; transition: width 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.2);
-        }
-
+        .bar-label { width: 220px; font-weight: 500; } .bar-bg { flex: 1; height: 32px; background: #e5e5ea; border-radius: 20px; overflow: hidden; }
+        .bar-fill { height: 100%; background: #007aff; border-radius: 20px; color: white; line-height: 32px; padding-left: 12px; font-size: 0.8rem; font-weight: 500; width: 0%; transition: width 0.8s cubic-bezier(0.2,0.9,0.4,1.2); }
         .section-title { font-size: 32px; font-weight: 700; margin-bottom: 24px; color: #1d1d1f; }
         .subsection-title { font-size: 22px; font-weight: 600; margin: 32px 0 18px 0; border-bottom: 1px solid #d2d2d6; padding-bottom: 8px; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
         .card { background: #f9f9fb; border-radius: 24px; padding: 20px; border: 0.5px solid #e9e9ef; }
         .note { background: #f9f9fb; padding: 20px 24px; border-radius: 24px; border: 0.5px solid #e9e9ef; margin: 20px 0; }
-        .media-placeholder {
-            background: #f9f9fb;
-            border-radius: 24px;
-            padding: 20px;
-            text-align: center;
-            border: 1px dashed #c6c6c8;
-            transition: all 0.3s ease;
-        }
+        .media-placeholder { background: #f9f9fb; border-radius: 24px; padding: 20px; text-align: center; border: 1px dashed #c6c6c8; transition: all 0.3s ease; }
         .media-placeholder:hover { border-color: #007aff; transform: scale(1.01); }
         .media-placeholder img { max-width: 100%; border-radius: 18px; margin-top: 10px; }
         input, textarea { width: 100%; padding: 12px 16px; border-radius: 14px; border: 1px solid #d2d2d6; font-family: inherit; font-size: 0.95rem; transition: all 0.2s ease; }
@@ -195,10 +72,14 @@
         <button class="tab-btn" data-page="project">Проект</button>
         <button class="tab-btn" data-page="references">Референсы</button>
         <button class="tab-btn" data-page="model3d">3D Модель</button>
+        <button class="tab-btn" data-page="model3d_2">3D модель 2</button>
+        <button class="tab-btn" data-page="model3d_3">3D модель 3</button>
+        <button class="tab-btn" data-page="model3d_4">3D модель 4</button>
         <button class="tab-btn" data-page="team">Команда</button>
         <button class="tab-btn" data-page="procurement">Закупки</button>
         <button class="tab-btn" data-page="budget">Бюджет + ROI</button>
-        <button class="tab-btn" data-page="schedule">График работ</button>
+        <button class="tab-btn" data-page="plan5y">План внедрения (5 лет)</button>
+        <button class="tab-btn" data-page="schedule">График работ (1 год)</button>
         <button class="tab-btn" data-page="kpi">KPI и риски</button>
         <button class="tab-btn" data-page="maintenance">Обслуживание</button>
     </div>
@@ -206,7 +87,7 @@
     <!-- ГЛАВНАЯ -->
     <div id="home" class="page active-page">
         <div class="section-title">О проекте</div>
-        <p style="margin-bottom: 24px;">Аудитория 6236 долгие годы использовалась как обычная лекционная. Студенты жалуются на неудобные столы (некуда деть ноги), морально устаревшие ПК, отсутствие кабель-менеджмента и плохое освещение. Проект предлагает полную реконфигурацию в коворкинг на 25 мест.</p>
+        <p style="margin-bottom:24px">Аудитория 6236 долгие годы использовалась как обычная лекционная. Студенты жалуются на неудобные столы (некуда деть ноги), морально устаревшие ПК, отсутствие кабель-менеджмента и плохое освещение. Проект предлагает полную реконфигурацию в коворкинг на 25 мест.</p>
         <div class="grid-2">
             <div class="card"><strong>Объект</strong><br>Аудитория 6236, корпус Б, площадь 75 м²</div>
             <div class="card"><strong>Целевая аудитория</strong><br>Студенты ФЭМ (программирование, аналитика, проектная работа), IT-клубы</div>
@@ -217,7 +98,7 @@
         <div class="flex-btns no-print"><button onclick="window.print()" class="btn btn-outline">PDF главной</button></div>
     </div>
 
-    <!-- ЧЕК-ЛИСТ (46 пунктов) -->
+    <!-- ЧЕК-ЛИСТ -->
     <div id="checklist" class="page">
         <div class="section-title">Финальный аудит (компактная форма)</div>
         <div class="lock-note">Оценка зафиксирована по результатам инспекции</div>
@@ -234,7 +115,7 @@
         <div class="flex-btns"><button onclick="printChecklistPage()" class="btn btn-outline">PDF чек-листа</button></div>
     </div>
 
-    <!-- ОТЧЁТ (полный, фото photo1.jpg и photo2.jpg из корня) -->
+    <!-- ОТЧЁТ -->
     <div id="report" class="page">
         <div class="section-title">Аудит и проект улучшения пространства</div>
         <div class="grid-2">
@@ -242,7 +123,6 @@
             <div class="form-field"><label>Объект анализа</label><input type="text" id="reportObject" value="Аудитория 6236"></div>
         </div>
         <div class="form-field"><label>Назначение рабочего пространства</label><textarea id="reportPurpose" rows="3">Назначение заключается в том чтобы улучшить рабочее пространство аудитории, для удобства работы студентов. Так как аудитория не соответствует комфортным требованиям работы (устаревшие ПК, неудобные столы, недостаточное освещение, отсутствие кабель-менеджмента).</textarea></div>
-        
         <div class="subsection-title">Итоги чек-листа</div>
         <div class="grid-2">
             <div class="form-field"><label>Набрано баллов</label><input type="text" id="reportScore" readonly value="21"></div>
@@ -250,157 +130,169 @@
             <div class="form-field"><label>Процент</label><input type="text" id="reportPercent" readonly value="23%"></div>
             <div class="form-field"><label>Результат</label><input type="text" id="reportResultText" readonly value="Критическая неудовлетворительность"></div>
         </div>
-
         <div class="subsection-title">Ключевые наблюдения</div>
         <div class="form-field"><label>Сильные стороны</label><textarea id="strengths" class="expanded-textarea" rows="5">Ну оно есть хотя бы, включается (иногда), зависает не вылетает (иногда). Потенциал для улучшения значительный: возможность полной модернизации.</textarea></div>
         <div class="form-field"><label>Проблемные зоны</label><textarea id="weaknesses" class="expanded-textarea" rows="6">Аудитория не соответствует общепринятым стандартам обучения. Эргономика рабочего места оставляет желать лучшего, столы неудобные (причиняют дискомфорт во время продолжительной работы, студенты бьются ногами об парты). Мониторы устаревшие, с низким разрешением. Кабельный хаос, отсутствие кабель-менеджмента, нехватка розеток, плохое освещение. Производительность ПК крайне низкая (HDD, 4-8 ГБ ОЗУ).</textarea></div>
         <div class="form-field"><label>Три улучшения с наибольшим эффектом</label><textarea id="improvements" class="expanded-textarea" rows="5">1) Полностью обновить конфигурацию рабочей системы (замена всех комплектующих — заметный рост производительности и мощности компьютеров). 2) Поменять столы на регулируемые по высоте или с увеличенным пространством для ног, чтобы люди не бились ногами об парты. 3) Улучшить кабель-менеджмент и поработать с освещением (кабельные каналы, стяжки, равномерное светодиодное освещение над каждым рабочим местом).</textarea></div>
-
         <div class="subsection-title">Проект улучшения (кратко)</div>
         <div class="form-field"><label>Что можно улучшить без существенных затрат</label><textarea id="lowCost" class="expanded-textarea" rows="4">• Организация кабелей с помощью стяжек и коробов. • Замена ламп на более яркие и энергоэффективные светодиодные. • Отрегулировать положение мониторов (подставки).</textarea></div>
         <div class="form-field"><label>Что потребует бюджета, но даст заметный эффект</label><textarea id="budgetItems" class="expanded-textarea" rows="4">• Полная замена компьютерной техники: современные системные блоки с SSD, 16–32 ГБ ОЗУ. • Эргономичные столы с регулировкой высоты и увеличенным пространством для ног. • Профессиональный кабель-менеджмент и подвесные LED-панели.</textarea></div>
         <div class="form-field"><label>Обоснование</label><textarea id="justification" class="expanded-textarea" rows="6">Данные улучшения пойдут на пользу, так как с помощью них студентам: 1) будет удобнее сидеть за рабочим местом, появится пространство для ног (при текущих столах места почти нет). 2) при полном апгрейде компьютеров их производительность значительно увеличится, и студенты ФЭМа смогут выполнять более требовательные задачи, например высоконагруженное программирование, моделирование и анализ данных, становясь более компетентными.
 
 Текущее рабочее пространство практически не соответствует задачам комфортной и продуктивной работы. Устаревшая конфигурация, неэргономичные столы (риск травмирования ног), отсутствие кабель-менеджмента и плохое освещение делают занятия физически дискомфортными. Наиболее рациональные улучшения: замена техники на современную с приоритетом «достаточной производительности», замена столов с увеличенным пространством для ног, наведение порядка в кабелях и светодиодное освещение. Эти меры в рамках бюджета дадут максимальный прирост удобства и эффективности.</textarea></div>
-
         <div class="subsection-title">Визуальные материалы</div>
         <div class="grid-2">
-            <div class="media-placeholder">
-                <img src="photo1.jpg" alt="Фото 1 - текущее состояние" style="max-width:100%; border-radius:18px;" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=photo1.jpg'; this.alt='Фото не загружено';">
-                <p>Рис. 1 – Исходное состояние аудитории 6236 (тесные парты, провода)</p>
-            </div>
-            <div class="media-placeholder">
-                <img src="photo2.jpg" alt="Фото 2 - референс" style="max-width:100%; border-radius:18px;" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=photo2.jpg'; this.alt='Фото не загружено';">
-                <p>Рис. 2</p>
-            </div>
+            <div class="media-placeholder"><img src="photo1.jpg" alt="Фото 1" onerror="this.src='https://placehold.co/600x400?text=photo1.jpg'"><p>Рис. 1 – Исходное состояние</p></div>
+            <div class="media-placeholder"><img src="photo2.jpg" alt="Фото 2" onerror="this.src='https://placehold.co/600x400?text=photo2.jpg'"><p>Рис. 2</p></div>
         </div>
-
         <div class="subsection-title">Итоговый вывод</div>
         <textarea id="finalConclusion" rows="6">Замена столов на регулируемые по высоте или с увеличенным пространством для ног (чтобы исключить удары о парты). Наведение кабельного порядка (коробы, стяжки) и организация равномерного светодиодного освещения над каждым рабочим местом. Эти меры напрямую устраняют главные болевые точки и в рамках разумного бюджета дадут максимальный прирост удобства и эффективности занятий. Комплексная модернизация техники обеспечит студентов инструментом для современной инженерной и аналитической работы. Замена всех комплектующих — заметный рост производительности и мощности компьютеров.</textarea>
-        
         <div class="flex-btns"><button id="saveReportBtn" class="btn btn-secondary">Сохранить отчёт</button><button onclick="printReportPage()" class="btn btn-outline">PDF отчёта</button></div>
     </div>
 
-    <!-- ПРОЕКТ -->
+    <!-- ПРОЕКТ (без эмодзи) -->
     <div id="project" class="page">
         <div class="section-title">Проект модернизации</div>
+        <div class="note"><strong>Философия дизайна:</strong> Пространство, вдохновлённое гибкостью современных IT-офисов. Объединены принципы activity-based working, биофилия и технологичность.</div>
+        <div class="subsection-title">Детальное зонирование</div>
         <div class="grid-2">
-            <div class="card"><h3>Зона IT-кластера</h3><p>8 стационарных ПК с регулируемыми столами, мониторы на кронштейнах, подставки для ног. Глубина стола 80 см, ширина проходов 1,2 м.</p></div>
-            <div class="card"><h3>Тихая зона (коворкинг)</h3><p>15 мест для ноутбуков, розетки в каждом столе, шумоизоляция, индивидуальное LED-освещение 5000K, CRI>90.</p></div>
-            <div class="card"><h3>Лаунж-зона</h3><p>Мягкие кресла, пуфы, кофе-пойнт, настольные игры, библиотека IT-литературы. Настенные фитопанно.</p></div>
-            <div class="card"><h3>Переговорная / видеоконференции</h3><p>Отдельная комната (стеклянная перегородка), маркерная доска, web-камера 4K, система шумоподавления.</p></div>
+            <div class="card"><h3>IT-кластер (8 мест)</h3><p><strong>Площадь:</strong> 22 м²<br><strong>Оборудование:</strong> 8 ПК Ardor Gaming Neo M286 (i5-12400F / 32 ГБ / RTX 4060), мониторы 27" 2K.<br><strong>Мебель:</strong> Столы-трансформеры Ergostol DeskUp, кресла Defo Direct New.<br><strong>Инфраструктура:</strong> Розеточные блоки с USB-C PD 65W, кабель-каналы.<br><strong>Освещение:</strong> LED-панели 4000K, CRI>90, 500 лк на рабочей поверхности.</p></div>
+            <div class="card"><h3>Тихая зона (15 мест)</h3><p><strong>Площадь:</strong> 28 м²<br><strong>Концепция:</strong> Индивидуальные кабины с высокими перегородками (звукопоглощение NRC 0.85).<br><strong>Оснащение:</strong> 15 ноутбуков Xiaomi Redmi Book 2024 (i5-12450H / 16 ГБ).<br><strong>Мебель:</strong> Столы 70×140 см с матовым покрытием, раздельные подставки для ног.<br><strong>Акустика:</strong> Потолочные панели Ecophon, ковровое покрытие.</p></div>
+            <div class="card"><h3>Лаунж-зона (12 мест)</h3><p><strong>Площадь:</strong> 15 м²<br><strong>Концепция:</strong> Неформальное общение и отдых. Мягкая мебель, кофе-пойнт, настольные игры.<br><strong>Технологии:</strong> Интерактивная панель 75" 4K, беспроводная зарядка в столиках.<br><strong>Растения:</strong> Фитопанели с автоматическим поливом.</p></div>
+            <div class="card"><h3>Переговорная (4 места)</h3><p><strong>Площадь:</strong> 10 м²<br><strong>Оснащение:</strong> Стеклянные перегородки с электрохромной тонировкой, конференц-система Logitech Rally Bar.<br><strong>Управление:</strong> Планшет для бронирования, интеграция с календарями.</p></div>
         </div>
-        <div class="note">Все столы — с регулировкой высоты, сиденья — с поддержкой поясницы. Светильники — диммируемые, управление через датчики движения и приложение.</div>
+        <div class="note">Все системы объединены в экосистему «Умный коворкинг»: бронирование через веб-портал, управление освещением и климатом по расписанию, мониторинг загрузки.</div>
     </div>
 
-    <!-- РЕФЕРЕНСЫ (photo3, photo4, photo5, photo6 из корня) -->
+    <!-- РЕФЕРЕНСЫ -->
     <div id="references" class="page">
         <div class="section-title">Референсы современных аудиторий</div>
-        <p style="margin-bottom: 20px; color: #6e6e73; font-size: 0.9rem;">Все изображения сгенерированы <strong>Железкиным Е.С.</strong> с помощью ИИ-инструментов <strong>Google Gemini</strong> и <strong>Nanobanana</strong> на основе наших пожеланий и технического задания.</p>
+        <p style="margin-bottom:20px;color:#6e6e73;font-size:0.9rem">Все изображения сгенерированы <strong>Железкиным Е.С.</strong> с помощью ИИ-инструментов <strong>Google Gemini</strong> и <strong>Nanobanana</strong> на основе наших пожеланий.</p>
         <div class="grid-2">
-            <div class="media-placeholder">
-                <img src="photo3.jpg" alt="Референс 1" style="max-width:100%; border-radius:18px;" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=photo3.jpg'; this.alt='Референс 1 не загружен';">
-                <p><strong>Референс 1</strong></p>
-            </div>
-            <div class="media-placeholder">
-                <img src="photo4.jpg" alt="Референс 2" style="max-width:100%; border-radius:18px;" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=photo4.jpg'; this.alt='Референс 2 не загружен';">
-                <p><strong>Референс 2</strong></p>
-            </div>
-            <div class="media-placeholder">
-                <img src="photo5.jpg" alt="Референс 3" style="max-width:100%; border-radius:18px;" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=photo5.jpg'; this.alt='Референс 3 не загружен';">
-                <p><strong>Референс 3</strong></p>
-            </div>
-            <div class="media-placeholder">
-                <img src="photo6.jpg" alt="Референс 4" style="max-width:100%; border-radius:18px;" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=photo6.jpg'; this.alt='Референс 4 не загружен';">
-                <p><strong>Референс 4</strong></p>
-            </div>
+            <div class="media-placeholder"><img src="photo3.jpg" onerror="this.src='https://placehold.co/600x400?text=photo3.jpg'"><p><strong>Референс 1</strong></p></div>
+            <div class="media-placeholder"><img src="photo4.jpg" onerror="this.src='https://placehold.co/600x400?text=photo4.jpg'"><p><strong>Референс 2</strong></p></div>
+            <div class="media-placeholder"><img src="photo5.jpg" onerror="this.src='https://placehold.co/600x400?text=photo5.jpg'"><p><strong>Референс 3</strong></p></div>
+            <div class="media-placeholder"><img src="photo6.jpg" onerror="this.src='https://placehold.co/600x400?text=photo6.jpg'"><p><strong>Референс 4</strong></p></div>
         </div>
     </div>
 
-    <!-- 3D МОДЕЛЬ -->
+    <!-- 3D МОДЕЛИ -->
     <div id="model3d" class="page">
         <div class="section-title">3D модель коворкинга • Железкин Е.С.</div>
-        <div class="note">
-            <strong>Разработчик:</strong> Железкин Ефим Сергеевич (Team Lead, Full-stack разработчик)<br>
-            <strong>Инструмент:</strong> Live Home 3D Pro<br>
-            <strong>Описание:</strong> Детальная трёхмерная модель обновлённой аудитории 6236, визуализирующая финальный дизайн коворкинг‑пространства. Модель включает точное зонирование (IT‑кластер, тихая зона, лаунж, переговорная), расстановку эргономичной мебели, подвесные LED‑панели, кабель‑каналы, розеточные блоки и систему бронирования. Позволяет наглядно оценить эргономику, освещение и общую атмосферу будущего пространства.
-        </div>
-        <div class="subsection-title">Галерея: 8 ракурсов модели</div>
+        <div class="note"><strong>Разработчик:</strong> Железкин Ефим Сергеевич (Team Lead)<br><strong>Инструмент:</strong> Live Home 3D Pro<br><strong>Описание:</strong> Детальная модель финального дизайна с зонированием, мебелью и освещением.</div>
+        <div class="subsection-title">Галерея: 8 ракурсов</div>
         <div class="grid-2">
-            <div class="media-placeholder">
-                <img src="model3d_1.jpg" alt="3D вид 1" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=model3d_1.jpg'; this.alt='Изображение не загружено';">
-                <p><strong>Вид 1 – Общий план</strong></p>
-            </div>
-            <div class="media-placeholder">
-                <img src="model3d_2.jpg" alt="3D вид 2" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=model3d_2.jpg'; this.alt='Изображение не загружено';">
-                <p><strong>Вид 2 – IT‑кластер</strong></p>
-            </div>
-            <div class="media-placeholder">
-                <img src="model3d_3.jpg" alt="3D вид 3" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=model3d_3.jpg'; this.alt='Изображение не загружено';">
-                <p><strong>Вид 3 – Тихая зона</strong></p>
-            </div>
-            <div class="media-placeholder">
-                <img src="model3d_4.jpg" alt="3D вид 4" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=model3d_4.jpg'; this.alt='Изображение не загружено';">
-                <p><strong>Вид 4 – Лаунж</strong></p>
-            </div>
-            <div class="media-placeholder">
-                <img src="model3d_5.jpg" alt="3D вид 5" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=model3d_5.jpg'; this.alt='Изображение не загружено';">
-                <p><strong>Вид 5 – Переговорная</strong></p>
-            </div>
-            <div class="media-placeholder">
-                <img src="model3d_6.jpg" alt="3D вид 6" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=model3d_6.jpg'; this.alt='Изображение не загружено';">
-                <p><strong>Вид 6 – Освещение и кабель‑каналы</strong></p>
-            </div>
-            <div class="media-placeholder">
-                <img src="model3d_7.jpg" alt="3D вид 7" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=model3d_7.jpg'; this.alt='Изображение не загружено';">
-                <p><strong>Вид 7 – Вид сверху</strong></p>
-            </div>
-            <div class="media-placeholder">
-                <img src="model3d_8.jpg" alt="3D вид 8" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e9e9ef/8e8e93?text=model3d_8.jpg'; this.alt='Изображение не загружено';">
-                <p><strong>Вид 8 – Детали интерьера</strong></p>
-            </div>
+            <div class="media-placeholder"><img src="model3d_1.jpg" onerror="this.src='https://placehold.co/600x400?text=model3d_1'"><p><strong>Вид 1 – Общий план</strong></p></div>
+            <div class="media-placeholder"><img src="model3d_2.jpg" onerror="this.src='https://placehold.co/600x400?text=model3d_2'"><p><strong>Вид 2 – IT‑кластер</strong></p></div>
+            <div class="media-placeholder"><img src="model3d_3.jpg" onerror="this.src='https://placehold.co/600x400?text=model3d_3'"><p><strong>Вид 3 – Тихая зона</strong></p></div>
+            <div class="media-placeholder"><img src="model3d_4.jpg" onerror="this.src='https://placehold.co/600x400?text=model3d_4'"><p><strong>Вид 4 – Лаунж</strong></p></div>
+            <div class="media-placeholder"><img src="model3d_5.jpg" onerror="this.src='https://placehold.co/600x400?text=model3d_5'"><p><strong>Вид 5 – Переговорная</strong></p></div>
+            <div class="media-placeholder"><img src="model3d_6.jpg" onerror="this.src='https://placehold.co/600x400?text=model3d_6'"><p><strong>Вид 6 – Освещение</strong></p></div>
+            <div class="media-placeholder"><img src="model3d_7.jpg" onerror="this.src='https://placehold.co/600x400?text=model3d_7'"><p><strong>Вид 7 – Сверху</strong></p></div>
+            <div class="media-placeholder"><img src="model3d_8.jpg" onerror="this.src='https://placehold.co/600x400?text=model3d_8'"><p><strong>Вид 8 – Детали</strong></p></div>
+        </div>
+    </div>
+    <div id="model3d_2" class="page">
+        <div class="section-title">3D модель 2 • Чижиков Д.К.</div>
+        <div class="note"><strong>Разработчик:</strong> Чижиков Денис Кириллович<br><strong>Инструмент:</strong> Live Home 3D Pro<br><strong>Описание:</strong> Альтернативная визуализация с акцентом на эргономику IT‑кластера и лаунж-зоны.</div>
+        <div class="subsection-title">Галерея: 8 ракурсов</div>
+        <div class="grid-2">
+            <div class="media-placeholder"><img src="3d1.jpg" onerror="this.src='https://placehold.co/600x400?text=3d1.jpg'"><p><strong>Вид 1</strong></p></div>
+            <div class="media-placeholder"><img src="3d2.jpg" onerror="this.src='https://placehold.co/600x400?text=3d2.jpg'"><p><strong>Вид 2</strong></p></div>
+            <div class="media-placeholder"><img src="3d3.jpg" onerror="this.src='https://placehold.co/600x400?text=3d3.jpg'"><p><strong>Вид 3</strong></p></div>
+            <div class="media-placeholder"><img src="3d4.jpg" onerror="this.src='https://placehold.co/600x400?text=3d4.jpg'"><p><strong>Вид 4</strong></p></div>
+            <div class="media-placeholder"><img src="3d5.jpg" onerror="this.src='https://placehold.co/600x400?text=3d5.jpg'"><p><strong>Вид 5</strong></p></div>
+            <div class="media-placeholder"><img src="3d6.jpg" onerror="this.src='https://placehold.co/600x400?text=3d6.jpg'"><p><strong>Вид 6</strong></p></div>
+            <div class="media-placeholder"><img src="3d7.jpg" onerror="this.src='https://placehold.co/600x400?text=3d7.jpg'"><p><strong>Вид 7</strong></p></div>
+            <div class="media-placeholder"><img src="3d8.jpg" onerror="this.src='https://placehold.co/600x400?text=3d8.jpg'"><p><strong>Вид 8</strong></p></div>
+        </div>
+    </div>
+    <div id="model3d_3" class="page">
+        <div class="section-title">3D модель 3 • Яковлев И.В.</div>
+        <div class="note"><strong>Разработчик:</strong> Яковлев Илья Владимирович<br><strong>Инструмент:</strong> Искусственный интеллект (AI-генерация)<br><strong>Описание:</strong> Концептуальная модель, созданная с помощью нейросетей. Футуристический взгляд на коворкинг.</div>
+        <div class="subsection-title">Галерея: 8 ракурсов</div>
+        <div class="grid-2">
+            <div class="media-placeholder"><img src="4d1.png" onerror="this.src='https://placehold.co/600x400?text=4d1.png'"><p><strong>Вид 1</strong></p></div>
+            <div class="media-placeholder"><img src="4d2.png" onerror="this.src='https://placehold.co/600x400?text=4d2.png'"><p><strong>Вид 2</strong></p></div>
+            <div class="media-placeholder"><img src="4d3.png" onerror="this.src='https://placehold.co/600x400?text=4d3.png'"><p><strong>Вид 3</strong></p></div>
+            <div class="media-placeholder"><img src="4d4.png" onerror="this.src='https://placehold.co/600x400?text=4d4.png'"><p><strong>Вид 4</strong></p></div>
+            <div class="media-placeholder"><img src="4d5.png" onerror="this.src='https://placehold.co/600x400?text=4d5.png'"><p><strong>Вид 5</strong></p></div>
+            <div class="media-placeholder"><img src="4d6.png" onerror="this.src='https://placehold.co/600x400?text=4d6.png'"><p><strong>Вид 6</strong></p></div>
+            <div class="media-placeholder"><img src="4d7.png" onerror="this.src='https://placehold.co/600x400?text=4d7.png'"><p><strong>Вид 7</strong></p></div>
+            <div class="media-placeholder"><img src="4d8.png" onerror="this.src='https://placehold.co/600x400?text=4d8.png'"><p><strong>Вид 8</strong></p></div>
+        </div>
+    </div>
+    <div id="model3d_4" class="page">
+        <div class="section-title">3D модель 4 • Якупов Ш.Р.</div>
+        <div class="note"><strong>Разработчик:</strong> Якупов Шамиль Рустемович<br><strong>Инструмент:</strong> Искусственный интеллект (AI-генерация)<br><strong>Описание:</strong> Альтернативная AI-визуализация с упором на интеграцию умных технологий и нестандартное зонирование.</div>
+        <div class="subsection-title">Галерея: 8 ракурсов</div>
+        <div class="grid-2">
+            <div class="media-placeholder"><img src="shamil_model_1.jpg" onerror="this.src='https://placehold.co/600x400?text=shamil_model_1'"><p><strong>Вид 1</strong></p></div>
+            <div class="media-placeholder"><img src="shamil_model_2.jpg" onerror="this.src='https://placehold.co/600x400?text=shamil_model_2'"><p><strong>Вид 2</strong></p></div>
+            <div class="media-placeholder"><img src="shamil_model_3.jpg" onerror="this.src='https://placehold.co/600x400?text=shamil_model_3'"><p><strong>Вид 3</strong></p></div>
+            <div class="media-placeholder"><img src="shamil_model_4.jpg" onerror="this.src='https://placehold.co/600x400?text=shamil_model_4'"><p><strong>Вид 4</strong></p></div>
+            <div class="media-placeholder"><img src="shamil_model_5.jpg" onerror="this.src='https://placehold.co/600x400?text=shamil_model_5'"><p><strong>Вид 5</strong></p></div>
+            <div class="media-placeholder"><img src="shamil_model_6.jpg" onerror="this.src='https://placehold.co/600x400?text=shamil_model_6'"><p><strong>Вид 6</strong></p></div>
+            <div class="media-placeholder"><img src="shamil_model_7.jpg" onerror="this.src='https://placehold.co/600x400?text=shamil_model_7'"><p><strong>Вид 7</strong></p></div>
+            <div class="media-placeholder"><img src="shamil_model_8.jpg" onerror="this.src='https://placehold.co/600x400?text=shamil_model_8'"><p><strong>Вид 8</strong></p></div>
         </div>
     </div>
 
-    <!-- КОМАНДА (с соцсетями) -->
+    <!-- КОМАНДА (серьёзные описания) -->
     <div id="team" class="page">
         <div class="section-title">Команда проекта</div>
         <div class="team-grid">
             <div class="team-card">
                 <div class="team-name">Железкин Ефим Сергеевич</div>
                 <div class="team-role">Team Lead / Full-stack разработчик</div>
-                <div class="team-desc">Разработка полной HTML-структуры, публикация на GitHub, подбор шрифтов (Apple SF Pro), составление смет, дизайн, генерация изображений при помощи ИИ и их интеграция, а также множество других задач по координации проекта.</div>
-                <div class="social-links">
-                    <a href="https://vk.com/e.zhelezkin" target="_blank" class="social-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.684 17.238c.52-.26 1.1-.76 1.34-1.34.28-.68.2-1.14-.5-1.72-.8-.66-1.78-1.12-2.58-1.72-.8-.6-.98-1.06-.6-1.72.44-.78 1.26-1.52 1.68-2.32.64-1.2.56-2.26-.34-3.08-.94-.86-2.28-.86-3.4-.3-1.12.56-1.96 1.68-2.34 2.88-.2.66-.18 1.4.02 2.08.12.42.32.8.54 1.18-.4.36-.86.66-1.24 1.02-.8.76-1.48 1.68-2.02 2.68-.36.66-.4 1.4.04 2.04.5.72 1.38 1.08 2.24 1.04 1.1-.06 2.08-.66 2.96-1.2.36-.22.7-.48 1.02-.76.3.28.64.52 1 .72.86.5 1.84.86 2.84.78.68-.06 1.28-.34 1.74-.84.44-.48.58-1.06.48-1.66-.1-.56-.44-1.02-.88-1.34z"/></svg></a>
-                    <a href="https://t.me/zhelk1zzz" target="_blank" class="social-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.6-1.38-.97-2.23-1.56-.99-.68-.35-1.06.22-1.68.15-.15 2.71-2.48 2.76-2.69.01-.03.02-.13-.06-.18-.08-.06-.2-.04-.28-.02-.12.02-1.96 1.24-5.52 3.65-.52.36-.99.54-1.41.53-.46-.01-1.35-.26-2.01-.48-.81-.27-1.45-.41-1.4-.87.03-.24.36-.49.99-.74 3.36-1.46 5.6-2.42 6.72-2.88 3.2-1.31 3.86-1.54 4.29-1.55.1 0 .31.02.45.13.12.09.16.22.17.35.01.08.01.2-.03.36z"/></svg></a>
-                    <a href="https://github.com/efim26470-ops" target="_blank" class="social-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.21.68-.48 0-.24-.01-.88-.01-1.73-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48C19.13 20.17 22 16.42 22 12c0-5.52-4.48-10-10-10z"/></svg></a>
-                    <a href="https://www.twitch.tv/zhelk1zzz" target="_blank" class="social-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.64 5.93H13.3V9.57H11.64V5.93ZM15.15 5.93H16.81V9.57H15.15V5.93ZM7.73 1L4 5.48V18.1H8.32V22L12.09 18.1H15.65L20 11.76V1H7.73ZM18.33 10.97L15.65 14.02H12.09L9.38 16.7V14.02H6.64V2.48H18.33V10.97Z"/></svg></a>
-                    <a href="https://steamcommunity.com/profiles/76561198964159029/" target="_blank" class="social-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.21.68-.48 0-.24-.01-.88-.01-1.73-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48C19.13 20.17 22 16.42 22 12c0-5.52-4.48-10-10-10z"/></svg></a>
-                    <a href="https://www.youtube.com/@proectprod" target="_blank" class="social-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5 3-5 3z"/></svg></a>
-                </div>
+                <div class="team-desc">Разработка полной HTML-структуры, публикация на GitHub, подбор шрифтов (Apple SF Pro), составление смет, дизайн, генерация изображений при помощи ИИ и их интеграция, а также координация проекта.</div>
+                <div class="social-links">...</div>
             </div>
-            <div class="team-card"><div class="team-name">Яковлев Илья Владимирович</div><div class="team-role">Аналитик / Тестировщик</div><div class="team-desc">Написание 2–3 ключевых выводов, участие в обсуждении в Discord (один раз), пообещал, но не выполнил обозначенное количество задач. Ожидаем более активного включения в работу.</div></div>
-            <div class="team-card"><div class="team-name">Чижиков Денис Кириллович</div><div class="team-role">3D-визуализатор / Data Science</div><div class="team-desc">Пока что пообещал создать 3D-модель обновлённой аудитории. Как только отойдет от похмелья — возможно, сделает (но точных гарантий нет).</div></div>
+            <div class="team-card">
+                <div class="team-name">Яковлев Илья Владимирович</div>
+                <div class="team-role">Аналитик / Тестировщик</div>
+                <div class="team-desc">Отвечает за аналитическую часть проекта: сбор и обработка требований, анализ рисков, расчёт KPI. Готовит отчёты, обоснования и участвует в тестировании внедряемых решений.</div>
+            </div>
+            <div class="team-card">
+                <div class="team-name">Чижиков Денис Кириллович</div>
+                <div class="team-role">3D-визуализатор / Data Science</div>
+                <div class="team-desc">Создаёт альтернативную 3D-визуализацию проекта в Live Home 3D Pro. Прорабатывает детали интерьера, текстуры и освещение, готовит модели для презентации.</div>
+            </div>
+            <div class="team-card">
+                <div class="team-name">Якупов Шамиль Рустемович</div>
+                <div class="team-role">3D-дизайнер / AI-моделирование</div>
+                <div class="team-desc">Разработка альтернативных 3D-визуализаций коворкинга с использованием нейросетей и генеративных алгоритмов. Экспериментирует с футуристичным дизайном и умными технологиями.</div>
+            </div>
         </div>
     </div>
 
-    <!-- ЗАКУПКИ -->
+    <!-- ЗАКУПКИ (детализированные) -->
     <div id="procurement" class="page">
-        <div class="section-title">План закупок оборудования и услуг</div>
-        <div class="table-wrapper"><table><thead><tr><th>Наименование</th><th>Поставщик</th><th>Срок поставки</th><th>Статус</th><th>Ответственный</th></tr></thead>
-        <tbody>
-            <tr><td>Системные блоки (8 шт, Ardor Gaming)</td><td>DNS / Ситилинк</td><td>14 дней</td><td>Тендер</td><td>Ефим</td></tr>
-            <tr><td>Ноутбуки Xiaomi Redmi Book (15 шт)</td><td>Яндекс Маркет</td><td>10 дней</td><td>Согласование</td><td>Ефим</td></tr>
-            <tr><td>Эргономичные столы-трансформеры (12 шт)</td><td>Ergostol</td><td>30 дней</td><td>Изготовление</td><td>Илья</td></tr>
-            <tr><td>Кресла Defo Direct New (24 шт)</td><td>Defo.ru</td><td>14 дней</td><td>Оплачено</td><td>Ефим</td></tr>
-            <tr><td>LED-панели Sirius A + кабель-каналы</td><td>ВсеИнструменты</td><td>7 дней</td><td>В наличии</td><td>Денис</td></tr>
-            <tr><td>Коммутатор TP-Link + WiFi 6</td><td>Regard</td><td>10 дней</td><td>Заказано</td><td>Илья</td></tr>
-            <tr><td>ИБП + стойка + кулеры</td><td>Citilink</td><td>12 дней</td><td>Частично</td><td>Ефим</td></tr>
-        </tbody></table></div>
-        <div class="note">Рекомендуется заключить контракты с единым подрядчиком для снижения рисков задержек.</div>
+        <div class="section-title">План закупок и детализация</div>
+        <div class="table-wrapper">
+            <table>
+                <thead><tr><th>Этап</th><th>Наименование</th><th>Кол-во</th><th>Цена за ед. (руб)</th><th>Сумма (руб)</th><th>Поставщик</th><th>Срок поставки</th><th>Статус</th><th>Ответственный</th></tr></thead>
+                <tbody>
+                    <tr><td rowspan="3" style="background:#f9f9fb;">1. Подготовка (0-6 мес.)</td><td>Серверная стойка 12U</td><td>1</td><td>13 490</td><td>13 490</td><td>Citilink</td><td>12 дней</td><td>Заказано</td><td>Ефим</td></tr>
+                    <tr><td>Коммутатор TP-Link TL-SG1428PE</td><td>1</td><td>27 000</td><td>27 000</td><td>Regard</td><td>10 дней</td><td>Тендер</td><td>Илья</td></tr>
+                    <tr><td>Точки доступа Wi-Fi 6 (Netcraze Orbiter 6)</td><td>3</td><td>10 990</td><td>32 970</td><td>Regard</td><td>10 дней</td><td>Заказано</td><td>Илья</td></tr>
+                    <tr><td rowspan="4" style="background:#f9f9fb;">2. Основная модернизация (6-18 мес.)</td><td>ПК Ardor Gaming Neo M286</td><td>8</td><td>63 000</td><td>504 000</td><td>DNS</td><td>14 дней</td><td>Тендер</td><td>Ефим</td></tr>
+                    <tr><td>Ноутбуки Xiaomi Redmi Book 2024</td><td>15</td><td>53 000</td><td>795 000</td><td>Яндекс Маркет</td><td>10 дней</td><td>Согласование</td><td>Ефим</td></tr>
+                    <tr><td>Столы-трансформеры Ergostol DeskUp</td><td>12</td><td>18 090</td><td>217 080</td><td>Ergostol</td><td>30 дней</td><td>Изготовление</td><td>Илья</td></tr>
+                    <tr><td>Кресла Defo Direct New</td><td>24</td><td>8 900</td><td>213 600</td><td>Defo.ru</td><td>14 дней</td><td>Оплачено</td><td>Ефим</td></tr>
+                    <tr><td rowspan="3" style="background:#f9f9fb;">3. Освещение и эстетика (12-18 мес.)</td><td>LED-панели Sirius A 600x600</td><td>20</td><td>940</td><td>18 800</td><td>ВсеИнструменты</td><td>7 дней</td><td>В наличии</td><td>Денис</td></tr>
+                    <tr><td>Кабель-каналы + корзины</td><td>20</td><td>1 700</td><td>34 000</td><td>ЭТМ</td><td>7 дней</td><td>В наличии</td><td>Денис</td></tr>
+                    <tr><td>Система бронирования (RPi 4 + 7" экраны)</td><td>3</td><td>18 900</td><td>56 700</td><td>Sinardcom / Яндекс</td><td>14 дней</td><td>Согласование</td><td>Ефим</td></tr>
+                    <tr><td rowspan="2" style="background:#f9f9fb;">4. Завершение (18-24 мес.)</td><td>ИБП Exegate SpecialPro 2000</td><td>1</td><td>10 000</td><td>10 000</td><td>Citilink</td><td>12 дней</td><td>Запланировано</td><td>Ефим</td></tr>
+                    <tr><td>Розеточные блоки с USB+RJ45</td><td>20</td><td>2 200</td><td>44 000</td><td>—</td><td>14 дней</td><td>Поиск</td><td>Илья</td></tr>
+                    <tr style="background:#fff0db;"><td colspan="2"><strong>Ремонтные работы</strong> (обои, потолок, электромонтаж)</td><td>1</td><td>120 000</td><td>120 000</td><td>Подрядчик</td><td>60 дней</td><td>Аукцион</td><td>Ефим</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="note">Все контракты заключаются централизованно. Оборудование закупается поэтапно, начиная с сетевой инфраструктуры и заканчивая элементами декора.</div>
     </div>
 
-    <!-- БЮДЖЕТ + ROI (полная смета) -->
+    <!-- БЮДЖЕТ + ROI (полная таблица) -->
     <div id="budget" class="page">
         <div class="section-title">Смета и план закупок (с учётом ремонта и актуальных цен)</div>
         <div class="table-wrapper">
@@ -433,9 +325,46 @@
         <p>Повышение производительности на 25%, годовой эффект ~850 000 руб. Окупаемость 3,5–4 года.</p>
     </div>
 
-    <!-- ГРАФИК РАБОТ -->
+    <!-- ПЛАН ВНЕДРЕНИЯ (5 ЛЕТ) - подробно -->
+    <div id="plan5y" class="page">
+        <div class="section-title">План внедрения на 5 лет</div>
+        <div class="bar-chart"><div class="bar-label">Год 1. Пилотный ремонт и IT-кластер</div><div class="bar-bg"><div class="bar-fill" data-width="20%">20%</div></div></div>
+        <div class="bar-chart"><div class="bar-label">Год 2. Тихая зона, запуск системы бронирования</div><div class="bar-bg"><div class="bar-fill" data-width="40%">40%</div></div></div>
+        <div class="bar-chart"><div class="bar-label">Год 3. Лаунж-зона, переговорная, умный свет</div><div class="bar-bg"><div class="bar-fill" data-width="70%">70%</div></div></div>
+        <div class="bar-chart"><div class="bar-label">Год 4. Оптимизация и масштабирование</div><div class="bar-bg"><div class="bar-fill" data-width="85%">85%</div></div></div>
+        <div class="bar-chart"><div class="bar-label">Год 5. Полная автономность и экспорт модели</div><div class="bar-bg"><div class="bar-fill" data-width="100%">100%</div></div></div>
+        <div class="note">
+            <strong>Год 1 (0–12 месяцев):</strong><br>
+            - Аудит и проектирование, утверждение сметы.<br>
+            - Ремонтные работы: замена потолка, стен, электропроводки.<br>
+            - Закупка и монтаж серверной стойки, коммутатора, точек Wi-Fi 6.<br>
+            - Приобретение и установка 8 ПК Ardor Gaming Neo M286.<br>
+            - Открытие пилотного IT-кластера, тестовая эксплуатация.<br><br>
+            <strong>Год 2 (12–24 месяца):</strong><br>
+            - Установка 15 ноутбуков Xiaomi Redmi Book, закупка столов-трансформеров и кресел.<br>
+            - Оборудование тихой зоны с акустическими перегородками.<br>
+            - Запуск веб-портала бронирования, интеграция с Raspberry Pi.<br>
+            - Сбор обратной связи, доработка интерфейса.<br><br>
+            <strong>Год 3 (24–36 месяцев):</strong><br>
+            - Создание лаунж-зоны: мягкая мебель, интерактивная панель, кофе-пойнт.<br>
+            - Обустройство переговорной комнаты (стеклянные перегородки, конференц-система).<br>
+            - Установка умного освещения и датчиков движения, интеграция с календарями.<br>
+            - Начало мониторинга загрузки пространства.<br><br>
+            <strong>Год 4 (36–48 месяцев):</strong><br>
+            - Анализ использования: оптимизация расстановки мебели, дооснащение.<br>
+            - Замена/добавление оборудования по мере износа.<br>
+            - Обучение персонала, внедрение системы климат-контроля.<br>
+            - Подключение к центральному мониторингу вуза.<br><br>
+            <strong>Год 5 (48–60 месяцев):</strong><br>
+            - Выход на полную мощность, полная автономность экосистемы.<br>
+            - Документирование опыта, создание методических рекомендаций.<br>
+            - Тиражирование модели в другие аудитории университета.
+        </div>
+    </div>
+
+    <!-- ГРАФИК РАБОТ (1 год) -->
     <div id="schedule" class="page">
-        <div class="section-title">Календарный график реализации</div>
+        <div class="section-title">Календарный график реализации (1 год)</div>
         <div class="bar-chart"><div class="bar-label">Подготовка ТЗ и тендер</div><div class="bar-bg"><div class="bar-fill" data-width="15%">14 дней</div></div></div>
         <div class="bar-chart"><div class="bar-label">Закупка оборудования</div><div class="bar-bg"><div class="bar-fill" data-width="30%">30 дней</div></div></div>
         <div class="bar-chart"><div class="bar-label">Демонтаж</div><div class="bar-bg"><div class="bar-fill" data-width="8%">5 дней</div></div></div>
@@ -443,7 +372,7 @@
         <div class="bar-chart"><div class="bar-label">Установка мебели и ПК</div><div class="bar-bg"><div class="bar-fill" data-width="12%">10 дней</div></div></div>
         <div class="bar-chart"><div class="bar-label">Настройка ПО и тестирование</div><div class="bar-bg"><div class="bar-fill" data-width="8%">7 дней</div></div></div>
         <div class="bar-chart"><div class="bar-label">Приёмка и обучение</div><div class="bar-bg"><div class="bar-fill" data-width="5%">3 дня</div></div></div>
-        <div class="result-panel">Плановое открытие — 1 сентября 2026 года.</div>
+        <div class="result-panel">Плановое открытие первой очереди — 1 сентября 2026 года.</div>
     </div>
 
     <!-- KPI и РИСКИ -->
@@ -458,30 +387,14 @@
     <!-- ОБСЛУЖИВАНИЕ -->
     <div id="maintenance" class="page">
         <div class="section-title">План обслуживания и эксплуатации</div>
-        <div class="subsection-title">Регламент технического обслуживания</div>
-        <ul><li>Ежемесячная очистка системных блоков от пыли (сжатым воздухом).</li><li>Ежеквартальная проверка креплений столов и кресел.</li><li>Полугодовое обновление драйверов и BIOS на всех ПК.</li><li>Ежегодная калибровка датчиков освещения и CO2.</li><li>Создание резервной копии образов системы на сервере.</li></ul>
-        <div class="subsection-title">График загрузки персонала (чел./час в месяц)</div>
-        <div class="bar-chart"><div class="bar-label">Очистка ПК</div><div class="bar-bg"><div class="bar-fill" data-width="25%">8 ч</div></div></div>
-        <div class="bar-chart"><div class="bar-label">Проверка мебели</div><div class="bar-bg"><div class="bar-fill" data-width="15%">4 ч</div></div></div>
-        <div class="bar-chart"><div class="bar-label">Обновление ПО</div><div class="bar-bg"><div class="bar-fill" data-width="20%">6 ч</div></div></div>
-        <div class="bar-chart"><div class="bar-label">Калибровка датчиков</div><div class="bar-bg"><div class="bar-fill" data-width="10%">2 ч</div></div></div>
-        <div class="bar-chart"><div class="bar-label">Резервное копирование</div><div class="bar-bg"><div class="bar-fill" data-width="15%">5 ч</div></div></div>
-        <div class="subsection-title">Динамика инцидентов</div>
-        <div class="bar-chart"><div class="bar-label">2025 (до)</div><div class="bar-bg"><div class="bar-fill" data-width="90%">45 инцидентов</div></div></div>
-        <div class="bar-chart"><div class="bar-label">2026 (план)</div><div class="bar-bg"><div class="bar-fill" data-width="30%">12 инцидентов</div></div></div>
-        <div class="subsection-title">Бюджет на обслуживание</div>
-        <div class="bar-chart"><div class="bar-label">Зарплата техперсонала</div><div class="bar-bg"><div class="bar-fill" data-width="60%">180 000 руб</div></div></div>
-        <div class="bar-chart"><div class="bar-label">Запчасти</div><div class="bar-bg"><div class="bar-fill" data-width="25%">75 000 руб</div></div></div>
-        <div class="bar-chart"><div class="bar-label">ПО и лицензии</div><div class="bar-bg"><div class="bar-fill" data-width="15%">45 000 руб</div></div></div>
-        <div class="note">Гарантия: системные блоки — 3 года, мониторы — 2 года, мебель — 1 год.</div>
-        <div class="flex-btns no-print"><button onclick="window.print()" class="btn btn-outline">PDF всех вкладок</button></div>
+        <p>Ежегодный бюджет обслуживания: 300 000 руб. Гарантия на ПК 3 года, на мебель 1 год. Регламент включает ежемесячную очистку ПК, квартальную проверку мебели, полугодовое обновление ПО и ежегодную калибровку датчиков.</p>
     </div>
 
     <footer>Проект коворкинга в аудитории 6236 • Группа 6481</footer>
 </div>
 
 <script>
-    // ========== ЧЕК-ЛИСТ (46 пунктов) ==========
+    // Чек-лист (46 пунктов)
     const checklistItems = [
         { cat: "Назначение", text: "Понятно, для каких задач предназначено рабочее место (учёба, документы, аналитика, программирование).", score: 1 },
         { cat: "Назначение", text: "Подбор техники соответствует задачам, а не принципу «чем мощнее, тем лучше».", score: 0 },
@@ -605,7 +518,7 @@
     document.getElementById('reportResultText').value = "Критическая неудовлетворительность";
 
     // Навигация
-    const pages = ['home','checklist','report','project','references','model3d','team','procurement','budget','schedule','kpi','maintenance'];
+    const pages = ['home','checklist','report','project','references','model3d','model3d_2','model3d_3','model3d_4','team','procurement','budget','plan5y','schedule','kpi','maintenance'];
     function showPage(pageId) {
         pages.forEach(pid => document.getElementById(pid).classList.remove('active-page'));
         document.getElementById(pageId).classList.add('active-page');
@@ -613,13 +526,13 @@
             if (btn.dataset.page === pageId) btn.classList.add('active');
             else btn.classList.remove('active');
         });
-        if (pageId === 'schedule' || pageId === 'maintenance') {
+        if (pageId === 'schedule' || pageId === 'plan5y') {
             setTimeout(() => { document.querySelectorAll('.bar-fill').forEach(b => { let w = b.getAttribute('data-width'); if(w) b.style.width = w; }); }, 80);
         }
     }
     document.querySelectorAll('.tab-btn').forEach(btn => btn.addEventListener('click', () => showPage(btn.dataset.page)));
-    window.printChecklistPage = () => { const win = window.open('', '_blank'); win.document.write('<html><head><title>Чек-лист</title><style>body{font-family:-apple-system}</style></head><body>' + document.getElementById('checklist').innerHTML + '</body></html>'); win.print(); };
-    window.printReportPage = () => { const win = window.open('', '_blank'); win.document.write('<html><head><title>Отчёт</title><style>body{font-family:-apple-system}</style></head><body>' + document.getElementById('report').innerHTML + '</body></html>'); win.print(); };
+    window.printChecklistPage = () => { const win = window.open('', '_blank'); win.document.write('<html><head><title>Чек-лист</title></head><body>' + document.getElementById('checklist').innerHTML + '</body></html>'); win.print(); };
+    window.printReportPage = () => { const win = window.open('', '_blank'); win.document.write('<html><head><title>Отчёт</title></head><body>' + document.getElementById('report').innerHTML + '</body></html>'); win.print(); };
     setTimeout(() => { document.querySelectorAll('.bar-fill').forEach(b => { let w = b.getAttribute('data-width'); if(w) b.style.width = w; }); }, 200);
 </script>
 </body>
